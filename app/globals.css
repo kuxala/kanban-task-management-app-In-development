@@ -1,7 +1,6 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-
 *{
   margin: 0;
   padding: 0;
@@ -13,4 +12,7 @@
   src: url('/fonts/plus-jakarta-sans.woff2') format('woff2'),
        url('/fonts/plus-jakarta-sans.woff') format('woff');
 
+}
+body{
+  background-color: #F4F7FD;
 }

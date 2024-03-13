@@ -44,14 +44,17 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 1.5rem; /* 6/4 = 1.5rem */
-    padding-left: 2rem; /* 8/4 = 2rem */
-    background-color: #ffffff; /* White background */
+    padding-top: 32px;
+    padding-bottom: 12px;
+    padding-left: 34px;
+    padding-right: 16px;
+    margin: 0;
+    background-color: #fff;
   }
   
   .header__container {
     display: flex;
-    gap: 3rem; /* 12/4 = 3rem */
+    gap: 130px; /* 12/4 = 3rem */
   }
   
   .header__logo__desktop{
@@ -63,7 +66,6 @@
   
   .header__title {
     color: #000000; /* Black text */
-    font-family: sans-serif; 
     font-weight: bold; /* Bold font weight */
     font-size: 1.5rem; /* Extra-large font size */
     line-height: 1.5; /* Normal line height */
