@@ -1,5 +1,12 @@
-import Image from "next/image";
+import Header from "./pages/Header";
+import Sidebar from "./pages/Sidebar";
+import { Poppins } from "next/font/google";
 
 export default function Home() {
-  return <h1>Hello</h1>;
+  return (
+    <>
+      {/* <Sidebar /> */}
+      <Header />
+    </>
+  );
 }
