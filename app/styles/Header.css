@@ -94,6 +94,9 @@
     background-color: #6b46c1; /* Purple background color */
     border-radius: 2rem; /* 8/4 = 2rem */
   }
+  .header__button__desktop:hover{
+    opacity: 0.8;
+  }
   
   /* Icon styles */
   .header__icon {

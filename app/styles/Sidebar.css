@@ -1,34 +1,57 @@
-.sidebar{
-    background-color: #fff;
-    min-height: 88vh;
-    max-width: 300px;
+.sidebar {
+    visibility: hidden;
 }
+@media only screen and (min-width: 768px){
+    .sidebar{
+        background-color: #fff;
+        min-height: 88vh;
+        max-width: 300px;
+        visibility: visible
+    }
+    
+    .sidebar__header{
+        color:  #828FA3;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        letter-spacing: 2.4px;  
+        padding-left: 32px;
+        padding-top: 52px;
+        padding-bottom: 19px;
+    }
+    
+    .sidebar__boards{
+        display: flex;
+        gap: 10px;
+        width: 95%;
+        align-items: center;
+        padding-left: 32px;
+        color: var(--Medium-Grey, #828FA3);
 
-.sidebar__header{
-    color:  #828FA3;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    letter-spacing: 2.4px;  
-    padding-left: 32px;
-    padding-top: 52px;
-    padding-bottom: 19px;
-}
+        border-radius: 0px 100px 100px 0px;
+        height: 48px;
+        font-feature-settings: 'clig' off, 'liga' off;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
 
-.sidebar__boards{
-    display: flex;
-    gap: 10px;
-    width: 95%;
-    align-items: center;
-    padding-left: 32px;
-    color: #FFF;
-    border-radius: 0px 100px 100px 0px;
-    height: 48px;
-    background:  #635FC7;
-    font-feature-settings: 'clig' off, 'liga' off;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
+    .sidebar__boards:active, .sidebar__boards:focus{
+        background:  #635FC7;
+        color: #fff
+    }
+    
+    .sidebar__add__board{
+        color:  #635FC7;
+        font-feature-settings: 'clig' off, 'liga' off;
+        font-size: 15px;
+        
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        padding-left: 32px;
+        padding-top: 29px
+    }
 }
