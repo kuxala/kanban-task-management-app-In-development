@@ -57,12 +57,12 @@ export default function Sidebar() {
       </div>
       {sidebar ? null : (
         <div
-          className="flex items-end min-h-[80vh]"
+          className="flex items-end min-h-[80vh] max-w-16"
           onClick={() => {
             setSidebar(!sidebar);
           }}
         >
-          <div className="sidebar__show flex items-center justify-center pr-2 ">
+          <div className="sidebar__show flex items-center justify-center pr-2 max-w-16 ">
             <img src="/assets/icon-show-sidebar.svg" />
           </div>
         </div>

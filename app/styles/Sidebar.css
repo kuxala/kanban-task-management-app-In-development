@@ -1,5 +1,6 @@
 .sidebar {
     visibility: hidden;
+    display: none;
 }
 @media only screen and (min-width: 768px){
     .sidebar__hidden{
@@ -8,8 +9,9 @@
     .sidebar{
         background-color: #fff;
         min-height: 90vh;
-        max-width: 300px;
-        visibility: visible
+        min-width: 300px;
+        visibility: visible;
+        display: unset;
     }
     
     .sidebar__header{
