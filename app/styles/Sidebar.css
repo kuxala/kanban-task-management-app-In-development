@@ -2,9 +2,12 @@
     visibility: hidden;
 }
 @media only screen and (min-width: 768px){
+    .sidebar__hidden{
+        display: none;
+    }
     .sidebar{
         background-color: #fff;
-        min-height: 88vh;
+        min-height: 90vh;
         max-width: 300px;
         visibility: visible
     }
@@ -47,11 +50,44 @@
         color:  #635FC7;
         font-feature-settings: 'clig' off, 'liga' off;
         font-size: 15px;
-        
         font-style: normal;
         font-weight: 700;
         line-height: normal;
         padding-left: 32px;
-        padding-top: 29px
+        padding-top: 29px;        
+
+    }
+
+    .sidebar__darkmode{
+        position: relative;
+        margin-left: 30px;
+        margin-right: 30px;
+        height:  48px;
+        background-color: #F4F7FD;
+        align-items: center;
+        justify-content: center;
+        
+        
+    }
+    .sidebar__darkmode__div{
+        min-height: 45vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+    .sidebar__hide{
+        color: var(--Medium-Grey, #828FA3);
+        font-feature-settings: 'clig' off, 'liga' off;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+    .sidebar__show{
+        width: 56px;
+        height: 48px;
+        flex-shrink: 0;
+        border-radius: 0px 100px 100px 0px;
+        background: var(--Main-Purple, #635FC7);
     }
 }
