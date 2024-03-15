@@ -8,33 +8,51 @@ export default function AddNew() {
   const { isOpen, setIsOpen }: any = useContext(AppContext);
   return (
     <>
-      {/* <button onClick={() => setIsOpen(true)}>Open Add New Task</button> */}
-      <Overlay isOpen={isOpen} onClose={() => setIsOpen(false)} />{" "}
+      <Overlay isOpen={isOpen} onClose={() => setIsOpen(false)} />
       {isOpen && (
-        <div className="addnew__container absolute bg-white p-6 ">
+        <div className="addnew__container absolute bg-white p-6 rounded-md ">
           <h1 className="text-black font-sans font-semibold text-lg pb-6">
             Add New Task
           </h1>
           <div>
             <div>
-              <h3>Title</h3>
-              <input />
+              <h3 className="text-gray-500 font-semibold pb-2 ">Title</h3>
+              <input
+                placeholder="e.g. Take coffee break"
+                className="p-2 text-[14px] w-full border border-gray-300 rounded-md  bg-white"
+              />
             </div>
             <div>
-              <h3>Description</h3>
-              <input />
+              <h3 className="text-gray-500 font-semibold pb-2 pt-4">
+                Description
+              </h3>
+              <textarea
+                className="addnew__description text-[14px] p-2 resize-y border border-gray-300 rounded-md w-full min-h-[150px]"
+                placeholder="e.g. It’s always good to take a break. This 15 minute break will  recharge the batteries a little."
+              ></textarea>
             </div>
             <div>
-              <h3>SubTasks</h3>
-              <div>
-                <input />
+              <h3 className="text-gray-500 font-semibold pt-4 pb-2">
+                SubTasks
+              </h3>
+              <div className="flex items-center gap-2">
+                <input
+                  className="p-2 text-[14px] w-full border border-gray-300 rounded-md  bg-white"
+                  placeholder="e.g. Make coffee"
+                />
                 <img src="/assets/icon-cross.svg" />
               </div>
-              <button>Add New Subtask</button>
+              <button className="w-full h-10 mt-3 mb-5 rounded-full bg-opacity-10 bg-purple-400 text-purple-600 text-center text-sm font-semibold leading-5">
+                Add New Subtask
+              </button>
             </div>
             <div>
-              <h3>Status</h3>
-              <input />
+              <h3 className="text-gray-500 font-semibold pb-2 ">Status</h3>
+              <select className="w-full h-12 border border-gray-300 rounded-md p-2 bg-white">
+                <option value="1">Todo</option>
+                <option value="2">Doing</option>
+                <option value="2">Done</option>
+              </select>
             </div>
           </div>
         </div>

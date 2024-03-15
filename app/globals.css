@@ -12,6 +12,17 @@
   src: url('/fonts/plus-jakarta-sans.woff2') format('woff2'),
        url('/fonts/plus-jakarta-sans.woff') format('woff');
 
+}::-webkit-scrollbar {
+  display: none;
+}
+
+/* Optional: Style the scrollbar track and thumb */
+::-webkit-scrollbar-track {
+  background: transparent; /* Change to desired color */
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent; /* Change to desired color */
 }
 body{
   background-color: #F4F7FD;
