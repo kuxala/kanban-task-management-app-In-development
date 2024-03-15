@@ -1,6 +1,9 @@
+import { AppContext } from "../page";
 import "../styles/Header.css";
-import React from "react";
+import React, { useContext } from "react";
 export default function Header() {
+  const { isOpen, setIsOpen }: any = useContext(AppContext);
+  const { menu, setMenu }: any = useContext(AppContext);
   return (
     <>
       <header className="header">
@@ -19,6 +22,10 @@ export default function Header() {
           <img
             src="../../assets/icon-chevron-down.svg"
             className="ml-2 header__chevron__down"
+            width="15px"
+            onClick={() => {
+              setMenu(!menu);
+            }}
           />
         </div>
         <div className="header__actions">

@@ -9,8 +9,8 @@ export const AppContext = React.createContext({});
 export default function Home() {
   const [darkmode, setDarkmode] = useState<boolean>(false);
   const [sidebar, setSidebar] = useState<boolean>(true);
-  const [isOpen, setIsOpen] = useState(false);
-
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [menu, setMenu] = useState<boolean>(false);
   return (
     <>
       <AppContext.Provider
@@ -21,6 +21,8 @@ export default function Home() {
           setSidebar,
           isOpen,
           setIsOpen,
+          menu,
+          setMenu,
         }}
       >
         <Header />

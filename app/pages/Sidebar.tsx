@@ -3,6 +3,7 @@ import { useContext } from "react";
 import "../styles/Sidebar.css";
 import Switch from "@mui/material/Switch";
 import { AppContext } from "../page";
+import MobileSidebar from "./MobileSidebar";
 
 const label = { inputProps: { "aria-label": "Switch demo" } };
 
@@ -12,6 +13,8 @@ export default function Sidebar() {
 
   return (
     <>
+      <MobileSidebar />
+
       <div className={sidebar ? "sidebar" : "sidebar__hidden"}>
         <div className="sidebar__texts">
           <p className="sidebar__header">All Boards (number)</p>
@@ -35,7 +38,6 @@ export default function Sidebar() {
             Create New Board
           </p>
         </div>
-
         <div className="sidebar__darkmode__div">
           <div className="sidebar__darkmode flex gap-3">
             <img src="/assets/icon-light-theme.svg" />
