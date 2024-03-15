@@ -15,6 +15,7 @@ export default function Sidebar() {
       <div className={sidebar ? "sidebar" : "sidebar__hidden"}>
         <div className="sidebar__texts">
           <p className="sidebar__header">All Boards (number)</p>
+
           <div className="flex flex-col gap-2">
             <p className="sidebar__boards" tabIndex={0}>
               <img src="/assets/icon-board.svg" />
@@ -25,13 +26,17 @@ export default function Sidebar() {
               Second one
             </p>
           </div>
-          <p className="sidebar__add__board flex gap-2 items-center ">
+
+          <p
+            className="sidebar__add__board flex gap-2 items-center "
+            onClick={() => {}}
+          >
             <img src="/assets/icon-board.svg" width="16px" height="16px" />+
             Create New Board
           </p>
         </div>
+
         <div className="sidebar__darkmode__div">
-          {" "}
           <div className="sidebar__darkmode flex gap-3">
             <img src="/assets/icon-light-theme.svg" />
             <div
