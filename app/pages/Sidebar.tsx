@@ -1,14 +1,11 @@
 "use client";
 import { useContext } from "react";
 import "../styles/Sidebar.css";
-import Switch from "@mui/material/Switch";
 import { AppContext } from "../page";
 import MobileSidebar from "./MobileSidebar";
-
-const label = { inputProps: { "aria-label": "Switch demo" } };
+import Darkmode from "../components/Darkmode";
 
 export default function Sidebar() {
-  const { darkmode, setDarkmode }: any = useContext(AppContext);
   const { sidebar, setSidebar }: any = useContext(AppContext);
 
   return (
@@ -38,20 +35,8 @@ export default function Sidebar() {
             Create New Board
           </p>
         </div>
-        <div className="sidebar__darkmode__div">
-          <div className="sidebar__darkmode flex gap-3">
-            <img src="/assets/icon-light-theme.svg" />
-            <div
-              onClick={() => {
-                setDarkmode(!darkmode);
-              }}
-            >
-              <Switch {...label} defaultChecked={false} />
-            </div>
-            <img src="/assets/icon-dark-theme.svg" />
-          </div>
-        </div>
 
+        <Darkmode />
         <div
           className="flex gap-2 items-center pl-8 pt-4"
           onClick={() => {
