@@ -4,6 +4,7 @@ import Overlay from "./Overlay";
 
 export default function MobileSidebar() {
   const { menu, setMenu }: any = useContext(AppContext);
+
   return (
     <>
       <Overlay isOpen={menu} onClose={() => setMenu(false)} />

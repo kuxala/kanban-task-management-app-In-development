@@ -8,7 +8,7 @@ export default function MainSection() {
   const { isOpen, setIsOpen }: any = useContext(AppContext);
   return (
     <>
-      <div className="w-screen flex">
+      <div className="w-screen flex ">
         {isEmpty ? (
           <div className="section__addnew">
             <p className="section__text">
@@ -24,8 +24,8 @@ export default function MainSection() {
             </button>
           </div>
         ) : (
-          <>
-            <div className="section__rows">
+          <div className="section__both">
+            <div className="section__rows ">
               <h3 className="ml-4 mt-4 text-gray-500 font-sans font-semibold text-xs normal-case tracking-wider">
                 TODO
               </h3>
@@ -52,7 +52,7 @@ export default function MainSection() {
                 <h3 className="section__subtask">Subtasks</h3>
               </div>
             </div>
-          </>
+          </div>
         )}
       </div>
 
