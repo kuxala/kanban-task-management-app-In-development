@@ -11,6 +11,11 @@ export default function Home() {
   const [sidebar, setSidebar] = useState<boolean>(true);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [menu, setMenu] = useState<boolean>(false);
+  const [activeField, setActiveField] = useState("main");
+  const [boards, setBoards] = useState(["First one", "Second one"]);
+  const [selectedBoardIndex, setSelectedBoardIndex] = useState<number | null>(
+    null
+  );
   return (
     <>
       <AppContext.Provider
@@ -23,6 +28,12 @@ export default function Home() {
           setIsOpen,
           menu,
           setMenu,
+          activeField,
+          setActiveField,
+          boards,
+          setBoards,
+          selectedBoardIndex,
+          setSelectedBoardIndex,
         }}
       >
         <Header />

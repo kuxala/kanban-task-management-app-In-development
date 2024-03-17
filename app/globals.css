@@ -27,3 +27,8 @@
 body{
   background-color: #F4F7FD;
 }
+
+.active{
+  background:  #635FC7;
+  color: #fff
+}

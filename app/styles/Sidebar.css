@@ -42,12 +42,15 @@
         font-weight: 700;
         line-height: normal;
     }
-
-    .sidebar__boards:active, .sidebar__boards:focus{
+    .active{
         background:  #635FC7;
         color: #fff
     }
-    
+    /* .sidebar__boards:active, .sidebar__boards:focus{
+        background:  #635FC7;
+        color: #fff
+    }
+     */
     .sidebar__add__board{
         color:  #635FC7;
         font-feature-settings: 'clig' off, 'liga' off;

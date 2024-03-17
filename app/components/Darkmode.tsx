@@ -7,7 +7,7 @@ export default function Darkmode() {
   const { darkmode, setDarkmode }: any = useContext(AppContext);
   return (
     <>
-      <div className="sidebar__darkmode rounded-tl-8 rounded-br-8 flex gap-3 items-center justify-center bg-purple-400 bg-opacity-10 ml-2 mr-2 mb-2 ">
+      <div className="sidebar__darkmode  flex gap-3 items-center justify-center bg-purple-400 bg-opacity-10 ml-2 mr-2 mb-2 ">
         <img src="/assets/icon-light-theme.svg" />
         <div
           onClick={() => {
