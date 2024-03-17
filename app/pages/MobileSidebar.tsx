@@ -26,7 +26,7 @@ export default function MobileSidebar() {
     <>
       <Overlay isOpen={menu} onClose={() => setMenu(false)} />
       {menu && (
-        <div className="absolute bg-white w-[80%] rounded-lg left-1/2 transform -translate-x-1/2 min-h-[20vh]">
+        <div className="absolute bg-white w-[80%] rounded-lg left-1/2 transform -translate-x-1/2 min-h-[20vh] z-30">
           <h1 className="text-gray-500 text-xs font-bold tracking-wide mt-4 ml-4 pb-4">
             All Boards
           </h1>
@@ -62,7 +62,7 @@ export default function MobileSidebar() {
                 + Create New Board
               </p>
             </div>
-            <div className="pt-4">
+            <div className="pt-4 pl-8 pr-8 pb-4">
               <Darkmode />
             </div>
           </div>

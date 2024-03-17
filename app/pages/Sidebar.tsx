@@ -60,7 +60,9 @@ export default function Sidebar() {
           </p>
         </div>
 
-        <Darkmode />
+        <div className="pt-8 ">
+          <Darkmode />
+        </div>
         <div
           className="flex gap-2 items-center pl-8 pt-4"
           onClick={() => {

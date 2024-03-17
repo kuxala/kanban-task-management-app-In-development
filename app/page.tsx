@@ -16,6 +16,9 @@ export default function Home() {
   const [selectedBoardIndex, setSelectedBoardIndex] = useState<number | null>(
     null
   );
+  const [addNew, setAddNew] = useState(false);
+  const [edit, setEdit] = useState(false);
+  const [subtasks, setSubtasks] = useState([""]);
   return (
     <>
       <AppContext.Provider
@@ -34,6 +37,12 @@ export default function Home() {
           setBoards,
           selectedBoardIndex,
           setSelectedBoardIndex,
+          addNew,
+          setAddNew,
+          edit,
+          setEdit,
+          subtasks,
+          setSubtasks,
         }}
       >
         <Header />

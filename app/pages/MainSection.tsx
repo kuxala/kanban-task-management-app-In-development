@@ -2,10 +2,12 @@ import { useContext, useState } from "react";
 import "../styles/MainSection.css";
 import AddNew from "./AddNew";
 import { AppContext } from "../page";
+import EditTask from "./EditTask";
 
 export default function MainSection() {
   const [isEmpty, setIsEmpty] = useState(true);
-  const { isOpen, setIsOpen }: any = useContext(AppContext);
+  const { edit, setEdit }: any = useContext(AppContext);
+
   return (
     <>
       <div className="w-screen flex ">
@@ -29,12 +31,13 @@ export default function MainSection() {
               <h3 className="ml-4 mt-4 text-gray-500 font-sans font-semibold text-xs normal-case tracking-wider">
                 TODO
               </h3>
-              <div className="section__div" onClick={() => setIsOpen(true)}>
+              <div className="section__div" onClick={() => setEdit(true)}>
                 <h1 className="section__description">text descriptipon</h1>
                 <h3 className="section__subtask">Subtasks</h3>
               </div>
             </div>
-            <div className="section-columns">
+            {/* {edit ? <EditTask /> : null} */}
+            {/* <div className="section-columns">
               <h3 className="ml-4 mt-4 text-gray-500 font-sans font-semibold text-xs normal-case tracking-wider">
                 Doing
               </h3>
@@ -51,12 +54,10 @@ export default function MainSection() {
                 <h1 className="section__description">text descriptipon</h1>
                 <h3 className="section__subtask">Subtasks</h3>
               </div>
-            </div>
+            </div> */}
           </div>
         )}
       </div>
-
-      <AddNew />
     </>
   );
 }

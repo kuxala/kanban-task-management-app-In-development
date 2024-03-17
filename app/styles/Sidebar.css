@@ -70,8 +70,7 @@
         background-color: #F4F7FD;
         align-items: center;
         justify-content: center;
-        
-        
+        z-index: 1        
     }
     .sidebar__darkmode__div{
         min-height: 45vh;
