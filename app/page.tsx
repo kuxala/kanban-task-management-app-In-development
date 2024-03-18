@@ -18,6 +18,7 @@ export default function Home() {
   );
   const [addNew, setAddNew] = useState(false);
   const [edit, setEdit] = useState(false);
+  const [deleteTask, setDeleteTask] = useState(false);
   const [subtasks, setSubtasks] = useState([""]);
   const [dots, setDots] = useState(false);
   return (
@@ -46,6 +47,8 @@ export default function Home() {
           setSubtasks,
           dots,
           setDots,
+          deleteTask,
+          setDeleteTask,
         }}
       >
         <Header />
