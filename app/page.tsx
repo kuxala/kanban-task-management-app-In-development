@@ -19,6 +19,7 @@ export default function Home() {
   const [addNew, setAddNew] = useState(false);
   const [edit, setEdit] = useState(false);
   const [subtasks, setSubtasks] = useState([""]);
+  const [dots, setDots] = useState(false);
   return (
     <>
       <AppContext.Provider
@@ -43,6 +44,8 @@ export default function Home() {
           setEdit,
           subtasks,
           setSubtasks,
+          dots,
+          setDots,
         }}
       >
         <Header />

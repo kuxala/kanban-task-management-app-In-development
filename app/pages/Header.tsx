@@ -3,10 +3,13 @@ import "../styles/Header.css";
 import React, { useContext } from "react";
 import EditTask from "./EditTask";
 import AddNew from "./AddNew";
+import Dots from "../components/Dots";
 export default function Header() {
   const { isOpen, setIsOpen }: any = useContext(AppContext);
   const { menu, setMenu }: any = useContext(AppContext);
   const { addNew, setAddNew }: any = useContext(AppContext);
+  const { dots, setDots }: any = useContext(AppContext);
+
   return (
     <>
       <header className="header">
@@ -63,7 +66,11 @@ export default function Header() {
           <img
             src="/assets/icon-vertical-ellipsis.svg"
             className="header__icon"
+            onClick={() => {
+              setDots(!dots);
+            }}
           />
+          {dots ? <Dots /> : null}
         </div>
       </header>
       {addNew ? <AddNew /> : null}

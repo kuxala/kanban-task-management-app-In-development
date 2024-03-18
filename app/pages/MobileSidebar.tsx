@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { AppContext } from "../page";
 import Overlay from "./Overlay";
 import Darkmode from "../components/Darkmode";
+import Dots from "../components/Dots";
 
 export default function MobileSidebar() {
   const { menu, setMenu }: any = useContext(AppContext);
@@ -9,7 +10,6 @@ export default function MobileSidebar() {
   const { boards, setBoards }: any = useContext(AppContext);
   const { selectedBoardIndex, setSelectedBoardIndex }: any =
     useContext(AppContext);
-
   const addNewBoard = () => {
     const newBoardName = prompt("Enter the name of the new board:");
     if (newBoardName) {
