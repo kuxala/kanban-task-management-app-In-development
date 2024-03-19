@@ -5,7 +5,7 @@ export default function Delete() {
   const { deleteTask, setDeleteTask }: any = useContext(AppContext);
   return (
     <>
-      <div className="absolute top-20 left-0 bg-white flex flex-col ml-8 mr-8 p-6">
+      <div className="absolute top-20 left-0 bg-white flex flex-col ml-8 mr-8 p-6 z-50">
         <h1 className="pb-6 text-red-500 font-bold text-xl font-feature-settings">
           Delete Board?
         </h1>

@@ -21,6 +21,7 @@ export default function Home() {
   const [deleteTask, setDeleteTask] = useState(false);
   const [subtasks, setSubtasks] = useState([""]);
   const [dots, setDots] = useState(false);
+  const [view, setView] = useState(false);
   return (
     <>
       <AppContext.Provider
@@ -49,6 +50,8 @@ export default function Home() {
           setDots,
           deleteTask,
           setDeleteTask,
+          view,
+          setView,
         }}
       >
         <Header />
