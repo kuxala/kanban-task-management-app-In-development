@@ -3,11 +3,12 @@ import "../styles/MainSection.css";
 import AddNew from "./AddNew";
 import { AppContext } from "../page";
 import EditTask from "./EditTask";
+import View from "../components/View";
 
 export default function MainSection() {
-  const [isEmpty, setIsEmpty] = useState(true);
+  const [isEmpty, setIsEmpty] = useState(false);
   const { edit, setEdit }: any = useContext(AppContext);
-
+  const { view, setView }: any = useContext(AppContext);
   return (
     <>
       <div className="w-screen flex ">
@@ -27,7 +28,12 @@ export default function MainSection() {
           </div>
         ) : (
           <div className="section__both">
-            <div className="section__rows ">
+            <div
+              className="section__rows "
+              onClick={() => {
+                setView(true);
+              }}
+            >
               <h3 className="ml-4 mt-4 text-gray-500 font-sans font-semibold text-xs normal-case tracking-wider">
                 TODO
               </h3>
@@ -57,6 +63,7 @@ export default function MainSection() {
             </div> */}
           </div>
         )}
+        {view ? <View /> : null}
       </div>
     </>
   );
