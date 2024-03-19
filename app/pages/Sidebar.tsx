@@ -16,20 +16,6 @@ export default function Sidebar() {
     setData,
   }: any = useContext(AppContext);
 
-  const addNewBoard = () => {
-    const newBoardName = prompt("Enter the name of the new board:");
-    if (newBoardName) {
-      setBoards((prevBoards: any) => [...prevBoards, newBoardName]);
-    }
-  };
-
-  const handleBoardClick = (index: number) => {
-    setSelectedBoardIndex(index === selectedBoardIndex ? null : index);
-  };
-  data.boards.map((item: any) => {
-    console.log(item.name);
-  });
-
   return (
     <>
       <MobileSidebar />
@@ -38,7 +24,7 @@ export default function Sidebar() {
         <div className="sidebar__texts">
           <p className="sidebar__header">All Boards ({boards.length})</p>
 
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-1">
             {data.boards.map((item: any) => {
               return (
                 <div className="flex">
@@ -51,11 +37,7 @@ export default function Sidebar() {
             })}
           </div>
 
-          <p
-            className="sidebar__add__board flex gap-2 items-center "
-            onClick={addNewBoard}
-            tabIndex={0}
-          >
+          <p className="sidebar__add__board flex gap-2 items-center ">
             <img
               src="/assets/icon-board.svg"
               alt="icon-board"
@@ -75,7 +57,7 @@ export default function Sidebar() {
             setSidebar(!sidebar);
           }}
         >
-          <img src="/assets/icon-hide-sidebar.svg" alt="" />{" "}
+          <img src="/assets/icon-hide-sidebar.svg" alt="" />
           <p className="sidebar__hide"> Hide Sidebar</p>
         </div>
       </div>

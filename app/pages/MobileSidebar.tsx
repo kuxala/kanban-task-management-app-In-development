@@ -5,11 +5,19 @@ import Darkmode from "../components/Darkmode";
 import Dots from "../components/Dots";
 
 export default function MobileSidebar() {
-  const { menu, setMenu }: any = useContext(AppContext);
-  const { activeField, setActiveField }: any = useContext(AppContext);
-  const { boards, setBoards }: any = useContext(AppContext);
-  const { selectedBoardIndex, setSelectedBoardIndex }: any =
-    useContext(AppContext);
+  const {
+    menu,
+    setMenu,
+    activeField,
+    setActiveField,
+    boards,
+    setBoards,
+    selectedBoardIndex,
+    setSelectedBoardIndex,
+    data,
+    setData,
+  }: any = useContext(AppContext);
+
   const addNewBoard = () => {
     const newBoardName = prompt("Enter the name of the new board:");
     if (newBoardName) {
@@ -33,17 +41,10 @@ export default function MobileSidebar() {
           <div>
             <div className="sidebar__texts">
               <div className="flex flex-col gap-2">
-                {boards.map((board: any, index: number) => (
-                  <p
-                    key={index}
-                    className={`flex gap-4 w-95 items-center pl-8 text-gray-500 rounded-r-full h-12 font-sans font-bold text-base leading-normal ${
-                      selectedBoardIndex === index ? "active" : ""
-                    }`}
-                    onClick={() => handleBoardClick(index)}
-                    tabIndex={0}
-                  >
+                {data.boards.map((item: any) => (
+                  <p className="flex gap-4 w-95 items-center pl-8 text-gray-500 rounded-r-full h-12 font-sans font-bold text-base leading-normal">
                     <img src="/assets/icon-board.svg" alt="" />
-                    {board}
+                    {item.name}
                   </p>
                 ))}
               </div>
