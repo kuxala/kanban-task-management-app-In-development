@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Header from "./pages/Header";
 import Sidebar from "./pages/Sidebar";
 import MainSection from "./pages/MainSection";
+import { useForm } from "react-hook-form";
 
 export const AppContext = React.createContext({});
 
@@ -22,6 +23,12 @@ export default function Home() {
   const [subtasks, setSubtasks] = useState([""]);
   const [dots, setDots] = useState(false);
   const [view, setView] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
   return (
     <>
       <AppContext.Provider
@@ -52,6 +59,8 @@ export default function Home() {
           setDeleteTask,
           view,
           setView,
+          register,
+          handleSubmit,
         }}
       >
         <Header />

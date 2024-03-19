@@ -1,11 +1,14 @@
 import { useContext } from "react";
 import { AppContext } from "../page";
+import Overlay from "../pages/Overlay";
 
 export default function Delete() {
   const { deleteTask, setDeleteTask }: any = useContext(AppContext);
+
   return (
     <>
-      <div className="absolute top-20 left-0 bg-white flex flex-col ml-8 mr-8 p-6 z-50">
+      <Overlay isOpen={deleteTask} onClose={() => setDeleteTask(false)} />
+      <div className="absolute md:max-w-[500px] md:top-[30%] md:left-1/2 md:-translate-x-1/2 top-20 left-0 bg-white flex flex-col ml-8 mr-8 p-6 z-50 rounded-[8px] ">
         <h1 className="pb-6 text-red-500 font-bold text-xl font-feature-settings">
           Delete Board?
         </h1>
@@ -14,7 +17,7 @@ export default function Delete() {
           action will remove all columns and tasks and cannot be reversed./
         </p>
 
-        <div className="flex flex-col gap-4 pt-6">
+        <div className="flex flex-col gap-4 pt-6 md:flex-row">
           <button className="w-full h-10 rounded-[20px] bg-red-500  text-white text-center font-bold text-base leading-6">
             Delete
           </button>

@@ -84,6 +84,9 @@ export default function AddNew() {
                 <option value="2">Done</option>
               </select>
             </div>
+            <button className=" h-[40px] w-full rounded-[40px] mt-6 bg-indigo-600 text-white text-center font-bold text-base leading-6">
+              Add New Task
+            </button>
           </div>
         </div>
       )}

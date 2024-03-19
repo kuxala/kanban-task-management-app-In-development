@@ -7,7 +7,6 @@ import View from "../components/View";
 
 export default function MainSection() {
   const [isEmpty, setIsEmpty] = useState(false);
-  const { edit, setEdit }: any = useContext(AppContext);
   const { view, setView }: any = useContext(AppContext);
   return (
     <>
@@ -37,7 +36,7 @@ export default function MainSection() {
               <h3 className="ml-4 mt-4 text-gray-500 font-sans font-semibold text-xs normal-case tracking-wider">
                 TODO
               </h3>
-              <div className="section__div" onClick={() => setEdit(true)}>
+              <div className="section__div">
                 <h1 className="section__description">text descriptipon</h1>
                 <h3 className="section__subtask">Subtasks</h3>
               </div>
