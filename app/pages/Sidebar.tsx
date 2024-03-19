@@ -5,10 +5,16 @@ import MobileSidebar from "./MobileSidebar";
 import Darkmode from "../components/Darkmode";
 
 export default function Sidebar() {
-  const { sidebar, setSidebar }: any = useContext(AppContext);
-  const { boards, setBoards }: any = useContext(AppContext);
-  const { selectedBoardIndex, setSelectedBoardIndex }: any =
-    useContext(AppContext);
+  const {
+    sidebar,
+    setSidebar,
+    boards,
+    setBoards,
+    selectedBoardIndex,
+    setSelectedBoardIndex,
+    data,
+    setData,
+  }: any = useContext(AppContext);
 
   const addNewBoard = () => {
     const newBoardName = prompt("Enter the name of the new board:");
@@ -20,6 +26,9 @@ export default function Sidebar() {
   const handleBoardClick = (index: number) => {
     setSelectedBoardIndex(index === selectedBoardIndex ? null : index);
   };
+  data.boards.map((item: any) => {
+    console.log(item.name);
+  });
 
   return (
     <>
@@ -30,19 +39,16 @@ export default function Sidebar() {
           <p className="sidebar__header">All Boards ({boards.length})</p>
 
           <div className="flex flex-col gap-2">
-            {boards.map((board: any, index: number) => (
-              <p
-                key={index}
-                className={`sidebar__boards ${
-                  selectedBoardIndex === index ? "active" : ""
-                }`}
-                tabIndex={0}
-                onClick={() => handleBoardClick(index)}
-              >
-                <img src="/assets/icon-board.svg" alt="" />
-                {board}
-              </p>
-            ))}
+            {data.boards.map((item: any) => {
+              return (
+                <div className="flex">
+                  <p className="sidebar__boards ">
+                    <img src="assets/icon-board.svg" />
+                    {item.name}
+                  </p>
+                </div>
+              );
+            })}
           </div>
 
           <p
@@ -52,7 +58,7 @@ export default function Sidebar() {
           >
             <img
               src="/assets/icon-board.svg"
-              alt=""
+              alt="icon-board"
               width="16px"
               height="16px"
             />

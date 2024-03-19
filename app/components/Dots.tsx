@@ -2,10 +2,12 @@ import { useContext } from "react";
 import { AppContext } from "../page";
 import EditTask from "../pages/EditTask";
 import Delete from "./Delete";
+import { Kaushan_Script } from "next/font/google";
 
 export default function Dots() {
   const { edit, setEdit }: any = useContext(AppContext);
   const { deleteTask, setDeleteTask }: any = useContext(AppContext);
+
   return (
     <>
       <>

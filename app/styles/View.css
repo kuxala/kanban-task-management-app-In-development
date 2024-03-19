@@ -1,0 +1,35 @@
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.custom-checkbox input[type="checkbox"] {
+  display: none;
+}
+
+.custom-checkbox label {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.custom-checkbox label.checked {
+  background-color: #7945cc; /* Color when checkbox is checked */
+}
+
+.custom-checkbox span {
+  margin-left: 8px;
+}
+
+.custom-checkbox button {
+  margin-left: 8px;
+  padding: 4px 8px;
+  border: none;
+  background-color: #ff0000; /* Red color for the remove button */
+  color: #fff;
+  cursor: pointer;
+}

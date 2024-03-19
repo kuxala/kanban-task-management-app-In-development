@@ -4,7 +4,7 @@ import Header from "./pages/Header";
 import Sidebar from "./pages/Sidebar";
 import MainSection from "./pages/MainSection";
 import { useForm } from "react-hook-form";
-
+import jsonData from "../public/data.json";
 export const AppContext = React.createContext({});
 
 export default function Home() {
@@ -23,12 +23,14 @@ export default function Home() {
   const [subtasks, setSubtasks] = useState([""]);
   const [dots, setDots] = useState(false);
   const [view, setView] = useState(false);
+  const [checkboxes, setCheckboxes] = useState([{ id: 0, isChecked: false }]);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+  const [data, setData] = useState(jsonData);
+  console.log(data);
   return (
     <>
       <AppContext.Provider
@@ -61,6 +63,10 @@ export default function Home() {
           setView,
           register,
           handleSubmit,
+          checkboxes,
+          setCheckboxes,
+          data,
+          setData,
         }}
       >
         <Header />

@@ -1,9 +1,20 @@
 import { useContext } from "react";
 import { AppContext } from "../page";
 import Overlay from "../pages/Overlay";
-
+import "../styles/View.css";
 export default function View() {
   const { view, setView }: any = useContext(AppContext);
+  const { checkboxes, setCheckboxes }: any = useContext(AppContext);
+
+  const handleCheckboxChange = (id: number) => {
+    const updatedCheckboxes = checkboxes.map((checkbox: any) =>
+      checkbox.id === id
+        ? { ...checkbox, isChecked: !checkbox.isChecked }
+        : checkbox
+    );
+    setCheckboxes(updatedCheckboxes);
+  };
+
   return (
     <>
       <Overlay isOpen={view} onClose={() => setView(false)} />
@@ -24,8 +35,22 @@ export default function View() {
             Subtask (s)
           </h3>
           <div>
-            <h3>1</h3>
-            <h3>2</h3>
+            {checkboxes.map((checkbox: any) => (
+              <div key={checkbox.id} className="custom-checkbox">
+                <input
+                  type="checkbox"
+                  id={`checkbox-${checkbox.id}`}
+                  checked={checkbox.isChecked}
+                  onChange={() => handleCheckboxChange(checkbox.id)}
+                  className="hidden"
+                />
+                <label
+                  htmlFor={`checkbox-${checkbox.id}`}
+                  className={checkbox.isChecked ? "checked" : ""}
+                ></label>
+                <span>Checkbox {checkbox.id}</span>
+              </div>
+            ))}
           </div>
         </div>
         <div>
