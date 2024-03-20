@@ -1,14 +1,28 @@
 "use client";
 import { useState, useContext } from "react";
 import "../styles/Sidebar.css";
-import { AppContext } from "../page";
 import MobileSidebar from "./MobileSidebar";
 import Darkmode from "../components/Darkmode";
 import Link from "next/link";
+import useStore from "../useStore";
 
 export default function Sidebar() {
-  const { sidebar, setSidebar, data, setData }: any = useContext(AppContext);
-
+  const {
+    sidebar,
+    setSidebar,
+    view,
+    setView,
+    addNew,
+    setAddNew,
+    dots,
+    setDots,
+    setEditTask,
+    setEditBoard,
+    menu,
+    setMenu,
+    data,
+    setData,
+  }: any = useStore();
   return (
     <>
       <MobileSidebar />

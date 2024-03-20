@@ -1,19 +1,11 @@
 import { useState, useContext } from "react";
-import { AppContext } from "../page";
 import Overlay from "./Overlay";
 import Darkmode from "../components/Darkmode";
 import Dots from "../components/Dots";
+import useStore from "../useStore";
 
 export default function MobileSidebar() {
-  const { menu, setMenu, boards, setBoards, data, setData }: any =
-    useContext(AppContext);
-
-  const addNewBoard = () => {
-    const newBoardName = prompt("Enter the name of the new board:");
-    if (newBoardName) {
-      setBoards((prevBoards: any) => [...prevBoards, newBoardName]);
-    }
-  };
+  const { menu, setMenu, data, setData }: any = useStore();
 
   return (
     <>
@@ -26,7 +18,7 @@ export default function MobileSidebar() {
           <div>
             <div className="sidebar__texts">
               <div className="flex flex-col gap-2">
-                {data.boards.map((item: any) => (
+                {data?.boards?.map((item: any) => (
                   <p className="flex gap-4 w-95 items-center pl-8 text-gray-500 rounded-r-full h-12 font-sans font-bold text-base leading-normal">
                     <img src="/assets/icon-board.svg" alt="" />
                     {item.name}
@@ -36,7 +28,6 @@ export default function MobileSidebar() {
 
               <p
                 className="text-purple-700 font-sans font-bold text-base leading-normal pl-8 mt-4 pb-4  flex gap-2 items-center "
-                onClick={addNewBoard}
                 tabIndex={0}
               >
                 <img

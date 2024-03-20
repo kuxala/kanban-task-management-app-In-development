@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { AppContext } from "../page";
 import Overlay from "../pages/Overlay";
 import "../styles/View.css";
 import Dots from "./Dots";
@@ -8,7 +7,6 @@ import DeleteBoard from "./DeleteBoard";
 import useStore from "../useStore";
 
 export default function View() {
-  const { checkboxes, setCheckboxes }: any = useContext(AppContext);
   const {
     view,
     setView,
@@ -21,15 +19,6 @@ export default function View() {
     menu,
     setMenu,
   }: any = useStore();
-
-  const handleCheckboxChange = (id: number) => {
-    const updatedCheckboxes = checkboxes.map((checkbox: any) =>
-      checkbox.id === id
-        ? { ...checkbox, isChecked: !checkbox.isChecked }
-        : checkbox
-    );
-    setCheckboxes(updatedCheckboxes);
-  };
 
   return (
     <>
@@ -56,7 +45,7 @@ export default function View() {
             Subtask (s)
           </h3>
           <div>
-            {checkboxes.map((checkbox: any) => (
+            {/* {checkboxes.map((checkbox: any) => (
               <div key={checkbox.id} className="custom-checkbox">
                 <input
                   type="checkbox"
@@ -71,7 +60,7 @@ export default function View() {
                 ></label>
                 <span>Checkbox {checkbox.id}</span>
               </div>
-            ))}
+            ))} */}
           </div>
         </div>
         <div>

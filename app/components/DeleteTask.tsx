@@ -1,13 +1,10 @@
 import { useContext } from "react";
-import { AppContext } from "../page";
 import Overlay from "../pages/Overlay";
 
 export default function DeleteTask() {
-  const { deleteTask, setDeleteTask }: any = useContext(AppContext);
-
   return (
     <>
-      <Overlay isOpen={deleteTask} onClose={() => setDeleteTask(false)} />
+      {/* <Overlay isOpen={deleteTask} onClose={() => setDeleteTask(false)} /> */}
       <div className="absolute md:max-w-[500px] md:top-[30%] md:left-1/2 md:-translate-x-1/2 top-20 left-0 bg-white flex flex-col ml-8 mr-8 p-6 z-50 rounded-[8px] ">
         <h1 className="pb-6 text-red-500 font-bold text-xl font-feature-settings">
           Delete Task?
@@ -23,9 +20,7 @@ export default function DeleteTask() {
           </button>
           <button
             className="w-full h-10 rounded-[20px] bg-purple-200 text-purple-700 text-center font-bold text-base leading-6"
-            onClick={() => {
-              setDeleteTask(false);
-            }}
+            onClick={() => {}}
           >
             Cancel
           </button>

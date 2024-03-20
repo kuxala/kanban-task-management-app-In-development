@@ -1,7 +1,14 @@
-// store.js
+// usestore.js
 import { create } from "zustand";
+import jsonData from "../public/data.json";
 
 const useStore = create((set) => ({
+  data: jsonData,
+  setData: (newValue: any) => set({ data: newValue }),
+
+  sidebar: true,
+  setSidebar: (newValue: any) => set({ sidebar: newValue }),
+
   addNew: false,
   setAddNew: () => set((state: any) => ({ addNew: !state.addNew })),
 
@@ -15,10 +22,7 @@ const useStore = create((set) => ({
     set((state: any) => ({ dots: { ...state.dots, editBoard: value } })),
 
   menu: false,
-  setMenu: () => set((state: any) => ({ setMenu: !state.menu })),
-
-  sidebar: true,
-  setSidebar: () => set((state: any) => ({ setSidebar: !state.sidebar })),
+  setMenu: (newValue: any) => set({ menu: newValue }),
 
   edit: false,
   setEdit: () => set((state: any) => ({ setEdit: !state.edit })),

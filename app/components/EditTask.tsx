@@ -1,29 +1,11 @@
 import { useContext, useState } from "react";
 import Overlay from "../pages/Overlay";
 import "../styles/AddNew.css";
-import { AppContext } from "../page";
 
 export default function EditTask() {
-  const { edit, setEdit }: any = useContext(AppContext);
-
-  const { subtasks, setSubtasks, handleSubmit, register }: any =
-    useContext(AppContext);
-
-  const handleAddSubtask = () => {
-    setSubtasks([...subtasks, ""]);
-  };
-
-  const handleDeleteSubtask = (indexToDelete: number) => {
-    setSubtasks(
-      subtasks.filter(
-        (unusedParam: any, index: number) => index !== indexToDelete
-      )
-    );
-  };
-
   return (
     <>
-      <Overlay isOpen={edit} onClose={() => setEdit(false)} />
+      {/* <Overlay isOpen={edit} onClose={() => setEdit(false)} /> */}
 
       <div className="addnew__container absolute bg-white p-6 rounded-md ">
         <h1 className="text-black font-sans font-semibold text-lg pb-6">
@@ -36,7 +18,7 @@ export default function EditTask() {
               placeholder="e.g. Take coffee break"
               className="p-2 text-[14px] w-full border border-gray-300 rounded-md  bg-white"
               type="text"
-              {...register("title")}
+              // {...register("title")}
             />
           </div>
           <div>
@@ -46,12 +28,12 @@ export default function EditTask() {
             <textarea
               className="addnew__description text-[14px] p-2 resize-y border border-gray-300 rounded-md w-full min-h-[150px]"
               placeholder="e.g. It’s always good to take a break. This 15 minute break will  recharge the batteries a little."
-              {...register("description")}
+              // {...register("description")}
             ></textarea>
           </div>
           <div>
             <h3 className="text-gray-500 font-semibold pt-4 pb-2">SubTasks</h3>
-            {subtasks.map((subtask: any, index: number) => (
+            {/* {subtasks.map((subtask: any, index: number) => (
               <div key={index} className="flex items-center gap-2">
                 <input
                   className="p-2 mt-1 mb-1 text-[14px] w-full border border-gray-300 rounded-md  bg-white "
@@ -63,9 +45,9 @@ export default function EditTask() {
                   onClick={() => handleDeleteSubtask(index)}
                 />
               </div>
-            ))}
+            ))} */}
             <button
-              onClick={handleAddSubtask}
+              // onClick={handleAddSubtask}
               className="w-full h-10 mt-3 mb-5 rounded-full bg-opacity-10 bg-purple-400 text-purple-600 text-center text-sm font-semibold leading-5"
             >
               Add New Subtask
