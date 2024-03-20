@@ -1,8 +1,12 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AppContext } from "../page";
+import EditTask from "./EditTask";
+import DeleteTask from "./DeleteTask";
+import EditBoard from "./EditBoard";
+import DeleteBoard from "./DeleteBoard";
 
-export default function EditDots() {
-  const { editTask, setEditTask, deleteTask, setDeleteTask }: any =
+export default function EditDots({ name }: any) {
+  const { deleteTask, setDeleteTask, setEdit, edit }: any =
     useContext(AppContext);
 
   return (
@@ -11,10 +15,10 @@ export default function EditDots() {
         <p
           className="pb-2 text-gray-600 font-medium text-base leading-6"
           onClick={() => {
-            setEditTask(!editTask);
+            setEdit(!edit);
           }}
         >
-          Edit Task
+          Edit {name}
         </p>
         <p
           className="text-red-500 font-medium text-base leading-6 font-feature-settings"
@@ -22,13 +26,13 @@ export default function EditDots() {
             setDeleteTask(!deleteTask);
           }}
         >
-          Delete Task
+          Delete {name}
         </p>
       </div>
-      {/* <div>
-          {editTask ? <EditTask /> : null}
-          {deleteTask ? <DeleteTask /> : null}
-        </div> */}
+      <div>
+        {edit ? <EditBoard /> : null}
+        {deleteTask ? <DeleteBoard /> : null}
+      </div>
     </>
   );
 }

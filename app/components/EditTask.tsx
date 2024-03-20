@@ -1,15 +1,14 @@
 import { useContext, useState } from "react";
-import Overlay from "./Overlay"; // Import Overlay component
+import Overlay from "../pages/Overlay";
 import "../styles/AddNew.css";
 import { AppContext } from "../page";
-import { useForm } from "react-hook-form";
 
 export default function EditTask() {
   const { edit, setEdit }: any = useContext(AppContext);
 
-  const { subtasks, setSubtasks }: any = useContext(AppContext);
-  const { register }: any = useContext(AppContext);
-  const { handleSubmit }: any = useContext(AppContext);
+  const { subtasks, setSubtasks, handleSubmit, register }: any =
+    useContext(AppContext);
+
   const handleAddSubtask = () => {
     setSubtasks([...subtasks, ""]);
   };
@@ -21,6 +20,7 @@ export default function EditTask() {
       )
     );
   };
+
   return (
     <>
       <Overlay isOpen={edit} onClose={() => setEdit(false)} />

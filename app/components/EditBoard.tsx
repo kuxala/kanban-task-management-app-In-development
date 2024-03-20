@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import Overlay from "./Overlay"; // Import Overlay component
+import Overlay from "../pages/Overlay";
 import "../styles/AddNew.css";
 import { AppContext } from "../page";
 import { useForm } from "react-hook-form";

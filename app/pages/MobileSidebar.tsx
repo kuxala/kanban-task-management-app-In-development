@@ -5,29 +5,14 @@ import Darkmode from "../components/Darkmode";
 import Dots from "../components/Dots";
 
 export default function MobileSidebar() {
-  const {
-    menu,
-    setMenu,
-    activeField,
-    setActiveField,
-    boards,
-    setBoards,
-    selectedBoardIndex,
-    setSelectedBoardIndex,
-    data,
-    setData,
-  }: any = useContext(AppContext);
+  const { menu, setMenu, boards, setBoards, data, setData }: any =
+    useContext(AppContext);
 
   const addNewBoard = () => {
     const newBoardName = prompt("Enter the name of the new board:");
     if (newBoardName) {
       setBoards((prevBoards: any) => [...prevBoards, newBoardName]);
     }
-  };
-
-  const handleBoardClick = (index: number) => {
-    setActiveField("main");
-    setSelectedBoardIndex(index === selectedBoardIndex ? null : index);
   };
 
   return (

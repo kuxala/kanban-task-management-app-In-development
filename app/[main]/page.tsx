@@ -9,10 +9,10 @@ export default function Main() {
   const { sidebar, view }: any = useContext(AppContext);
   return (
     <>
-      <Header />
       <div className="flex">
-        <Sidebar />
-        <MainSection />
+        <h1>Individual page</h1>
+        {/* <Sidebar />
+        <MainSection /> */}
       </div>
     </>
   );

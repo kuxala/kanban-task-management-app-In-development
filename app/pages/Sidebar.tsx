@@ -4,6 +4,7 @@ import "../styles/Sidebar.css";
 import { AppContext } from "../page";
 import MobileSidebar from "./MobileSidebar";
 import Darkmode from "../components/Darkmode";
+import Link from "next/link";
 
 export default function Sidebar() {
   const { sidebar, setSidebar, data, setData }: any = useContext(AppContext);
@@ -20,10 +21,13 @@ export default function Sidebar() {
             {data?.boards?.map((item: any) => {
               return (
                 <div className="flex">
-                  <p className="sidebar__boards ">
+                  <Link
+                    className="sidebar__boards "
+                    href={item.name.replaceAll(" ", "-")}
+                  >
                     <img src="assets/icon-board.svg" />
                     {item.name}
-                  </p>
+                  </Link>
                 </div>
               );
             })}

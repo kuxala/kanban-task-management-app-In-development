@@ -1,14 +1,13 @@
 "use client";
 import { useContext, useState } from "react";
 import "../styles/MainSection.css";
-import AddNew from "./AddNewTask";
 import { AppContext } from "../page";
-import EditTask from "./EditTask";
 import View from "../components/View";
+import useStore from "../useStore";
 
 export default function MainSection() {
   const [isEmpty, setIsEmpty] = useState(false);
-  const { view, setView, data, setData }: any = useContext(AppContext);
+  const { data, setData }: any = useContext(AppContext);
 
   // data.boards.forEach((board: any) => {
   //   board.columns.forEach((column: any) => {
@@ -18,7 +17,18 @@ export default function MainSection() {
   //     });
   //   });
   // });
-
+  const {
+    view,
+    setView,
+    addNew,
+    setAddNew,
+    dots,
+    setDots,
+    setEditTask,
+    setEditBoard,
+    menu,
+    setMenu,
+  }: any = useStore();
   return (
     <>
       <div className="w-screen flex ">
@@ -38,22 +48,22 @@ export default function MainSection() {
           </div>
         ) : (
           <div className="section__both">
-            <div
-              className="section__rows "
-              onClick={() => {
-                setView(true);
-              }}
-            >
+            <div className="section__rows ">
               <h3 className="ml-4 mt-4 text-gray-500 font-sans font-semibold text-xs normal-case tracking-wider">
                 TODO
               </h3>
 
-              <div className="section__div">
+              <div
+                className="section__div"
+                onClick={() => {
+                  setView(true);
+                }}
+              >
                 {data.boards.map((board: any) => {
                   return (
                     <>
-                      {/* <h1 className="section__description">{board.name}</h1> */}
-                      {/* <h3 className="section__subtask">{board.description}</h3> */}
+                      <h1 className="section__description">{board.name}</h1>
+                      <h3 className="section__subtask">{board.description}</h3>
                     </>
                   );
                 })}

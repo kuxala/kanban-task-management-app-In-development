@@ -2,16 +2,14 @@ import { useContext, useState } from "react";
 import Overlay from "./Overlay"; // Import Overlay component
 import "../styles/AddNew.css";
 import { AppContext } from "../page";
-import { useForm } from "react-hook-form";
+import useStore from "../useStore";
+
 export default function AddNew() {
-  const {
-    addNew,
-    setAddNew,
-    register,
-    handleSubmit,
-    subtasks,
-    setSubtasks,
-  }: any = useContext(AppContext);
+  const { register, handleSubmit, subtasks, setSubtasks }: any =
+    useContext(AppContext);
+
+  const { addNew, setAddNew, dots, setDots, menu, setMenu }: any = useStore();
+
   const handleAddSubtask = () => {
     setSubtasks([...subtasks, ""]);
   };
@@ -51,7 +49,7 @@ export default function AddNew() {
               <h3 className="text-gray-500 font-semibold pt-4 pb-2">
                 SubTasks
               </h3>
-              {subtasks.map((subtask: any, index: number) => (
+              {subtasks?.map((subtask: any, index: number) => (
                 <div key={index} className="flex items-center gap-2">
                   <input
                     className="p-2 mt-1 mb-1 text-[14px] w-full border border-gray-300 rounded-md  bg-white "

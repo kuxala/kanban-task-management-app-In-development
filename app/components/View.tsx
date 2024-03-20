@@ -3,10 +3,24 @@ import { AppContext } from "../page";
 import Overlay from "../pages/Overlay";
 import "../styles/View.css";
 import Dots from "./Dots";
+import EditBoard from "./EditBoard";
+import DeleteBoard from "./DeleteBoard";
+import useStore from "../useStore";
 
 export default function View() {
-  const { view, setView, dots, setDots }: any = useContext(AppContext);
   const { checkboxes, setCheckboxes }: any = useContext(AppContext);
+  const {
+    view,
+    setView,
+    addNew,
+    setAddNew,
+    dots,
+    setDots,
+    setEditTask,
+    setEditBoard,
+    menu,
+    setMenu,
+  }: any = useStore();
 
   const handleCheckboxChange = (id: number) => {
     const updatedCheckboxes = checkboxes.map((checkbox: any) =>
@@ -29,9 +43,9 @@ export default function View() {
             <img
               src="/assets/icon-vertical-ellipsis.svg"
               className="h-full"
-              onClick={() => {}}
+              onClick={() => setEditBoard(!dots.editBoard)}
             />
-            {/* {editDots ? <EditDots /> : null} */}
+            {dots.editTask ? <Dots name="Task" /> : null}
           </div>
           <p className="pb-6 text-gray-500 font-medium text-base leading-6 font-feature-settings">
             Description asd asdasokdoaks dopaks okasop dkasj diajs

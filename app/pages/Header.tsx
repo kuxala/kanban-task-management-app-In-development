@@ -3,17 +3,20 @@ import { AppContext } from "../page";
 import "../styles/Header.css";
 import React, { useContext } from "react";
 import AddNew from "./AddNew";
+import Dots from "../components/Dots";
+import useStore from "../useStore";
+
 export default function Header() {
   const {
-    isOpen,
-    setIsOpen,
-    menu,
-    setMenu,
     addNew,
     setAddNew,
-    boardDots,
-    setBoardDots,
-  }: any = useContext(AppContext);
+    dots,
+    setDots,
+    setEditTask,
+    setEditBoard,
+    menu,
+    setMenu,
+  }: any = useStore();
 
   return (
     <>
@@ -71,11 +74,9 @@ export default function Header() {
           <img
             src="/assets/icon-vertical-ellipsis.svg"
             className="header__icon"
-            onClick={() => {
-              setBoardDots(!boardDots);
-            }}
+            onClick={() => setEditBoard(!dots.editBoard)}
           />
-          {/* {boardDots ? <Dots /> : null} */}
+          {dots.editBoard ? <Dots name="Boards" /> : null}
         </div>
       </header>
       {addNew ? <AddNew /> : null}
