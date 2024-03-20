@@ -1,14 +1,19 @@
+"use client";
 import { AppContext } from "../page";
 import "../styles/Header.css";
 import React, { useContext } from "react";
-import EditTask from "./EditTask";
 import AddNew from "./AddNew";
-import Dots from "../components/Dots";
 export default function Header() {
-  const { isOpen, setIsOpen }: any = useContext(AppContext);
-  const { menu, setMenu }: any = useContext(AppContext);
-  const { addNew, setAddNew }: any = useContext(AppContext);
-  const { dots, setDots }: any = useContext(AppContext);
+  const {
+    isOpen,
+    setIsOpen,
+    menu,
+    setMenu,
+    addNew,
+    setAddNew,
+    boardDots,
+    setBoardDots,
+  }: any = useContext(AppContext);
 
   return (
     <>
@@ -67,10 +72,10 @@ export default function Header() {
             src="/assets/icon-vertical-ellipsis.svg"
             className="header__icon"
             onClick={() => {
-              setDots(!dots);
+              setBoardDots(!boardDots);
             }}
           />
-          {dots ? <Dots /> : null}
+          {/* {boardDots ? <Dots /> : null} */}
         </div>
       </header>
       {addNew ? <AddNew /> : null}

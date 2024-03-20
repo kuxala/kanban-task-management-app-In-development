@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AppContext } from "../page";
 import Overlay from "../pages/Overlay";
 
-export default function Delete() {
+export default function DeleteTask() {
   const { deleteTask, setDeleteTask }: any = useContext(AppContext);
 
   return (
@@ -10,11 +10,11 @@ export default function Delete() {
       <Overlay isOpen={deleteTask} onClose={() => setDeleteTask(false)} />
       <div className="absolute md:max-w-[500px] md:top-[30%] md:left-1/2 md:-translate-x-1/2 top-20 left-0 bg-white flex flex-col ml-8 mr-8 p-6 z-50 rounded-[8px] ">
         <h1 className="pb-6 text-red-500 font-bold text-xl font-feature-settings">
-          Delete Board?
+          Delete Task?
         </h1>
         <p className="text-gray-500 font-medium text-base leading-6 font-feature-settings">
           Are you sure you want to delete the ‘Platform Launch’ board? This
-          action will remove all columns and tasks and cannot be reversed./
+          action will remove all columns and tasks and cannot be reversed.
         </p>
 
         <div className="flex flex-col gap-4 pt-6 md:flex-row">

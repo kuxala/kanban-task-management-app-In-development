@@ -1,6 +1,7 @@
+"use client";
 import { useContext, useState } from "react";
 import "../styles/MainSection.css";
-import AddNew from "./AddNew";
+import AddNew from "./AddNewTask";
 import { AppContext } from "../page";
 import EditTask from "./EditTask";
 import View from "../components/View";
@@ -9,14 +10,14 @@ export default function MainSection() {
   const [isEmpty, setIsEmpty] = useState(false);
   const { view, setView, data, setData }: any = useContext(AppContext);
 
-  data.boards.forEach((board: any) => {
-    board.columns.forEach((column: any) => {
-      column.tasks.forEach((task: any) => {
-        console.log(task.title);
-        console.log(task.description);
-      });
-    });
-  });
+  // data.boards.forEach((board: any) => {
+  //   board.columns.forEach((column: any) => {
+  //     column.tasks.forEach((task: any) => {
+  //       console.log(task.title);
+  //       console.log(task.description);
+  //     });
+  //   });
+  // });
 
   return (
     <>

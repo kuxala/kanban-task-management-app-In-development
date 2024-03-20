@@ -1,24 +1,20 @@
-// AddNew.js
 import { useContext, useState } from "react";
 import Overlay from "./Overlay"; // Import Overlay component
 import "../styles/AddNew.css";
 import { AppContext } from "../page";
 import { useForm } from "react-hook-form";
-
 export default function AddNew() {
-  const { addNew, setAddNew }: any = useContext(AppContext);
   const {
+    addNew,
+    setAddNew,
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm();
-
-  const { subtasks, setSubtasks }: any = useContext(AppContext);
-
+    subtasks,
+    setSubtasks,
+  }: any = useContext(AppContext);
   const handleAddSubtask = () => {
     setSubtasks([...subtasks, ""]);
   };
-
   const handleDeleteSubtask = (indexToDelete: number) => {
     setSubtasks(
       subtasks.filter(
@@ -26,7 +22,6 @@ export default function AddNew() {
       )
     );
   };
-
   return (
     <>
       <Overlay isOpen={addNew} onClose={() => setAddNew(false)} />

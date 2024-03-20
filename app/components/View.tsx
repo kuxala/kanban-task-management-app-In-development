@@ -2,8 +2,10 @@ import { useContext } from "react";
 import { AppContext } from "../page";
 import Overlay from "../pages/Overlay";
 import "../styles/View.css";
+import Dots from "./Dots";
+
 export default function View() {
-  const { view, setView }: any = useContext(AppContext);
+  const { view, setView, dots, setDots }: any = useContext(AppContext);
   const { checkboxes, setCheckboxes }: any = useContext(AppContext);
 
   const handleCheckboxChange = (id: number) => {
@@ -24,7 +26,12 @@ export default function View() {
             <h1 className="pb-6 text-black-900 font-bold text-lg font-feature-settings">
               Text Headera osdkoa skdpasokdpaoskdpaoskd
             </h1>
-            <img src="/assets/icon-vertical-ellipsis.svg" className="h-full" />
+            <img
+              src="/assets/icon-vertical-ellipsis.svg"
+              className="h-full"
+              onClick={() => {}}
+            />
+            {/* {editDots ? <EditDots /> : null} */}
           </div>
           <p className="pb-6 text-gray-500 font-medium text-base leading-6 font-feature-settings">
             Description asd asdasokdoaks dopaks okasop dkasj diajs

@@ -1,3 +1,4 @@
+"use client";
 import { useState, useContext } from "react";
 import "../styles/Sidebar.css";
 import { AppContext } from "../page";
@@ -5,16 +6,7 @@ import MobileSidebar from "./MobileSidebar";
 import Darkmode from "../components/Darkmode";
 
 export default function Sidebar() {
-  const {
-    sidebar,
-    setSidebar,
-    boards,
-    setBoards,
-    selectedBoardIndex,
-    setSelectedBoardIndex,
-    data,
-    setData,
-  }: any = useContext(AppContext);
+  const { sidebar, setSidebar, data, setData }: any = useContext(AppContext);
 
   return (
     <>
@@ -22,10 +14,10 @@ export default function Sidebar() {
 
       <div className={sidebar ? "sidebar" : "sidebar__hidden"}>
         <div className="sidebar__texts">
-          <p className="sidebar__header">All Boards ({boards.length})</p>
+          <p className="sidebar__header">All Boards </p>
 
           <div className="flex flex-col gap-1">
-            {data.boards.map((item: any) => {
+            {data?.boards?.map((item: any) => {
               return (
                 <div className="flex">
                   <p className="sidebar__boards ">
