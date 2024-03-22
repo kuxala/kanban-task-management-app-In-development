@@ -12,6 +12,9 @@
         min-width: 300px;
         visibility: visible;
         display: unset;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
     
     .sidebar__header{

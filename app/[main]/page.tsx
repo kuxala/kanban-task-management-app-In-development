@@ -10,27 +10,32 @@ type Params = {
 
 export default function Main() {
   const params = useParams<Params>();
-  const { data, view, setView, tasks }: any = useStore();
+  const { data, view, setView, tasks, boards, setBoards }: any = useStore();
 
-  const getBoardCategory = (status: string) => {
-    switch (status) {
-      case "Todo":
-        return "TODO";
-      case "Doing":
-        return "DOING";
-      case "Done":
-        return "DONE";
-      default:
-        return "";
-    }
+  // console.log("data Boads: ", boards);
+  const [firstBoard, secondBoard, thirdBoard, ...otherBoards] = boards;
+  console.log(boards);
+
+  const loop = () => {
+    data.boards.forEach((item: any) => {
+      if (params.main === item.name.replace(" ", "-")) {
+        data?.boards?.column?.foEach((column: any) => {
+          console.log(column);
+        });
+        return "not found";
+      }
+    });
   };
 
+  loop();
   return (
     <>
       <MainSection />
       <div className="section__both">
         <div className="section__columns">
-          <h3 className="ml-4 mt-4 text-gray-500 font-sans font-semibold text-xs normal-case tracking-wider"></h3>
+          <h3 className="ml-4 mt-4 text-gray-500 font-sans font-semibold text-xs normal-case tracking-wider">
+            {}
+          </h3>
 
           <div
             className="section__div"
