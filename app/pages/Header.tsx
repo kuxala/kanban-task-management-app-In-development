@@ -1,10 +1,11 @@
 "use client";
-import { AppContext } from "../page";
+
 import "../styles/Header.css";
-import React, { useContext } from "react";
+import React from "react";
 import AddNew from "./AddNew";
 import Dots from "../components/Dots";
 import useStore from "../useStore";
+import { useParams } from "next/navigation";
 
 export default function Header() {
   const {
@@ -16,7 +17,10 @@ export default function Header() {
     setEditBoard,
     menu,
     setMenu,
+    data,
+    setData,
   }: any = useStore();
+  const params = useParams<{ tag: string; item: string; main: string }>();
 
   return (
     <>
@@ -32,7 +36,19 @@ export default function Header() {
             alt="Logo"
             className="header__logo__mobile"
           />
-          <h1 className="header__title">Platform Launch</h1>
+          <div className="header__title">
+            {data.boards.map((board: any) => {
+              if (board.name.replace(" ", "-") === params.main) {
+                return (
+                  <>
+                    <h1 className="text-black font-bold font-sans text-lg">
+                      {board.name}
+                    </h1>
+                  </>
+                );
+              }
+            })}
+          </div>
           <img
             src="../../assets/icon-chevron-down.svg"
             className="ml-2 header__chevron__down"

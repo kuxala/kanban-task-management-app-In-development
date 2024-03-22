@@ -5,9 +5,12 @@ import Dots from "./Dots";
 import EditBoard from "./EditBoard";
 import DeleteBoard from "./DeleteBoard";
 import useStore from "../useStore";
+import { useParams } from "next/navigation";
 
 export default function View() {
   const {
+    data,
+    setData,
     view,
     setView,
     addNew,
@@ -18,7 +21,20 @@ export default function View() {
     setEditBoard,
     menu,
     setMenu,
+    tasks,
   }: any = useStore();
+
+  const params = useParams<{ tag: string; item: string; main: string }>();
+
+  const currentBoard = data.boards.find(
+    (board: any) => board.name.replace(" ", "-") === params.main
+  );
+
+  if (!currentBoard) {
+    return <div>Board not found</div>;
+  }
+
+  const { name, columns } = currentBoard;
 
   return (
     <>
@@ -27,7 +43,7 @@ export default function View() {
         <div>
           <div className="flex justify-between items-center gap-4">
             <h1 className="pb-6 text-black-900 font-bold text-lg font-feature-settings">
-              Text Headera osdkoa skdpasokdpaoskdpaoskd
+              {name}
             </h1>
             <img
               src="/assets/icon-vertical-ellipsis.svg"
@@ -37,34 +53,16 @@ export default function View() {
             {dots.editTask ? <Dots name="Task" /> : null}
           </div>
           <p className="pb-6 text-gray-500 font-medium text-base leading-6 font-feature-settings">
-            Description asd asdasokdoaks dopaks okasop dkasj diajs
+            {/* {description} */}
           </p>
         </div>
         <div>
           <h3 className="pb-4 text-gray-500 font-bold text-xs leading-normal">
-            Subtask (s)
+            Subtask(s)
           </h3>
-          <div>
-            {/* {checkboxes.map((checkbox: any) => (
-              <div key={checkbox.id} className="custom-checkbox">
-                <input
-                  type="checkbox"
-                  id={`checkbox-${checkbox.id}`}
-                  checked={checkbox.isChecked}
-                  onChange={() => handleCheckboxChange(checkbox.id)}
-                  className="hidden"
-                />
-                <label
-                  htmlFor={`checkbox-${checkbox.id}`}
-                  className={checkbox.isChecked ? "checked" : ""}
-                ></label>
-                <span>Checkbox {checkbox.id}</span>
-              </div>
-            ))} */}
-          </div>
         </div>
         <div>
-          <h3 className="pt-6 pb-2 text-gray-500 font-bold text-xs leading-normal ">
+          <h3 className="pt-6 pb-2 text-gray-500 font-bold text-xs leading-normal">
             Current Status
           </h3>
           <select className="w-full h-12 border border-gray-300 rounded-md p-2 bg-white">

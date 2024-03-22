@@ -2,7 +2,15 @@
 import { create } from "zustand";
 import jsonData from "../public/data.json";
 
+const { boards } = jsonData;
+const tasks = boards.flatMap((board) =>
+  board.columns.flatMap((column) => column.tasks)
+);
+
 const useStore = create((set) => ({
+  tasks: tasks,
+  setTasks: (newTasks: any) => set({ tasks: newTasks }),
+
   data: jsonData,
   setData: (newValue: any) => set({ data: newValue }),
 
