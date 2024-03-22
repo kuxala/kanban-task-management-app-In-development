@@ -92,9 +92,9 @@ export default function Header() {
             className="header__icon"
             onClick={() => setEditBoard(!dots.editBoard)}
           />
-          {dots.editBoard ? <Dots name="Boards" /> : null}
         </div>
       </header>
+      {dots.editBoard ? <Dots name="Boards" /> : null}
       {addNew ? <AddNew /> : null}
     </>
   );

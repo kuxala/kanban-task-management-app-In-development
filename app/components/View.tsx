@@ -6,6 +6,7 @@ import EditBoard from "./EditBoard";
 import DeleteBoard from "./DeleteBoard";
 import useStore from "../useStore";
 import { useParams } from "next/navigation";
+import EditTask from "./EditTask";
 
 export default function View() {
   const {
@@ -17,6 +18,7 @@ export default function View() {
     setAddNew,
     dots,
     setDots,
+    editTask,
     setEditTask,
     setEditBoard,
     menu,
@@ -39,7 +41,7 @@ export default function View() {
   return (
     <>
       <Overlay isOpen={view} onClose={() => setView(false)} />
-      <div className="absolute top-0 md:top-[20%] md:left-1/2 md:-translate-x-1/2 rounded-[8px] left-0 right-0 bg-white m-6 p-6 z-50 md:w-[500px]">
+      <div className="fixed top-0 md:top-[20%] md:left-1/2 md:-translate-x-1/2 rounded-[8px] left-0 right-0 bg-white m-6 p-6 z-50 md:w-[500px]">
         <div>
           <div className="flex justify-between items-center gap-4">
             <h1 className="pb-6 text-black-900 font-bold text-lg font-feature-settings">
@@ -48,10 +50,10 @@ export default function View() {
             <img
               src="/assets/icon-vertical-ellipsis.svg"
               className="h-full"
-              onClick={() => setEditBoard(!dots.editBoard)}
+              onClick={() => setEditTask(!dots.editTask)}
             />
-            {dots.editTask ? <Dots name="Task" /> : null}
           </div>
+          {dots.editTask ? <Dots name="Task" /> : null}
           <p className="pb-6 text-gray-500 font-medium text-base leading-6 font-feature-settings">
             {/* {description} */}
           </p>
@@ -72,6 +74,7 @@ export default function View() {
           </select>
         </div>
       </div>
+      <div>{editTask ? <EditTask /> : null}</div>
     </>
   );
 }

@@ -4,10 +4,8 @@ const nextConfig = {
   experimental: {
     esmExternals: true,
     serverComponents: false,
-  },
-  compiler: {
-    styledComponents: true,
-  },
+    reactStrictMode: false,
+  }
 };
 
 export default nextConfig;

@@ -12,42 +12,65 @@ export default function Main() {
   const params = useParams<Params>();
   const { data, view, setView, tasks, boards, setBoards }: any = useStore();
 
-  // console.log("data Boads: ", boards);
-  const [firstBoard, secondBoard, thirdBoard, ...otherBoards] = boards;
-  console.log(boards);
+  const checkBoard = boards.find((item: any) => {
+    return params.main === item.name.replace(" ", "-");
+  });
 
-  const loop = () => {
-    data.boards.forEach((item: any) => {
-      if (params.main === item.name.replace(" ", "-")) {
-        data?.boards?.column?.foEach((column: any) => {
-          console.log(column);
-        });
-        return "not found";
-      }
-    });
+  console.log(
+    "__________________________________________________________________________________________________________"
+  );
+  type Props = {
+    title: string;
+    description: string;
   };
+  const loop = () => {
+    if (checkBoard) {
+      return checkBoard.columns.flatMap((column: any) => {
+        return column.tasks.map((task: any) => ({
+          title: task.title,
+          description: task.description,
+        }));
+      });
+    }
+    return [];
+  };
+  // const checkWhere = () => {
+  //   if (checkBoard){
+  //     if(){
 
-  loop();
+  //     }
+  //   }
+  // };
   return (
     <>
-      <MainSection />
       <div className="section__both">
         <div className="section__columns">
           <h3 className="ml-4 mt-4 text-gray-500 font-sans font-semibold text-xs normal-case tracking-wider">
-            {}
+            Todo
           </h3>
-
-          <div
+          {loop().map(
+            (task: { title: string; description: string }, index: number) => (
+              <div
+                key={index}
+                className="section__div"
+                onClick={() => setView(true)}
+              >
+                {task.title}
+              </div>
+            )
+          )}
+          {/* <div
             className="section__div"
             onClick={() => {
               setView(true);
             }}
           >
-            <h1 className="section__description"></h1>
-          </div>
+            <h1 className="section__description">Description</h1>
+          </div> */}
         </div>
       </div>
       <div>{view ? <View /> : null}</div>
+      <MainSection />
     </>
   );
 }
