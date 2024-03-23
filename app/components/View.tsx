@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Overlay from "../pages/Overlay";
 import "../styles/View.css";
 import Dots from "./Dots";
@@ -23,20 +23,9 @@ export default function View() {
     setEditBoard,
     menu,
     setMenu,
-    tasks,
   }: any = useStore();
 
   const params = useParams<{ tag: string; item: string; main: string }>();
-
-  const currentBoard = data.boards.find(
-    (board: any) => board.name.replace(" ", "-") === params.main
-  );
-
-  if (!currentBoard) {
-    return <div>Board not found</div>;
-  }
-
-  const { name, columns } = currentBoard;
 
   return (
     <>
@@ -45,7 +34,7 @@ export default function View() {
         <div>
           <div className="flex justify-between items-center gap-4">
             <h1 className="pb-6 text-black-900 font-bold text-lg font-feature-settings">
-              {name}
+              {/* Render the title */}
             </h1>
             <img
               src="/assets/icon-vertical-ellipsis.svg"
@@ -55,23 +44,28 @@ export default function View() {
           </div>
           {dots.editTask ? <Dots name="Task" /> : null}
           <p className="pb-6 text-gray-500 font-medium text-base leading-6 font-feature-settings">
-            {/* {description} */}
+            {/* Render the description */}
           </p>
-        </div>
-        <div>
-          <h3 className="pb-4 text-gray-500 font-bold text-xs leading-normal">
-            Subtask(s)
-          </h3>
-        </div>
-        <div>
-          <h3 className="pt-6 pb-2 text-gray-500 font-bold text-xs leading-normal">
-            Current Status
-          </h3>
-          <select className="w-full h-12 border border-gray-300 rounded-md p-2 bg-white">
-            <option value="1">Todo</option>
-            <option value="2">Doing</option>
-            <option value="2">Done</option>
-          </select>
+          <div>
+            <h3 className="pb-4 text-gray-500 font-bold text-xs leading-normal">
+              Subtask(s)
+            </h3>
+            {/* Render subtasks if they exist */}
+
+            <ul>
+              <li></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="pt-6 pb-2 text-gray-500 font-bold text-xs leading-normal">
+              Current Status
+            </h3>
+            <select className="w-full h-12 border border-gray-300 rounded-md p-2 bg-white">
+              <option value="1">Todo</option>
+              <option value="2">Doing</option>
+              <option value="2">Done</option>
+            </select>
+          </div>
         </div>
       </div>
       <div>{editTask ? <EditTask /> : null}</div>

@@ -1,21 +1,8 @@
 // usestore.js
 import { create } from "zustand";
-import jsonData from "../public/data.json";
-
-const { boards } = jsonData;
-
-const tasks = boards.flatMap((board) =>
-  board.columns.map((column) => column.tasks)
-);
 
 const useStore = create((set) => ({
-  boards: jsonData.boards,
-  setBoards: (newBoards: any) => set({ boards: newBoards }),
-
-  tasks: tasks,
-  setTasks: (newTasks: any) => set({ tasks: newTasks }),
-
-  data: jsonData,
+  data: null,
   setData: (newValue: any) => set({ data: newValue }),
 
   active: false,

@@ -37,17 +37,11 @@ export default function Header() {
             className="header__logo__mobile"
           />
           <div className="header__title">
-            {data.boards.map((board: any) => {
-              if (board.name.replace(" ", "-") === params.main) {
-                return (
-                  <>
-                    <h1 className="text-black font-bold font-sans text-lg">
-                      {board.name}
-                    </h1>
-                  </>
-                );
-              }
-            })}
+            <>
+              <h1 className="text-black font-bold font-sans text-lg">
+                {/* {board.name} */} Header name
+              </h1>
+            </>
           </div>
           <img
             src="../../assets/icon-chevron-down.svg"

@@ -12,23 +12,7 @@ export default function Main() {
   const params = useParams<Params>();
   const { data, view, setView, tasks, boards, setBoards }: any = useStore();
 
-  const checkBoard = boards.find((item: any) => {
-    return params.main === item.name.replace(" ", "-");
-  });
-
-  const loop = () => {
-    if (checkBoard) {
-      return checkBoard.columns.flatMap((column: any) => {
-        return column.tasks.map((task: any) => ({
-          title: task.title,
-          description: task.description,
-          todo: task.subtasks,
-        }));
-      });
-    }
-    return [];
-  };
-
+  console.log(data);
   return (
     <>
       <div className="section__both">
@@ -36,38 +20,21 @@ export default function Main() {
           <h3 className="ml-4 mt-4 text-gray-500 font-sans font-semibold text-xs normal-case tracking-wider">
             Todo
           </h3>
-          {loop().map(
-            (
-              task: {
-                todo: any;
-                title: string;
-                description: string;
-              },
-              index: number
-            ) => (
-              <div
-                key={index}
-                className="section__div "
-                onClick={() => setView(true)}
-              >
-                <div className="flex flex-col">
-                  <p className="text-black font-bold text-base pb-1">
-                    {task.title}
-                  </p>
-                  <p className="text-gray-600 font-bold text-xs">
-                    {task.todo.length} Subtasks
-                  </p>
-                </div>
-                {/* {task.todo && (
+
+          <div className="section__div " onClick={() => setView(true)}>
+            <div className="flex flex-col">
+              <p className="text-black font-bold text-base pb-1p"></p>
+              <p className="text-gray-600 font-bold text-xs">Subtasks</p>
+            </div>
+            {/* {task.todo && (
                   <ul>
                     {task.todo.map((subtask: any, subIndex: number) => (
                       <li key={subIndex}>{subtask.title}</li>
                     ))}
                   </ul>
                 )} */}
-              </div>
-            )
-          )}
+          </div>
+
           {/* <div
             className="section__div"
             onClick={() => {

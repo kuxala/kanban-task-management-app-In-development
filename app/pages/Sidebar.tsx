@@ -25,23 +25,20 @@ export default function Sidebar() {
             <p className="sidebar__header">All Boards </p>
 
             <div className="flex flex-col gap-1">
-              {data?.boards?.map((item: any) => {
-                return (
-                  <div className="flex">
-                    <Link
-                      style={active === item.name ? bgColor : {}}
-                      onClick={() => {
-                        setActive(item.name);
-                      }}
-                      className="sidebar__boards "
-                      href={item.name.replaceAll(" ", "-")}
-                    >
-                      <img src="assets/icon-board.svg" />
-                      {item.name}
-                    </Link>
-                  </div>
-                );
-              })}
+              <div className="flex">
+                <Link
+                  // style={active === item.name ? bgColor : {}}
+                  // onClick={() => {
+                  //   setActive(item.name);
+                  // }}
+                  className="sidebar__boards "
+                  href="{}"
+                >
+                  <img src="assets/icon-board.svg" />
+                  {/* {item.name} */}
+                  Name
+                </Link>
+              </div>
             </div>
 
             <p className="sidebar__add__board flex gap-2 items-center ">
