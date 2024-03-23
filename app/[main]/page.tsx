@@ -12,7 +12,7 @@ export default function Main() {
   const params = useParams<Params>();
   const { data, view, setView, tasks, boards, setBoards }: any = useStore();
 
-  console.log(data);
+  // console.log(data);
   return (
     <>
       <div className="section__both">

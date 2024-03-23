@@ -1,9 +1,11 @@
 // usestore.js
 import { create } from "zustand";
+import jsonData from "../public/data.json";
 
 const useStore = create((set) => ({
-  data: null,
-  setData: (newValue: any) => set({ data: newValue }),
+  data: jsonData,
+  setData: (newValue: any) =>
+    set((state: any) => ({ data: { ...state.data, ...newValue } })),
 
   active: false,
   setActive: (newValue: any) => set({ active: newValue }),

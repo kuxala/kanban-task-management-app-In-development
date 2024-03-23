@@ -39,7 +39,7 @@ export default function Header() {
           <div className="header__title">
             <>
               <h1 className="text-black font-bold font-sans text-lg">
-                {/* {board.name} */} Header name
+                {params.main}
               </h1>
             </>
           </div>
