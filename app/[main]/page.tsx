@@ -16,31 +16,19 @@ export default function Main() {
     return params.main === item.name.replace(" ", "-");
   });
 
-  console.log(
-    "__________________________________________________________________________________________________________"
-  );
-  type Props = {
-    title: string;
-    description: string;
-  };
   const loop = () => {
     if (checkBoard) {
       return checkBoard.columns.flatMap((column: any) => {
         return column.tasks.map((task: any) => ({
           title: task.title,
           description: task.description,
+          todo: task.subtasks,
         }));
       });
     }
     return [];
   };
-  // const checkWhere = () => {
-  //   if (checkBoard){
-  //     if(){
 
-  //     }
-  //   }
-  // };
   return (
     <>
       <div className="section__both">
@@ -49,13 +37,34 @@ export default function Main() {
             Todo
           </h3>
           {loop().map(
-            (task: { title: string; description: string }, index: number) => (
+            (
+              task: {
+                todo: any;
+                title: string;
+                description: string;
+              },
+              index: number
+            ) => (
               <div
                 key={index}
-                className="section__div"
+                className="section__div "
                 onClick={() => setView(true)}
               >
-                {task.title}
+                <div className="flex flex-col">
+                  <p className="text-black font-bold text-base pb-1">
+                    {task.title}
+                  </p>
+                  <p className="text-gray-600 font-bold text-xs">
+                    {task.todo.length} Subtasks
+                  </p>
+                </div>
+                {/* {task.todo && (
+                  <ul>
+                    {task.todo.map((subtask: any, subIndex: number) => (
+                      <li key={subIndex}>{subtask.title}</li>
+                    ))}
+                  </ul>
+                )} */}
               </div>
             )
           )}
