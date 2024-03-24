@@ -1,6 +1,6 @@
 // usestore.js
 import { create } from "zustand";
-import jsonData from "../public/data.json";
+import jsonData from "./data.json";
 
 const useStore = create((set) => ({
   data: jsonData,

@@ -27,6 +27,24 @@ export default function View() {
 
   const params = useParams<{ tag: string; item: string; main: string }>();
 
+  console.log("Params: ", params.main);
+
+  // const loop = () => {
+  //   data.boards.forEach((board: any) => {
+  //     console.log("Board:", board.name);
+  //     board.columns.forEach((column: any) => {
+  //       console.log("Column:", column.name);
+  //       column.tasks.forEach((task: any) => {
+  //         console.log("Task:", task.name);
+  //         task.subTasks.forEach((subTask: any) => {
+  //           console.log("SubTask:", subTask.name);
+  //         });
+  //       });
+  //     });
+  //   });
+  // };
+  // loop();
+
   return (
     <>
       <Overlay isOpen={view} onClose={() => setView(false)} />
@@ -34,7 +52,15 @@ export default function View() {
         <div>
           <div className="flex justify-between items-center gap-4">
             <h1 className="pb-6 text-black-900 font-bold text-lg font-feature-settings">
-              {/* Render the title */}
+              {data.boards.flatMap((board: any) =>
+                board.columns.flatMap((column: any) =>
+                  column.tasks.map((task: any) => {
+                    if (params.main == task.id) {
+                      return <div key={task.id}>{task.name}</div>;
+                    }
+                  })
+                )
+              )}
             </h1>
             <img
               src="/assets/icon-vertical-ellipsis.svg"

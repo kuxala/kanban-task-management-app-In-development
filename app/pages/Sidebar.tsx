@@ -1,8 +1,9 @@
 "use client";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "../styles/Sidebar.css";
 import Link from "next/link";
 import useStore from "../useStore";
+import MyContext from "../context/MyContext";
 
 const bgColor = {
   backgroundColor: "#635FC7",
@@ -14,11 +15,12 @@ export default function Sidebar() {
     useStore();
 
   const addToBoard = () => {
-    const newBoardName = prompt("Enter the name of the new board:");
+    const newBoardName = "raime";
 
-    if (!newBoardName) return;
+    if (!newBoardName) return alert("Please enter a valid name");
 
-    const newBoardId = Math.floor(Math.random() * 1000);
+    const lastBoard = data.boards[data.boards.length - 1];
+    const newBoardId = lastBoard ? lastBoard.id + 1 : 1;
 
     const newBoard = {
       id: newBoardId,
@@ -26,22 +28,15 @@ export default function Sidebar() {
       columns: [],
     };
 
-    console.log("New board before update:", newBoard);
-
     setData((prevData: any) => {
-      console.log("Previous data before update:", prevData);
-
       const newData = {
         ...prevData,
         boards: [...prevData.boards, newBoard],
       };
 
-      console.log("New data after update:", newData);
-
       return newData;
     });
   };
-  console.log(data);
 
   return (
     <>
@@ -66,7 +61,11 @@ export default function Sidebar() {
             </div>
 
             <div className="sidebar__add__board flex gap-2 items-center">
-              <button onClick={addToBoard}>+ Create New Board</button>
+              <button
+              // onClick={addToBoard}
+              >
+                + Create New Board
+              </button>
             </div>
           </div>
         </div>
