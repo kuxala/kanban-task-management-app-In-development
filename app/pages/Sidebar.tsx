@@ -4,6 +4,7 @@ import "../styles/Sidebar.css";
 import Link from "next/link";
 import useStore from "../useStore";
 import MobileSidebar from "./MobileSidebar";
+import AddBoard from "../components/AddBoard";
 
 const bgColor = {
   backgroundColor: "#635FC7",
@@ -11,8 +12,16 @@ const bgColor = {
 };
 
 export default function Sidebar() {
-  const { sidebar, setSidebar, active, setActive, data, setData }: any =
-    useStore();
+  const {
+    sidebar,
+    setSidebar,
+    active,
+    setActive,
+    data,
+    setData,
+    addNewBoard,
+    setAddNewBoard,
+  }: any = useStore();
 
   const addToBoard = () => {
     const newBoardName = "raime";
@@ -40,6 +49,7 @@ export default function Sidebar() {
 
   return (
     <>
+      {addNewBoard ? <AddBoard /> : null}
       <MobileSidebar />
       <div className={sidebar ? "sidebar" : "sidebar__hidden"}>
         <div className="top">
@@ -62,7 +72,13 @@ export default function Sidebar() {
             </div>
 
             <div className="sidebar__add__board flex gap-2 items-center">
-              <button>+ Create New Board</button>
+              <button
+                onClick={() => {
+                  setAddNewBoard(true);
+                }}
+              >
+                + Create New Board
+              </button>
             </div>
           </div>
         </div>

@@ -1,7 +1,6 @@
 import { useState, useContext } from "react";
 import Overlay from "./Overlay";
 import Darkmode from "../components/Darkmode";
-import Dots from "../components/Dots";
 import useStore from "../useStore";
 import Link from "next/link";
 
