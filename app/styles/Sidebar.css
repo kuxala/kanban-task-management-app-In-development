@@ -7,6 +7,8 @@
         display: none;
     }
     .sidebar{
+        /* position: fixed; */
+        /* margin-top:100px; */
         background-color: #fff;
         min-height: 90vh;
         min-width: 300px;
@@ -76,7 +78,6 @@
         z-index: 1        
     }
     .sidebar__darkmode__div{
-        min-height: 45vh;
         display: flex;
         flex-direction: column;
         justify-content: flex-end;

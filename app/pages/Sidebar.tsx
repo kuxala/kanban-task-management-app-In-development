@@ -5,6 +5,7 @@ import Link from "next/link";
 import useStore from "../useStore";
 import MobileSidebar from "./MobileSidebar";
 import AddBoard from "../components/AddBoard";
+import { Switch } from "@mui/material";
 
 const bgColor = {
   backgroundColor: "#635FC7",
@@ -46,31 +47,27 @@ export default function Sidebar() {
       return newData;
     });
   };
-
   return (
     <>
       {addNewBoard ? <AddBoard /> : null}
       <MobileSidebar />
       <div className={sidebar ? "sidebar" : "sidebar__hidden"}>
-        <div className="top">
-          <div className="sidebar__texts">
-            <p className="sidebar__header">All Boards</p>
-            <div className="flex flex-col gap-1">
-              {data?.boards?.map((item: any) => (
-                <div key={item.id} className="flex">
-                  <Link
-                    style={active === item.name ? bgColor : {}}
-                    onClick={() => setActive(item.name)}
-                    className="sidebar__boards"
-                    href={`/${item.name.replaceAll(" ", "-")}`}
-                  >
-                    <img src="assets/icon-board.svg" alt="icon-board" />
-                    {item.name}
-                  </Link>
-                </div>
-              ))}
-            </div>
-
+        <div className="sidebar__texts ">
+          <p className="sidebar__header">All Boards ({data.boards.length})</p>
+          <div className="flex flex-col gap-1">
+            {data?.boards?.map((item: any) => (
+              <div key={item.id} className="flex">
+                <Link
+                  style={active === item.name ? bgColor : {}}
+                  onClick={() => setActive(item.name)}
+                  className="sidebar__boards"
+                  href={`/${item.name.replaceAll(" ", "-")}`}
+                >
+                  <img src="assets/icon-board.svg" alt="icon-board" />
+                  {item.name}
+                </Link>
+              </div>
+            ))}
             <div className="sidebar__add__board flex gap-2 items-center">
               <button
                 onClick={() => {
@@ -80,6 +77,29 @@ export default function Sidebar() {
                 + Create New Board
               </button>
             </div>
+          </div>
+        </div>
+
+        <div className="sidebar__darkmode__div">
+          <div className="sidebar__darkmode flex gap-3">
+            <img src="/assets/icon-light-theme.svg" />
+            <div
+            // onClick={() => {
+            //   setDarkmode(!darkmode);
+            // }}
+            >
+              <Switch defaultChecked={false} />
+            </div>
+            <img src="/assets/icon-dark-theme.svg" />
+          </div>
+          <div
+            className="flex gap-2 items-center pl-8 pt-4 pb-10"
+            onClick={() => {
+              setSidebar(!sidebar);
+            }}
+          >
+            <img src="/assets/icon-hide-sidebar.svg" />{" "}
+            <p className="sidebar__hide "> Hide Sidebar</p>
           </div>
         </div>
       </div>
