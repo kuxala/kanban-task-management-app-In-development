@@ -1,33 +1,21 @@
 import { useContext, useState } from "react";
 import Overlay from "../pages/Overlay";
 import "../styles/View.css";
-import Dots from "./Dots";
+// import Dots from "./Dots";
 import EditBoard from "./EditBoard";
 import DeleteBoard from "./DeleteBoard";
 import useStore from "../useStore";
 import { useParams } from "next/navigation";
 import EditTask from "./EditTask";
+import ViewDots from "./ViewDots";
+import DeleteTask from "./DeleteTask";
 
 export default function View() {
-  const {
-    data,
-    setData,
-    view,
-    setView,
-    addNew,
-    setAddNew,
-    dots,
-    setDots,
-    editTask,
-    setEditTask,
-    setEditBoard,
-    menu,
-    setMenu,
-  }: any = useStore();
-
+  const { data, setData, view, setView }: any = useStore();
   const params = useParams<{ tag: string; item: string; main: string }>();
+  const [dots, setDots] = useState(false);
 
-  console.log("Params: ", params.main);
+  // console.log("Params: ", params.main);
 
   // const loop = () => {
   //   data.boards.forEach((board: any) => {
@@ -65,10 +53,10 @@ export default function View() {
             <img
               src="/assets/icon-vertical-ellipsis.svg"
               className="h-full"
-              onClick={() => setEditTask(!dots.editTask)}
+              onClick={() => setDots(!dots)}
             />
           </div>
-          {dots.editTask ? <Dots name="Task" /> : null}
+          <div>{dots ? <ViewDots /> : null}</div>
           <p className="pb-6 text-gray-500 font-medium text-base leading-6 font-feature-settings">
             {/* Render the description */}
           </p>
@@ -94,7 +82,8 @@ export default function View() {
           </div>
         </div>
       </div>
-      <div>{editTask ? <EditTask /> : null}</div>
+
+      {/* <div>{editTask ? <EditTask /> : null}</div> */}
     </>
   );
 }

@@ -1,16 +1,9 @@
-import { useContext } from "react";
 import Overlay from "../pages/Overlay";
-import useStore from "../useStore";
 
-export default function DeleteBoard() {
-  const { addNew, setAddNew, dots, setEditBoard, setDeleteBoard }: any =
-    useStore();
+export default function DeleteBoard({ deleteBoard, setDeleteBoard }: any) {
   return (
     <>
-      <Overlay
-        isOpen={dots.deleteBoard}
-        onClose={() => setDeleteBoard(false)}
-      />
+      <Overlay isOpen={deleteBoard} onClose={() => setDeleteBoard(false)} />
       <div className="absolute md:max-w-[500px] md:top-[30%] md:left-1/2 md:-translate-x-1/2 top-20 left-0 bg-white flex flex-col ml-8 mr-8 p-6 z-50 rounded-[8px] ">
         <h1 className="pb-6 text-red-500 font-bold text-xl font-feature-settings">
           Delete Board?

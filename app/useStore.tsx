@@ -15,23 +15,26 @@ const useStore = create((set) => ({
   addNew: false,
   setAddNew: () => set((state: any) => ({ addNew: !state.addNew })),
 
-  dots: {
-    dots: false,
-    editTask: false,
-    editBoard: false,
-    deleteTask: false,
-    deleteBoard: false,
-  },
-  setEditTask: (value: boolean) =>
-    set((state: any) => ({ dots: { ...state.dots, editTask: value } })),
-  setEditBoard: (value: boolean) =>
-    set((state: any) => ({ dots: { ...state.dots, editBoard: value } })),
-  setDeleteTask: (value: boolean) =>
-    set((state: any) => ({ dots: { ...state.dots, deleteTask: value } })),
-  setDeleteBoard: (value: boolean) =>
-    set((state: any) => ({ dots: { ...state.dots, deleteBoard: value } })),
-  setDots: (value: boolean) =>
-    set((state: any) => ({ dots: { ...state.dots, dots: value } })),
+  // dots: {
+  //   boardDots: false,
+  //   editDots: false,
+  //   editTask: false,
+  //   editBoard: false,
+  //   deleteTask: false,
+  //   deleteBoard: false,
+  // },
+  // setEditTask: (value: boolean) =>
+  //   set((state: any) => ({ dots: { ...state.dots, editTask: value } })),
+  // setEditBoard: (value: boolean) =>
+  //   set((state: any) => ({ dots: { ...state.dots, editBoard: value } })),
+  // setDeleteTask: (value: boolean) =>
+  //   set((state: any) => ({ dots: { ...state.dots, deleteTask: value } })),
+  // setDeleteBoard: (value: boolean) =>
+  //   set((state: any) => ({ dots: { ...state.dots, deleteBoard: value } })),
+  // setBoardDots: (value: boolean) =>
+  //   set((state: any) => ({ dots: { ...state.dots, boardDots: value } })),
+  // setEditDots: (value: boolean) =>
+  //   set((state: any) => ({ dots: { ...state.dots, editDots: value } })),
 
   menu: false,
   setMenu: (newValue: any) => set({ menu: newValue }),

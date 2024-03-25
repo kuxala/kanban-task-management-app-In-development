@@ -3,13 +3,10 @@ import Overlay from "../pages/Overlay";
 import "../styles/AddNew.css";
 import useStore from "../useStore";
 
-export default function EditBoard() {
-  const { addNew, setAddNew, dots, setEditBoard, menu, setMenu }: any =
-    useStore();
-
+export default function EditBoard({ editBoard, setEditBoard }: any) {
   return (
     <>
-      <Overlay isOpen={dots.editBoard} onClose={() => setEditBoard(false)} />
+      <Overlay isOpen={editBoard} onClose={() => setEditBoard(false)} />
 
       <div className="addnew__container absolute bg-white p-6 rounded-md ">
         <h1 className="text-black font-sans font-semibold text-lg pb-6">

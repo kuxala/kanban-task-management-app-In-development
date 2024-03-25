@@ -1,17 +1,17 @@
 "use client";
-
 import "../styles/Header.css";
-import React from "react";
+import React, { useState } from "react";
 import AddNew from "./AddNew";
-import Dots from "../components/Dots";
+import HeaderDots from "../components/HeaderDots";
 import useStore from "../useStore";
 import { useParams } from "next/navigation";
 import EditBoard from "../components/EditBoard";
 
 export default function Header() {
-  const { addNew, setAddNew, dots, setEditBoard, setDots, menu, setMenu }: any =
-    useStore();
+  const { addNew, setAddNew, menu, setMenu }: any = useStore();
   const params = useParams<{ tag: string; item: string; main: string }>();
+
+  const [dots, setDots] = useState(false);
 
   return (
     <>
@@ -73,11 +73,13 @@ export default function Header() {
           <img
             src="/assets/icon-vertical-ellipsis.svg"
             className="header__icon"
-            onClick={() => setDots(!dots.dots)}
+            onClick={() => {
+              setDots(!dots);
+            }}
           />
         </div>
       </header>
-      {dots.dots ? <Dots /> : null}
+      {dots ? <HeaderDots /> : null}
 
       {addNew ? <AddNew /> : null}
     </>

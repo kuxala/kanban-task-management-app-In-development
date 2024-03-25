@@ -4,28 +4,22 @@ import DeleteTask from "./DeleteTask";
 import EditBoard from "./EditBoard";
 import DeleteBoard from "./DeleteBoard";
 import useStore from "../useStore";
+import { set } from "react-hook-form";
 
-export default function EditDots({ name }: any) {
-  const {
-    addNew,
-    setAddNew,
-    dots,
-    setEditTask,
-    deleteBoard,
-    deleteTask,
-    setDeleteBoard,
-    setDeleteTask,
-  }: any = useStore();
+export default function BoardDots({ name, board, edit }: any) {
+  const [editBoard, setEditBoard] = useState(false);
+  const [deleteBoard, setDeleteBoard] = useState(false);
+
   return (
     <>
       <div className="absolute top-20 right-5 p-4 bg-white w-48 h-24 flex flex-col rounded-lg ">
         <p
           className="pb-2 text-gray-600 font-medium text-base leading-6"
           onClick={() => {
-            setEditTask(!dots.editTask);
+            setEditBoard(!editBoard);
           }}
         >
-          Edit {name}
+          Edit Board
         </p>
         <p
           className="text-red-500 font-medium text-base leading-6 font-feature-settings"
@@ -33,12 +27,19 @@ export default function EditDots({ name }: any) {
             setDeleteBoard(!deleteBoard);
           }}
         >
-          Delete {name}
+          Delete Board
         </p>
       </div>
       <div>
-        {dots.deleteBoard ? <DeleteBoard /> : null}
-        {dots.editTask ? <EditTask /> : null}
+        {editBoard ? (
+          <EditBoard editBoard={editBoard} setEditBoard={setEditBoard} />
+        ) : null}
+        {deleteBoard ? (
+          <DeleteBoard
+            deleteBoard={deleteBoard}
+            setDeleteBoard={setDeleteBoard}
+          />
+        ) : null}
       </div>
     </>
   );

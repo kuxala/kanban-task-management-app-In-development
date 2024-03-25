@@ -1,11 +1,10 @@
-import { useContext } from "react";
 import Overlay from "../pages/Overlay";
 
-export default function DeleteTask() {
+export default function DeleteTask({ deleteTask, setDeleteTask }: any) {
   return (
     <>
-      {/* <Overlay isOpen={deleteTask} onClose={() => setDeleteTask(false)} /> */}
-      <div className="absolute md:max-w-[500px] md:top-[30%] md:left-1/2 md:-translate-x-1/2 top-20 left-0 bg-white flex flex-col ml-8 mr-8 p-6 z-50 rounded-[8px] ">
+      <Overlay isOpen={deleteTask} onClose={() => setDeleteTask(false)} />
+      <div className="fixed md:max-w-[500px] md:top-[30%] md:left-1/2 md:-translate-x-1/2 top-20 left-0 bg-white  flex flex-col ml-8 mr-8 p-6 z-50 rounded-[8px] ">
         <h1 className="pb-6 text-red-500 font-bold text-xl font-feature-settings">
           Delete Task?
         </h1>
