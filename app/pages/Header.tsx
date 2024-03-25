@@ -6,20 +6,11 @@ import AddNew from "./AddNew";
 import Dots from "../components/Dots";
 import useStore from "../useStore";
 import { useParams } from "next/navigation";
+import EditBoard from "../components/EditBoard";
 
 export default function Header() {
-  const {
-    addNew,
-    setAddNew,
-    dots,
-    setDots,
-    setEditTask,
-    setEditBoard,
-    menu,
-    setMenu,
-    data,
-    setData,
-  }: any = useStore();
+  const { addNew, setAddNew, dots, setEditBoard, setDots, menu, setMenu }: any =
+    useStore();
   const params = useParams<{ tag: string; item: string; main: string }>();
 
   return (
@@ -37,11 +28,9 @@ export default function Header() {
             className="header__logo__mobile"
           />
           <div className="header__title">
-            <>
-              <h1 className="text-black font-bold font-sans text-lg">
-                {params.main}
-              </h1>
-            </>
+            <h1 className="text-black font-bold font-sans text-lg">
+              {params.main}
+            </h1>
           </div>
           <img
             src="../../assets/icon-chevron-down.svg"
@@ -84,11 +73,12 @@ export default function Header() {
           <img
             src="/assets/icon-vertical-ellipsis.svg"
             className="header__icon"
-            onClick={() => setEditBoard(!dots.editBoard)}
+            onClick={() => setDots(!dots.dots)}
           />
         </div>
       </header>
-      {dots.editBoard ? <Dots name="Boards" /> : null}
+      {dots.dots ? <Dots /> : null}
+
       {addNew ? <AddNew /> : null}
     </>
   );

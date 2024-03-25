@@ -1,4 +1,3 @@
-// usestore.js
 import { create } from "zustand";
 import jsonData from "./data.json";
 
@@ -17,13 +16,22 @@ const useStore = create((set) => ({
   setAddNew: () => set((state: any) => ({ addNew: !state.addNew })),
 
   dots: {
+    dots: false,
     editTask: false,
     editBoard: false,
+    deleteTask: false,
+    deleteBoard: false,
   },
   setEditTask: (value: boolean) =>
     set((state: any) => ({ dots: { ...state.dots, editTask: value } })),
   setEditBoard: (value: boolean) =>
     set((state: any) => ({ dots: { ...state.dots, editBoard: value } })),
+  setDeleteTask: (value: boolean) =>
+    set((state: any) => ({ dots: { ...state.dots, deleteTask: value } })),
+  setDeleteBoard: (value: boolean) =>
+    set((state: any) => ({ dots: { ...state.dots, deleteBoard: value } })),
+  setDots: (value: boolean) =>
+    set((state: any) => ({ dots: { ...state.dots, dots: value } })),
 
   menu: false,
   setMenu: (newValue: any) => set({ menu: newValue }),
@@ -39,10 +47,6 @@ const useStore = create((set) => ({
 
   view: false,
   setView: (newValue: any) => set({ view: newValue }),
-
-  deleteTask: false,
-  setDeleteTask: () =>
-    set((state: any) => ({ setDeleteTask: !state.deleteTask })),
 }));
 
 export default useStore;

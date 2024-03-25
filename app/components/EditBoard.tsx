@@ -1,11 +1,15 @@
 import { useContext, useState } from "react";
 import Overlay from "../pages/Overlay";
 import "../styles/AddNew.css";
+import useStore from "../useStore";
 
 export default function EditBoard() {
+  const { addNew, setAddNew, dots, setEditBoard, menu, setMenu }: any =
+    useStore();
+
   return (
     <>
-      {/* <Overlay isOpen={edit} onClose={() => setEdit(false)} /> */}
+      <Overlay isOpen={dots.editBoard} onClose={() => setEditBoard(false)} />
 
       <div className="addnew__container absolute bg-white p-6 rounded-md ">
         <h1 className="text-black font-sans font-semibold text-lg pb-6">

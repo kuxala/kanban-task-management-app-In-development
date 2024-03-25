@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import "../styles/Sidebar.css";
 import Link from "next/link";
 import useStore from "../useStore";
-import MyContext from "../context/MyContext";
+import MobileSidebar from "./MobileSidebar";
 
 const bgColor = {
   backgroundColor: "#635FC7",
@@ -40,6 +40,7 @@ export default function Sidebar() {
 
   return (
     <>
+      <MobileSidebar />
       <div className={sidebar ? "sidebar" : "sidebar__hidden"}>
         <div className="top">
           <div className="sidebar__texts">
@@ -61,15 +62,10 @@ export default function Sidebar() {
             </div>
 
             <div className="sidebar__add__board flex gap-2 items-center">
-              <button
-              // onClick={addToBoard}
-              >
-                + Create New Board
-              </button>
+              <button>+ Create New Board</button>
             </div>
           </div>
         </div>
-        {/* ... other parts of the sidebar */}
       </div>
 
       {!sidebar && (
