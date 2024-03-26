@@ -5,9 +5,9 @@ import useStore from "../useStore";
 export default function Rows() {
   const { columns, setColumns }: any = useStore();
 
+  console.log("Columns: ", columns);
   return (
     <>
-      {/* This is the Rows component */}
       {columns.map((item: any) => {
         return <Column taskname={item.value} />;
       })}

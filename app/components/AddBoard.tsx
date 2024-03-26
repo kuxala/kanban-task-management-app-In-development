@@ -85,14 +85,7 @@ export default function AddBoard() {
               Add New Column
             </button>
           </div>
-          <div>
-            <h3 className="text-gray-500 font-semibold pb-2">Status</h3>
-            <select className="w-full h-12 border border-gray-300 rounded-md p-2 bg-white">
-              <option value="1">Todo</option>
-              <option value="2">Doing</option>
-              <option value="2">Done</option>
-            </select>
-          </div>
+
           <button
             type="submit"
             className=" h-[40px] w-full rounded-[40px] mt-6 bg-indigo-600 text-white text-center font-bold text-base leading-6"

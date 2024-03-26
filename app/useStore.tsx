@@ -15,7 +15,11 @@ const useStore = create((set) => ({
   addNew: false,
   setAddNew: () => set((state: any) => ({ addNew: !state.addNew })),
 
-  columns: [{ id: 1, value: "" }],
+  columns: [
+    { id: 1, value: "Todo" },
+    { id: 2, value: "Doing" },
+    { id: 3, value: "Done" },
+  ],
   setColumns: (newColumns: any) => set({ columns: newColumns }),
 
   addNewBoardName: null,
