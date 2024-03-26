@@ -4,9 +4,21 @@ import useStore from "../useStore";
 import Overlay from "../pages/Overlay";
 
 export default function AddBoard() {
-  // const [columns, setColumns] = useState([{ id: 1, value: "" }]);
+  const {
+    data,
+    setData,
+    columns,
+    setColumns,
+    addNewBoard,
+    setAddNewBoard,
+    addNewBoardName,
+    setAddNewBoardName,
+  }: any = useStore();
+  const newBoard = {
+    name: addNewBoardName,
+    columns: columns,
+  };
 
-  const { columns, setColumns, addNewBoard, setAddNewBoard }: any = useStore();
   const handleAddColumn = () => {
     const newColumn = {
       id: columns.length + 1,
@@ -26,6 +38,15 @@ export default function AddBoard() {
     const updatedColumns = columns.filter((column: any) => column.id !== id);
     setColumns(updatedColumns);
   };
+  const handleAddBoard = (e: any) => {
+    setAddNewBoardName(e.target.value);
+  };
+  console.log("data before: ", data.boards);
+  const dataPush = () => {
+    data.boards.push({ name: addNewBoardName, columns: columns });
+  };
+
+  console.log("data after: ", data.boards);
   return (
     <>
       <Overlay isOpen={addNewBoard} onClose={() => setAddNewBoard(false)} />
@@ -40,6 +61,7 @@ export default function AddBoard() {
               placeholder="e.g Web Design"
               className="p-2 text-[14px] w-full border border-gray-300 rounded-md  bg-white"
               type="text"
+              onChange={handleAddBoard}
             />
           </div>
 
@@ -78,6 +100,10 @@ export default function AddBoard() {
           <button
             type="submit"
             className=" h-[40px] w-full rounded-[40px] mt-6 bg-indigo-600 text-white text-center font-bold text-base leading-6"
+            onClick={() => {
+              setAddNewBoard(false);
+              dataPush();
+            }}
           >
             Save Changes
           </button>

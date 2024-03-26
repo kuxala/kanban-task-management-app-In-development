@@ -40,9 +40,9 @@ export default function View() {
         <div>
           <div className="flex justify-between items-center gap-4">
             <h1 className="pb-6 text-black-900 font-bold text-lg font-feature-settings">
-              {data.boards.flatMap((board: any) =>
+              {data?.boards?.flatMap((board: any) =>
                 board.columns.flatMap((column: any) =>
-                  column.tasks.map((task: any) => {
+                  column?.tasks?.map((task: any) => {
                     if (params.main == task.id) {
                       return <div key={task.id}>{task.name}</div>;
                     }
