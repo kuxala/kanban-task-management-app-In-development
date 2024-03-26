@@ -61,7 +61,7 @@ export default function Sidebar() {
                   style={active === item.name ? bgColor : {}}
                   onClick={() => setActive(item.name)}
                   className="sidebar__boards"
-                  href={`/${item.name.replaceAll(" ", "-")}`}
+                  href={`/${item?.name?.replaceAll(" ", "-")}`}
                 >
                   <img src="assets/icon-board.svg" alt="icon-board" />
                   {item.name}

@@ -14,10 +14,6 @@ export default function AddBoard() {
     addNewBoardName,
     setAddNewBoardName,
   }: any = useStore();
-  const newBoard = {
-    name: addNewBoardName,
-    columns: columns,
-  };
 
   const handleAddColumn = () => {
     const newColumn = {
@@ -38,15 +34,15 @@ export default function AddBoard() {
     const updatedColumns = columns.filter((column: any) => column.id !== id);
     setColumns(updatedColumns);
   };
+
   const handleAddBoard = (e: any) => {
     setAddNewBoardName(e.target.value);
   };
-  console.log("data before: ", data.boards);
+
   const dataPush = () => {
     data.boards.push({ name: addNewBoardName, columns: columns });
   };
 
-  console.log("data after: ", data.boards);
   return (
     <>
       <Overlay isOpen={addNewBoard} onClose={() => setAddNewBoard(false)} />
