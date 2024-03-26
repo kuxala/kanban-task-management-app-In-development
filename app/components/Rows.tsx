@@ -1,15 +1,20 @@
-import React from "react";
 import Column from "./Column";
 import useStore from "../useStore";
 
 export default function Rows() {
-  const { columns, setColumns }: any = useStore();
+  const { columns }: any = useStore();
 
-  console.log("Columns: ", columns);
+  const checker = (taskname: string) => {
+    return columns
+      .filter((column: any) => column.value === taskname)
+      .flatMap((column: any) => column.tasks);
+  };
+
   return (
     <>
       {columns.map((item: any) => {
-        return <Column taskname={item.value} />;
+        const tasks = checker(item.value);
+        return <Column key={item.id} tasks={tasks} taskname={item.value} />;
       })}
     </>
   );

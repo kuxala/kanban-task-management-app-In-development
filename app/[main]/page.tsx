@@ -6,7 +6,6 @@ import View from "../components/View";
 import { use, useState } from "react";
 import Column from "../components/Column";
 import Rows from "../components/Rows";
-
 type Params = {
   main: string;
   data: string;

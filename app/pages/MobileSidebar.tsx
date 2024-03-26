@@ -3,9 +3,19 @@ import Overlay from "./Overlay";
 import Darkmode from "../components/Darkmode";
 import useStore from "../useStore";
 import Link from "next/link";
+import AddBoard from "../components/AddBoard";
 
 export default function MobileSidebar() {
-  const { menu, setMenu, data, setData, active, setActive }: any = useStore();
+  const {
+    menu,
+    setMenu,
+    data,
+    setData,
+    active,
+    setActive,
+    addNewBoard,
+    setAddNewBoard,
+  }: any = useStore();
   const bgColor = {
     backgroundColor: "#635FC7",
     color: "#fff",
@@ -13,6 +23,7 @@ export default function MobileSidebar() {
 
   return (
     <>
+      {addNewBoard ? <AddBoard /> : null}
       <Overlay isOpen={menu} onClose={() => setMenu(false)} />
       {menu && (
         <div className="absolute bg-white w-[80%] rounded-lg left-1/2 transform -translate-x-1/2 min-h-[20vh] z-30">
@@ -28,7 +39,7 @@ export default function MobileSidebar() {
                     onClick={() => {
                       setActive(item.name);
                     }}
-                    href={item.name.replaceAll(" ", "-")}
+                    href={`/${item?.name?.replaceAll(" ", "-")}`}
                     className="flex gap-4 w-95 items-center pl-8 text-gray-500 rounded-r-full h-12 font-sans font-bold text-base leading-normal"
                   >
                     <img src="/assets/icon-board.svg" alt="" />
@@ -40,6 +51,7 @@ export default function MobileSidebar() {
               <p
                 className="text-purple-700 font-sans font-bold text-base leading-normal pl-8 mt-4 pb-4  flex gap-2 items-center "
                 tabIndex={0}
+                onClick={() => setAddNewBoard(!addNewBoard)}
               >
                 <img
                   src="/assets/icon-board.svg"

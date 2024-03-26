@@ -24,29 +24,6 @@ export default function Sidebar() {
     setAddNewBoard,
   }: any = useStore();
 
-  const addToBoard = () => {
-    const newBoardName = "raime";
-
-    if (!newBoardName) return alert("Please enter a valid name");
-
-    const lastBoard = data.boards[data.boards.length - 1];
-    const newBoardId = lastBoard ? lastBoard.id + 1 : 1;
-
-    const newBoard = {
-      id: newBoardId,
-      name: newBoardName,
-      columns: [],
-    };
-
-    setData((prevData: any) => {
-      const newData = {
-        ...prevData,
-        boards: [...prevData.boards, newBoard],
-      };
-
-      return newData;
-    });
-  };
   return (
     <>
       {addNewBoard ? <AddBoard /> : null}
