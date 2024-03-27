@@ -14,25 +14,9 @@ export default function View() {
   const { data, setData, view, setView }: any = useStore();
   const params = useParams<{ tag: string; item: string; main: string }>();
   const [dots, setDots] = useState(false);
-
-  // console.log("Params: ", params.main);
-
-  // const loop = () => {
-  //   data.boards.forEach((board: any) => {
-  //     console.log("Board:", board.name);
-  //     board.columns.forEach((column: any) => {
-  //       console.log("Column:", column.name);
-  //       column.tasks.forEach((task: any) => {
-  //         console.log("Task:", task.name);
-  //         task.subTasks.forEach((subTask: any) => {
-  //           console.log("SubTask:", subTask.name);
-  //         });
-  //       });
-  //     });
-  //   });
-  // };
-  // loop();
-
+  const filteredBoard = data.boards.find(
+    (board: any) => board?.name?.replace(" ", "-") === params.main
+  );
   return (
     <>
       <Overlay isOpen={view} onClose={() => setView(false)} />
@@ -40,7 +24,12 @@ export default function View() {
         <div>
           <div className="flex justify-between items-center gap-4">
             <h1 className="pb-6 text-black-900 font-bold text-lg font-feature-settings">
-              sasdasd
+              {/* {data.boards.map((boardName: any) => {
+                if (boardName.name.replace(" ", "-") == params.main) {
+                  console.log(boardName.columns[0].tasks[0].title);
+                  return boardName.columns[0].tasks[0].title;
+                }
+              })} */}
             </h1>
             <img
               src="/assets/icon-vertical-ellipsis.svg"
@@ -49,9 +38,7 @@ export default function View() {
             />
           </div>
           <div>{dots ? <ViewDots /> : null}</div>
-          <p className="pb-6 text-gray-500 font-medium text-base leading-6 font-feature-settings">
-            {/* Render the description */}
-          </p>
+          <p className="pb-6 text-gray-500 font-medium text-base leading-6 font-feature-settings"></p>
           <div>
             <h3 className="pb-4 text-gray-500 font-bold text-xs leading-normal">
               Subtask(s)

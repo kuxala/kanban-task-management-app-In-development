@@ -1,5 +1,6 @@
 import { useParams } from "next/navigation";
 import useStore from "../useStore";
+import View from "./View";
 
 export default function Column({ taskname }: any) {
   const { data, view, setView, columns }: any = useStore();

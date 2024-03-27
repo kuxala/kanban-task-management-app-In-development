@@ -9,12 +9,17 @@ const useStore = create((set) => ({
   active: false,
   setActive: (newValue: any) => set({ active: newValue }),
 
+  editBoardName: "",
+  setEditBoardName: (newValue: any) => set({ editBoardName: newValue }),
+
   sidebar: true,
   setSidebar: (newValue: any) => set({ sidebar: newValue }),
 
   addNew: false,
   setAddNew: () => set((state: any) => ({ addNew: !state.addNew })),
 
+  addNewTask: "",
+  setAddNewTask: (newValue: any) => set({ addNewTask: newValue }),
   columns: [
     { id: 1, value: "Todo" },
     { id: 2, value: "Doing" },
