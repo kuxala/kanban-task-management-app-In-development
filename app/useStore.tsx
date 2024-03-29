@@ -43,7 +43,7 @@ const useStore = create((set) => ({
   darkmode: false,
   setDarkmode: () => set((state: any) => ({ setDarkmode: !state.darkmode })),
 
-  isOpen: false,
+  isOpen: true,
   setIsOpen: () => set((state: any) => ({ setIsOpen: !state.isOpen })),
 
   view: false,
