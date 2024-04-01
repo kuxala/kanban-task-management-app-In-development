@@ -13,7 +13,6 @@ export default function EditBoard({ editBoard, setEditBoard }: any) {
     setEditBoardName,
   }: any = useStore();
 
-  console.log(data.boards);
   const editBoardFunction = (boardId: number) => {
     const boardIndex = data.boards.findIndex(
       (board: any) => board.id === boardId
@@ -82,16 +81,8 @@ export default function EditBoard({ editBoard, setEditBoard }: any) {
             Add New Column
           </button>
         </div>
-        <div>
-          <h3 className="text-gray-500 font-semibold pb-2">Status</h3>
-          <select className="w-full h-12 border border-gray-300 rounded-md p-2 bg-white">
-            <option value="1">Todo</option>
-            <option value="2">Doing</option>
-            <option value="2">Done</option>
-          </select>
-        </div>
         <button
-          onClick={() => editBoardFunction(data.boards[0].id)} // Assuming you want to edit the first board only
+          onClick={() => setEditBoard(false)} // Assuming you want to edit the first board only
           className="h-[40px] w-full rounded-[40px] mt-6 bg-indigo-600 text-white text-center font-bold text-base leading-6"
         >
           Save Changes

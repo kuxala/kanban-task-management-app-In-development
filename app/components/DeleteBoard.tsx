@@ -1,6 +1,22 @@
-import Overlay from "../pages/Overlay";
+import React from "react";
 
-export default function DeleteBoard({ deleteBoard, setDeleteBoard }: any) {
+import Overlay from "../pages/Overlay";
+import useStore from "../useStore";
+import { useParams } from "next/navigation";
+
+const DeleteBoard = ({ deleteBoard, setDeleteBoard }: any) => {
+  const { data, setData }: any = useStore();
+
+  const params = useParams<{ tag: string; item: string; main: string }>(); // Get the params
+
+  // console.log("Params: ", params.main);
+  const boardName = params.main.replaceAll("-", " ");
+  // console.log(boardName);
+  const handleDeleteBoard = () => {
+    const updatedBoards = data.boards.filter((item) => item.name !== boardName);
+    setData({ boards: updatedBoards });
+    setDeleteBoard(false);
+  };
   return (
     <>
       <Overlay isOpen={deleteBoard} onClose={() => setDeleteBoard(false)} />
@@ -9,19 +25,20 @@ export default function DeleteBoard({ deleteBoard, setDeleteBoard }: any) {
           Delete Board?
         </h1>
         <p className="text-gray-500 font-medium text-base leading-6 font-feature-settings">
-          Are you sure you want to delete the ‘Platform Launch’ board? This
-          action will remove all columns and tasks and cannot be reversed.
+          Are you sure you want to delete the ‘{boardName}’ board? This action
+          will remove all columns and tasks and cannot be reversed.
         </p>
 
         <div className="flex flex-col gap-4 pt-6 md:flex-row">
-          <button className="w-full h-10 rounded-[20px] bg-red-500  text-white text-center font-bold text-base leading-6">
+          <button
+            className="w-full h-10 rounded-[20px] bg-red-500  text-white text-center font-bold text-base leading-6"
+            onClick={handleDeleteBoard}
+          >
             Delete
           </button>
           <button
             className="w-full h-10 rounded-[20px] bg-purple-200 text-purple-700 text-center font-bold text-base leading-6"
-            onClick={() => {
-              setDeleteBoard(false);
-            }}
+            onClick={() => setDeleteBoard(false)}
           >
             Cancel
           </button>
@@ -29,4 +46,6 @@ export default function DeleteBoard({ deleteBoard, setDeleteBoard }: any) {
       </div>
     </>
   );
-}
+};
+
+export default DeleteBoard;
