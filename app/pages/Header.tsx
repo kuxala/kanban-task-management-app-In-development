@@ -70,7 +70,7 @@ export default function Header() {
           </div>
           <img
             src="/assets/icon-vertical-ellipsis.svg"
-            className="header__icon"
+            className="header__icon cursor-pointer"
             onClick={() => {
               setDots(!dots);
             }}

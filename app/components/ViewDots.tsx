@@ -28,12 +28,12 @@ export default function ViewDots({ name, board, edit }: any) {
           Delete Task
         </p>
       </div>
-      <div>
+      <div className="md:relative md:bottom-40">
         {editTask ? (
           <EditTask editTask={editTask} setEditTask={setEditTask} />
         ) : null}
       </div>
-      <div>
+      <div className=" ">
         {deleteTask ? (
           <DeleteTask deleteTask={deleteTask} setDeleteTask={setDeleteTask} />
         ) : null}

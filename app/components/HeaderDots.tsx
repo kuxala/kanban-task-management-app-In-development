@@ -14,7 +14,7 @@ export default function BoardDots({ name, board, edit }: any) {
     <>
       <div className="absolute top-20 right-5 p-4 bg-white w-48 h-24 flex flex-col rounded-lg ">
         <p
-          className="pb-2 text-gray-600 font-medium text-base leading-6"
+          className="pb-2 text-gray-600 font-medium text-base leading-6 cursor-pointer"
           onClick={() => {
             setEditBoard(!editBoard);
           }}
@@ -22,7 +22,7 @@ export default function BoardDots({ name, board, edit }: any) {
           Edit Board
         </p>
         <p
-          className="text-red-500 font-medium text-base leading-6 font-feature-settings"
+          className="text-red-500 font-medium text-base leading-6 font-feature-settings cursor-pointer"
           onClick={() => {
             setDeleteBoard(!deleteBoard);
           }}

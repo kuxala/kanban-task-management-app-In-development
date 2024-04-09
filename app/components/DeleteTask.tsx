@@ -19,7 +19,9 @@ export default function DeleteTask({ deleteTask, setDeleteTask }: any) {
           </button>
           <button
             className="w-full h-10 rounded-[20px] bg-purple-200 text-purple-700 text-center font-bold text-base leading-6"
-            onClick={() => {}}
+            onClick={() => {
+              setDeleteTask(false);
+            }}
           >
             Cancel
           </button>

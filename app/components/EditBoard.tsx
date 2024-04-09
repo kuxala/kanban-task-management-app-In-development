@@ -82,7 +82,10 @@ export default function EditBoard({ editBoard, setEditBoard }: any) {
           </button>
         </div>
         <button
-          onClick={() => setEditBoard(false)} // Assuming you want to edit the first board only
+          onClick={() => {
+            setEditBoard(false);
+            // editBoardFunction(0);
+          }} // Assuming you want to edit the first board only
           className="h-[40px] w-full rounded-[40px] mt-6 bg-indigo-600 text-white text-center font-bold text-base leading-6"
         >
           Save Changes

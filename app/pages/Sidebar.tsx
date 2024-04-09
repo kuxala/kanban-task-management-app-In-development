@@ -63,7 +63,7 @@ export default function Sidebar() {
           </div>
         </div>
 
-        <div className="sidebar__darkmode__div">
+        <div className="sidebar__darkmode__div cursor-pointer">
           <Darkmode />
           <div
             className="flex gap-2 items-center pl-8 pt-4 pb-10"
@@ -79,7 +79,7 @@ export default function Sidebar() {
 
       {!sidebar && (
         <div
-          className="flex items-end min-h-[80vh] max-w-16"
+          className="flex items-end min-h-[80vh] max-w-16 cursor-pointer"
           onClick={() => setSidebar(!sidebar)}
         >
           <div className="sidebar__show flex items-center justify-center pr-2 max-w-16">

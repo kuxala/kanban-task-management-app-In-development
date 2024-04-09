@@ -3,6 +3,7 @@ import useStore from "../useStore";
 
 export default function Rows() {
   const { columns }: any = useStore();
+  // console.log("columns: ", columns);
   const checker = (taskname: string) => {
     return columns
       .filter((column: any) => column.value === taskname)

@@ -47,6 +47,7 @@ const useStore = create((set) => ({
     { id: "Doing", value: "Doing" },
     { id: "Done", value: "Done" },
   ],
+  // columns: jsonData.boards.map((column) => column.columns),
   setColumns: (newColumns: any) => set({ columns: newColumns }),
 
   addNewBoardName: null,
