@@ -36,4 +36,30 @@ body{
   background:  #635FC7;
   color: #fff
 }
+:root {
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --link-color: #0000ee;
+  --border-color: #cccccc;
+}
 
+/* Dark mode styles */
+.dark-mode {
+  --background-color: #121212;
+  --text-color: #ffffff;
+  --link-color: #5599ff;
+  --border-color: #444444;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+a {
+  color: var(--link-color);
+}
+
+.border {
+  border-color: var(--border-color);
+}

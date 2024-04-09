@@ -63,7 +63,7 @@ const useStore = create((set) => ({
   setEdit: () => set((state: any) => ({ setEdit: !state.edit })),
 
   darkmode: false,
-  setDarkmode: () => set((state: any) => ({ setDarkmode: !state.darkmode })),
+  setDarkmode: (newValue: any) => set({ darkmode: newValue }),
 
   isOpen: true,
   setIsOpen: () => set((state: any) => ({ setIsOpen: !state.isOpen })),

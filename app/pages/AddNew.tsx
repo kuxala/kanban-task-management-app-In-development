@@ -26,7 +26,7 @@ export default function AddNew() {
   const params = useParams();
   // console.log(params.main);
 
-  console.log(data.boards);
+  // console.log(data.boards);
 
   const handleAddNewSubtask = () => {
     if (newSubtaskTitle.trim() === "") {
@@ -39,7 +39,7 @@ export default function AddNew() {
     };
 
     setNewTaskSubtasks([...newTaskSubtasks, newSubtask]);
-    setNewSubtaskTitle(""); // Reset subtask title input
+    setNewSubtaskTitle("");
   };
 
   const handleAddNewTask = () => {
@@ -114,7 +114,7 @@ export default function AddNew() {
               <h3 className="text-gray-500 font-semibold pt-4 pb-2">
                 SubTasks
               </h3>
-              {newSubtasks.map((subtask, index) => (
+              {newSubtasks.map((subtask: any, index: number) => (
                 <div key={index} className="flex items-center gap-2">
                   <input
                     className="p-2 mt-1 mb-1 text-[14px] w-full border border-gray-300 rounded-md bg-white"

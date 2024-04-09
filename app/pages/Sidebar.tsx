@@ -6,6 +6,7 @@ import useStore from "../useStore";
 import MobileSidebar from "./MobileSidebar";
 import AddBoard from "../components/AddBoard";
 import { Switch } from "@mui/material";
+import Darkmode from "../components/Darkmode";
 
 const bgColor = {
   backgroundColor: "#635FC7",
@@ -63,17 +64,7 @@ export default function Sidebar() {
         </div>
 
         <div className="sidebar__darkmode__div">
-          <div className="sidebar__darkmode flex gap-3">
-            <img src="/assets/icon-light-theme.svg" />
-            <div
-            // onClick={() => {
-            //   setDarkmode(!darkmode);
-            // }}
-            >
-              <Switch defaultChecked={false} />
-            </div>
-            <img src="/assets/icon-dark-theme.svg" />
-          </div>
+          <Darkmode />
           <div
             className="flex gap-2 items-center pl-8 pt-4 pb-10"
             onClick={() => {
