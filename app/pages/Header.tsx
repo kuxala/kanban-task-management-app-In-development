@@ -28,9 +28,7 @@ export default function Header() {
             className="header__logo__mobile"
           />
           <div className="header__title">
-            <h1 className="text-black font-bold font-sans text-lg">
-              {params.main}
-            </h1>
+            <h1 className="text-black font-[700] text-[22px]">{params.main}</h1>
           </div>
           <img
             src="../../assets/icon-chevron-down.svg"
