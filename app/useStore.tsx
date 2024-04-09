@@ -21,6 +21,12 @@ const useStore = create((set) => ({
   newTaskStatus: "Todo",
   setNewTaskStatus: (newValue: any) => set({ newTaskStatus: newValue }),
 
+  newSubtaskTitle: "",
+  setNewSubtaskTitle: (newValue: any) => set({ newSubtaskTitle: newValue }),
+
+  newSubtasks: [],
+  setNewSubtasks: (newValue: any) => set({ newSubtasks: newValue }),
+
   active: false,
   setActive: (newValue: any) => set({ active: newValue }),
 

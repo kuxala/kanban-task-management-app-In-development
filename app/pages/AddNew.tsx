@@ -18,9 +18,29 @@ export default function AddNew() {
     newTaskStatus,
     setNewTaskStatus,
     setData,
+    newSubtaskTitle,
+    newSubtasks,
+    setNewSubtasks,
+    setNewSubtaskTitle,
   }: any = useStore();
   const params = useParams();
   // console.log(params.main);
+
+  console.log(data.boards);
+
+  const handleAddNewSubtask = () => {
+    if (newSubtaskTitle.trim() === "") {
+      return;
+    }
+
+    const newSubtask = {
+      title: newSubtaskTitle.trim(),
+      isCompleted: false,
+    };
+
+    setNewTaskSubtasks([...newTaskSubtasks, newSubtask]);
+    setNewSubtaskTitle(""); // Reset subtask title input
+  };
 
   const handleAddNewTask = () => {
     const newTask = {
@@ -94,26 +114,34 @@ export default function AddNew() {
               <h3 className="text-gray-500 font-semibold pt-4 pb-2">
                 SubTasks
               </h3>
-              {/* {subtasks?.map((subtask: any, index: number) => (
+              {newSubtasks.map((subtask, index) => (
                 <div key={index} className="flex items-center gap-2">
                   <input
-                    className="p-2 mt-1 mb-1 text-[14px] w-full border border-gray-300 rounded-md  bg-white "
-                    placeholder="e.g. Make coffee"
-                    {...register(`subtasks[${index}]`)}
+                    className="p-2 mt-1 mb-1 text-[14px] w-full border border-gray-300 rounded-md bg-white"
+                    value={subtask.title}
+                    readOnly
                   />
                   <img
                     src="/assets/icon-cross.svg"
-                    onClick={() => handleDeleteSubtask(index)}
+                    alt="Remove subtask"
+                    onClick={() => {
+                      const updatedSubtasks = [...newSubtasks];
+                      updatedSubtasks.splice(index, 1);
+                      setNewSubtasks(updatedSubtasks);
+                    }}
                   />
                 </div>
-              ))} */}
+              ))}
+              <input
+                placeholder="Add a subtask"
+                className="p-2 w-full border border-gray-300 rounded-md bg-white"
+                value={newSubtaskTitle}
+                onChange={(e) => setNewSubtaskTitle(e.target.value)}
+              />
               <button
-                // onClick={handleAddSubtask}
                 className="w-full h-10 mt-3 mb-5 rounded-full bg-opacity-10 bg-purple-400 text-purple-600 text-center text-sm font-semibold leading-5"
-                type="submit"
-                onClick={() => {
-                  // Handle adding a new subtask
-                }}
+                type="button"
+                onClick={handleAddNewSubtask}
               >
                 Add New Subtask
               </button>
