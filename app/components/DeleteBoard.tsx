@@ -13,7 +13,9 @@ const DeleteBoard = ({ deleteBoard, setDeleteBoard }: any) => {
   const boardName = params.main.replaceAll("-", " ");
   // console.log(boardName);
   const handleDeleteBoard = () => {
-    const updatedBoards = data.boards.filter((item) => item.name !== boardName);
+    const updatedBoards = data.boards.filter(
+      (item: any) => item.name !== boardName
+    );
     setData({ boards: updatedBoards });
     setDeleteBoard(false);
   };

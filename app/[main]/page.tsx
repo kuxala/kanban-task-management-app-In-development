@@ -18,7 +18,7 @@ export default function Main() {
   // console.log("Boards ", data.boards[0]);
   // console.log("Columns", data.boards[0].columns);
   // console.log(isOpen);
-  console.log("Data Boards ", data.boards);
+  // console.log("Data Boards ", data.boards);
 
   return (
     <>
