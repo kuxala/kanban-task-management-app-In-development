@@ -3,8 +3,23 @@ import jsonData from "./data.json";
 
 const useStore = create((set) => ({
   data: jsonData,
-  setData: (newValue: any) =>
-    set((state: any) => ({ data: { ...state.data, ...newValue } })),
+  setData: (newValue: any) => set({ data: newValue }),
+
+  boards: jsonData.boards,
+  setboards: (newValue: any) => set({ boards: newValue }),
+
+  newTaskTitle: "",
+  setNewTaskTitle: (newValue: any) => set({ newTaskTitle: newValue }),
+
+  newTaskDescription: "",
+  setNewTaskDescription: (newValue: any) =>
+    set({ newTaskDescription: newValue }),
+
+  newTaskSubtasks: [],
+  setNewTaskSubtasks: (newValue: any) => set({ newTaskSubtasks: newValue }),
+
+  newTaskStatus: "Todo",
+  setNewTaskStatus: (newValue: any) => set({ newTaskStatus: newValue }),
 
   active: false,
   setActive: (newValue: any) => set({ active: newValue }),
@@ -20,10 +35,11 @@ const useStore = create((set) => ({
 
   addNewTask: "",
   setAddNewTask: (newValue: any) => set({ addNewTask: newValue }),
+
   columns: [
-    { id: 1, value: "Todo" },
-    { id: 2, value: "Doing" },
-    { id: 3, value: "Done" },
+    { id: "Todo", value: "Todo" },
+    { id: "Doing", value: "Doing" },
+    { id: "Done", value: "Done" },
   ],
   setColumns: (newColumns: any) => set({ columns: newColumns }),
 
@@ -49,5 +65,4 @@ const useStore = create((set) => ({
   view: false,
   setView: (newValue: any) => set({ view: newValue }),
 }));
-
 export default useStore;

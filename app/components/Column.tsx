@@ -30,11 +30,11 @@ export default function Column({ taskname }: any) {
                         className="section__div"
                         onClick={() => setView(true)}
                       >
-                        <div className="flex flex-col">
-                          <p className="text-black font-bold text-base pb-1">
+                        <div className="flex flex-col ">
+                          <p className="text-black font-bold text-base pb-1 hover:text-[#635fc7]">
                             {task.title}
                           </p>
-                          <p className="text-gray-600 font-bold text-xs">
+                          <p className="text-gray-600 font-bold text-xs ">
                             Subtasks
                           </p>
                         </div>

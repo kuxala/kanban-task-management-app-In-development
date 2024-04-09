@@ -14,9 +14,7 @@ export default function View() {
   const { data, setData, view, setView }: any = useStore();
   const params = useParams<{ tag: string; item: string; main: string }>();
   const [dots, setDots] = useState(false);
-  const filteredBoard = data.boards.find(
-    (board: any) => board?.name?.replace(" ", "-") === params.main
-  );
+
   return (
     <>
       <Overlay isOpen={view} onClose={() => setView(false)} />
@@ -26,7 +24,6 @@ export default function View() {
             <h1 className="pb-6 text-black-900 font-bold text-lg font-feature-settings">
               {/* {data.boards.map((boardName: any) => {
                 if (boardName.name.replace(" ", "-") == params.main) {
-                  console.log(boardName.columns[0].tasks[0].title);
                   return boardName.columns[0].tasks[0].title;
                 }
               })} */}

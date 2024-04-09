@@ -4,7 +4,6 @@ const nextConfig = {
   experimental: {
     esmExternals: true,
     serverComponents: false,
-    reactStrictMode: false,
   }
 };
 

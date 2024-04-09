@@ -1,5 +1,5 @@
 "use client";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import "../styles/Sidebar.css";
 import Link from "next/link";
 import useStore from "../useStore";
@@ -24,6 +24,11 @@ export default function Sidebar() {
     setAddNewBoard,
   }: any = useStore();
 
+  useEffect(() => {
+    if (data?.boards?.length > 0) {
+      setActive(data.boards[0].name);
+    }
+  }, []);
   return (
     <>
       {addNewBoard ? <AddBoard /> : null}

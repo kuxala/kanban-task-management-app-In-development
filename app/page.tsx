@@ -1,8 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import MainSection from "./pages/MainSection";
-import useStore from "./useStore";
+import EmptyPage from "./pages/Empty";
 
 export default function Home() {
-  return <MainSection />;
+  return <EmptyPage />;
 }

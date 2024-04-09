@@ -2,10 +2,65 @@ import { useContext, useState } from "react";
 import Overlay from "./Overlay"; // Import Overlay component
 import "../styles/AddNew.css";
 import useStore from "../useStore";
+import { useParams } from "next/navigation";
 
 export default function AddNew() {
-  const { addNew, setAddNew, dots, setDots, menu, setMenu }: any = useStore();
+  const {
+    data,
+    addNew,
+    setAddNew,
+    newTaskTitle,
+    setNewTaskTitle,
+    newTaskDescription,
+    setNewTaskDescription,
+    newTaskSubtasks,
+    setNewTaskSubtasks,
+    newTaskStatus,
+    setNewTaskStatus,
+    setData,
+  }: any = useStore();
+  const params = useParams();
+  // console.log(params.main);
 
+  const handleAddNewTask = () => {
+    const newTask = {
+      title: newTaskTitle,
+      description: newTaskDescription,
+      status: newTaskStatus,
+      subtasks: newTaskSubtasks,
+    };
+
+    const boardIndex = data.boards.findIndex((board: any) => {
+      // console.log("Boards:", board.name.replace(" ", "-"));
+      // console.log(params.main);
+      return board.name.replace(" ", "-") === params.main;
+    });
+
+    if (boardIndex !== -1) {
+      const columnIndex = data.boards[boardIndex].columns.findIndex(
+        (column: any) => column.name === newTaskStatus
+      );
+
+      if (columnIndex !== -1) {
+        const updatedData = { ...data };
+        updatedData.boards[boardIndex].columns[columnIndex].tasks.push(newTask);
+        setData(updatedData);
+      } else {
+        console.error("Column not found for status:", newTaskStatus);
+      }
+    } else {
+      console.error("Board not found:", params.main);
+    }
+
+    // Reset input values and close the form as before
+    setNewTaskTitle("");
+    setNewTaskDescription("");
+    setNewTaskSubtasks([]);
+    setNewTaskStatus("Todo");
+    setAddNew(false);
+  };
+
+  // console.log(data);
   return (
     <>
       <Overlay isOpen={addNew} onClose={() => setAddNew(false)} />
@@ -20,6 +75,8 @@ export default function AddNew() {
               <input
                 placeholder="e.g. Take coffee break"
                 className="p-2 text-[14px] w-full border border-gray-300 rounded-md  bg-white"
+                value={newTaskTitle}
+                onChange={(e) => setNewTaskTitle(e.target.value)}
               />
             </div>
             <div>
@@ -29,6 +86,8 @@ export default function AddNew() {
               <textarea
                 className="addnew__description text-[14px] p-2 resize-y border border-gray-300 rounded-md w-full min-h-[150px]"
                 placeholder="e.g. It’s always good to take a break. This 15 minute break will  recharge the batteries a little."
+                value={newTaskDescription}
+                onChange={(e) => setNewTaskDescription(e.target.value)}
               ></textarea>
             </div>
             <div>
@@ -51,19 +110,30 @@ export default function AddNew() {
               <button
                 // onClick={handleAddSubtask}
                 className="w-full h-10 mt-3 mb-5 rounded-full bg-opacity-10 bg-purple-400 text-purple-600 text-center text-sm font-semibold leading-5"
+                type="submit"
+                onClick={() => {
+                  // Handle adding a new subtask
+                }}
               >
                 Add New Subtask
               </button>
             </div>
             <div>
               <h3 className="text-gray-500 font-semibold pb-2 ">Status</h3>
-              <select className="w-full h-12 border border-gray-300 rounded-md p-2 bg-white">
-                <option value="1">Todo</option>
-                <option value="2">Doing</option>
-                <option value="2">Done</option>
+              <select
+                className="w-full h-12 border border-gray-300 rounded-md p-2 bg-white"
+                onChange={(e) => setNewTaskStatus(e.target.value)}
+              >
+                <option value="Todo">Todo</option>
+                <option value="Doing">Doing</option>
+                <option value="Done">Done</option>
               </select>
             </div>
-            <button className=" h-[40px] w-full rounded-[40px] mt-6 bg-indigo-600 text-white text-center font-bold text-base leading-6">
+            <button
+              className=" h-[40px] w-full rounded-[40px] mt-6 bg-indigo-600 text-white text-center font-bold text-base leading-6"
+              onClick={handleAddNewTask}
+              type="submit"
+            >
               Add New Task
             </button>
           </div>

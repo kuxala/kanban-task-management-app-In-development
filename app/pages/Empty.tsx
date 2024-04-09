@@ -6,8 +6,8 @@ import useStore from "../useStore";
 export default function MainSection() {
   return (
     <>
-      {/* <div className="w-screen flex items-center justify-center">
-        <div className="section__addnew">
+      <div className="w-screen flex items-center justify-center mt-24 ">
+        <div className="flex flex-col justify-center items-center">
           <p className="section__text">
             This board is empty. Create a new column to get started
           </p>
@@ -15,7 +15,7 @@ export default function MainSection() {
             + Create New Column
           </button>
         </div>
-      </div> */}
+      </div>
     </>
   );
 }
