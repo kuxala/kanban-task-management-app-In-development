@@ -8,7 +8,6 @@ export default function Rows() {
   const checker = (taskname: string) => {
     // console.log(taskname);
     return columns
-
       .filter((column: any) => column.name === taskname)
       .flatMap((column: any) => column.tasks);
   };

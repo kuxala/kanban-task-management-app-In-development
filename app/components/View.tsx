@@ -14,7 +14,7 @@ export default function View() {
   const { data, setData, view, setView, clicked, setClicked }: any = useStore();
   const params = useParams<{ tag: string; item: string; main: string }>();
   const [dots, setDots] = useState(false);
-  console.log(clicked);
+
   return (
     <>
       <Overlay isOpen={view} onClose={() => setView(false)} />
@@ -38,9 +38,11 @@ export default function View() {
             <h3 className="pb-4 text-gray-500 font-bold text-xs leading-normal">
               Subtask(s)
             </h3>
-            {clicked?.subtasks?.map((tasks: any) => {
-              return tasks;
-            })}
+            <ul>
+              {clicked?.subtasks?.map((tasks: any) => {
+                return <li>{tasks.title}</li>;
+              })}
+            </ul>
           </div>
           <div>
             <h3 className="pt-6 pb-2 text-gray-500 font-bold text-xs leading-normal">
