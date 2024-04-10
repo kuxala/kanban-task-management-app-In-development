@@ -51,7 +51,7 @@ export default function Sidebar() {
                 </Link>
               </div>
             ))}
-            <div className="sidebar__add__board flex gap-2 items-center">
+            <div className="sidebar__add__board flex gap-2 items-center ">
               <button
                 onClick={() => {
                   setAddNewBoard(true);

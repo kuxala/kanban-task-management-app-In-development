@@ -45,7 +45,7 @@ body{
 
 /* Dark mode styles */
 .dark-mode {
-  --background-color: #121212;
+  --background-color: #20212C;
   --text-color: #ffffff;
   --link-color: #5599ff;
   --border-color: #444444;

@@ -1,5 +1,6 @@
 import Column from "./Column";
 import useStore from "../useStore";
+import NewColumn from "./NewColumn";
 
 export default function Rows() {
   const { columns }: any = useStore();
@@ -16,6 +17,7 @@ export default function Rows() {
         const tasks = checker(item.value);
         return <Column key={item.id} tasks={tasks} taskname={item.value} />;
       })}
+      <NewColumn />
     </>
   );
 }
