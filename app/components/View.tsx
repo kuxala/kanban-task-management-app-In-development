@@ -22,15 +22,15 @@ export default function View() {
         <div>
           <div className="flex justify-between items-center gap-4">
             <h1 className="pb-6 text-black-900 font-bold text-lg font-feature-settings">
-              {/* {data.boards.map((boardName: any) => {
+              {data.boards.map((boardName: any) => {
                 if (boardName.name.replace(" ", "-") == params.main) {
                   return boardName.columns[0].tasks[0].title;
                 }
-              })} */}
+              })}
             </h1>
             <img
               src="/assets/icon-vertical-ellipsis.svg"
-              className="h-full"
+              className="h-full cursor-pointer"
               onClick={() => setDots(!dots)}
             />
           </div>
@@ -41,10 +41,6 @@ export default function View() {
               Subtask(s)
             </h3>
             {/* Render subtasks if they exist */}
-
-            <ul>
-              <li></li>
-            </ul>
           </div>
           <div>
             <h3 className="pt-6 pb-2 text-gray-500 font-bold text-xs leading-normal">
@@ -58,8 +54,6 @@ export default function View() {
           </div>
         </div>
       </div>
-
-      {/* <div>{editTask ? <EditTask /> : null}</div> */}
     </>
   );
 }

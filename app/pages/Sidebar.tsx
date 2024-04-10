@@ -52,6 +52,7 @@ export default function Sidebar() {
               </div>
             ))}
             <div className="sidebar__add__board flex gap-2 items-center ">
+              <img src="assets/icon-board.svg" alt="icon-board" />
               <button
                 onClick={() => {
                   setAddNewBoard(true);

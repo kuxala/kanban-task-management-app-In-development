@@ -12,7 +12,7 @@ export default function ViewDots({ name, board, edit }: any) {
     <>
       <div className="absolute top-15 right-5 p-4 bg-slate-50 w-48 h-24 flex flex-col rounded-lg ">
         <p
-          className="pb-2 text-gray-600 font-medium text-base leading-6"
+          className="pb-2 text-gray-600 font-medium text-base leading-6 cursor-pointer"
           onClick={() => {
             setEditTask(!editTask);
           }}
@@ -20,7 +20,7 @@ export default function ViewDots({ name, board, edit }: any) {
           Edit Task
         </p>
         <p
-          className="text-red-500 font-medium text-base leading-6 font-feature-settings"
+          className="text-red-500 font-medium text-base leading-6 font-feature-settings cursor-pointer"
           onClick={() => {
             setDeleteTask(!deleteTask);
           }}

@@ -12,13 +12,10 @@ export default function App() {
   const handleDragEnd = (event: any) => {
     const { over } = event;
     if (over && over.id === "droppable") {
-      // Element dropped inside droppable area
       setDroppedElement(originalElement);
       setOriginalElement(null);
     } else {
-      // Element dropped outside droppable area
       setDroppedElement(null);
-      // Reset the draggable element to its original position
       setOriginalElement("Drag me");
     }
   };
