@@ -2,6 +2,7 @@
 import { useContext, useState } from "react";
 import "../styles/MainSection.css";
 import useStore from "../useStore";
+import Page from "../components/drag-drop/page";
 
 export default function MainSection() {
   return (
@@ -16,6 +17,7 @@ export default function MainSection() {
           </button>
         </div>
       </div>
+      {/* <Page /> */}
     </>
   );
 }

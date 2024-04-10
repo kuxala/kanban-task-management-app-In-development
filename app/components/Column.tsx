@@ -1,6 +1,7 @@
 import { useParams } from "next/navigation";
 import useStore from "../useStore";
 import View from "./View";
+import { DndContext } from "@dnd-kit/core";
 
 export default function Column({ taskname }: any) {
   const { data, view, setView, columns }: any = useStore();
