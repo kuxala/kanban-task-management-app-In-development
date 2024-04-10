@@ -2,6 +2,7 @@ import { useState } from "react";
 import Overlay from "../pages/Overlay";
 import "../styles/AddNew.css";
 import useStore from "../useStore";
+import { useParams } from "next/navigation";
 
 export default function EditBoard({ editBoard, setEditBoard }: any) {
   const {
@@ -12,17 +13,28 @@ export default function EditBoard({ editBoard, setEditBoard }: any) {
     editBoardName,
     setEditBoardName,
   }: any = useStore();
+  const params = useParams<any>();
 
-  const editBoardFunction = (boardId: number) => {
+  const editBoardFunction = () => {
     const boardIndex = data.boards.findIndex(
-      (board: any) => board.id === boardId
+      (board: any) => board.name.replace(" ", "-") === params.main
     );
-    if (boardIndex === -1) return;
-    const newName = editBoardName.trim();
-    if (!newName) return;
-    const updatedBoards = [...data.boards];
-    updatedBoards[boardIndex] = { ...updatedBoards[boardIndex], name: newName };
-    setData({ boards: updatedBoards });
+
+    if (boardIndex !== -1) {
+      const newName = editBoardName.trim();
+      if (newName) {
+        const updatedBoards = [...data.boards];
+        updatedBoards[boardIndex] = {
+          ...updatedBoards[boardIndex],
+          name: newName,
+        };
+        setData({ boards: updatedBoards });
+      } else {
+        console.error("New name is empty.");
+      }
+    } else {
+      console.error("Board not found:", params.main);
+    }
     setEditBoard(false);
   };
 
@@ -40,7 +52,7 @@ export default function EditBoard({ editBoard, setEditBoard }: any) {
     );
     setColumns(updatedColumns);
   };
-
+  console.log("edit board: ", editBoardName);
   return (
     <>
       <Overlay isOpen={editBoard} onClose={() => setEditBoard(false)} />
@@ -52,7 +64,7 @@ export default function EditBoard({ editBoard, setEditBoard }: any) {
           <div>
             <h3 className="text-gray-500 font-semibold pb-2 ">Board Name</h3>
             <input
-              placeholder="Platform Launch"
+              placeholder={params.main}
               className="p-2 text-[14px] w-full border border-gray-300 rounded-md  bg-white"
               type="text"
               value={editBoardName}
@@ -84,8 +96,8 @@ export default function EditBoard({ editBoard, setEditBoard }: any) {
         <button
           onClick={() => {
             setEditBoard(false);
-            // editBoardFunction(0);
-          }} // Assuming you want to edit the first board only
+            editBoardFunction();
+          }}
           className="h-[40px] w-full rounded-[40px] mt-6 bg-indigo-600 text-white text-center font-bold text-base leading-6"
         >
           Save Changes

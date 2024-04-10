@@ -8,10 +8,10 @@ export default function Column({ taskname }: any) {
   const params = useParams<any>();
   // console.log("Params: ", params.main);
 
-  const filteredBoard = data.boards.find(
-    (board: any) => board?.name?.replace(" ", "-") === params.main
-  );
-
+  const filteredBoard = data.boards.find((board: any) => {
+    return board?.name?.replace(" ", "-") === params.main;
+  });
+  // console.log("filterBoard: ", filteredBoard);
   return (
     <>
       <div className="">
