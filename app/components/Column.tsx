@@ -2,9 +2,10 @@ import { useParams } from "next/navigation";
 import useStore from "../useStore";
 import View from "./View";
 import { DndContext } from "@dnd-kit/core";
+import { useState } from "react";
 
 export default function Column({ taskname }: any) {
-  const { data, view, setView, columns }: any = useStore();
+  const { data, view, setView, columns, clicked, setClicked }: any = useStore();
   const params = useParams<any>();
   // console.log("Params: ", params.main);
 
@@ -29,7 +30,10 @@ export default function Column({ taskname }: any) {
                       <div
                         key={task.title}
                         className="section__div"
-                        onClick={() => setView(true)}
+                        onClick={() => {
+                          setView(true);
+                          setClicked(task);
+                        }}
                       >
                         <div className="flex flex-col ">
                           <p className="text-black font-bold text-base pb-1 hover:text-[#635fc7]">

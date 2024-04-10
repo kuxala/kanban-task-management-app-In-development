@@ -5,6 +5,9 @@ const useStore = create((set) => ({
   data: jsonData,
   setData: (newValue: any) => set({ data: newValue }),
 
+  clicked: {},
+  setClicked: (newValue: any) => set({ clicked: newValue }),
+
   boards: jsonData.boards,
   setboards: (newValue: any) => set({ boards: newValue }),
 
@@ -43,9 +46,9 @@ const useStore = create((set) => ({
   setAddNewTask: (newValue: any) => set({ addNewTask: newValue }),
 
   columns: [
-    { id: "Todo", value: "Todo" },
-    { id: "Doing", value: "Doing" },
-    { id: "Done", value: "Done" },
+    { id: "Todo", name: "Todo" },
+    { id: "Doing", name: "Doing" },
+    { id: "Done", name: "Done" },
   ],
   // columns: jsonData.boards.map((column) => column.columns),
   setColumns: (newColumns: any) => set({ columns: newColumns }),
