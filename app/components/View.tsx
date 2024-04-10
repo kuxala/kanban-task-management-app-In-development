@@ -15,6 +15,14 @@ export default function View() {
   const params = useParams<{ tag: string; item: string; main: string }>();
   const [dots, setDots] = useState(false);
 
+  const handleChange =
+    (taskIndex: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
+      const updatedSubtasks = [...clicked.subtasks];
+      updatedSubtasks[taskIndex].isCompleted = event.target.checked;
+
+      setData({ ...data, clicked: { ...clicked, subtasks: updatedSubtasks } }); // Example update
+    };
+
   return (
     <>
       <Overlay isOpen={view} onClose={() => setView(false)} />
@@ -39,8 +47,37 @@ export default function View() {
               Subtask(s)
             </h3>
             <ul>
-              {clicked?.subtasks?.map((tasks: any) => {
-                return <li>{tasks.title}</li>;
+              {clicked?.subtasks?.map((tasks: any, index: any) => {
+                console.log(tasks);
+                return (
+                  <li
+                    className="flex gap-2 items-center bg-[#F4F7FD] mt-2 p-2 rounded"
+                    key={index}
+                  >
+                    <input
+                      type="checkbox"
+                      className="
+                        peer relative appearance-none shrink-0 w-4 h-4 border-2 border-blue-200 rounded-sm mt-1 bg-white
+                        focus:outline-none focus:ring-offset-0 focus:ring-1 focus:ring-blue-100
+                        checked:bg-blue-500 checked:border-0
+                        disabled:border-steel-400 disabled:bg-steel-400
+                      "
+                      // value={tasks.isCompleted}
+                      checked={tasks.isCompleted}
+                      onChange={handleChange(index)}
+                    />
+                    <span
+                      style={{
+                        textDecoration: tasks.isCompleted
+                          ? "line-through"
+                          : "none",
+                      }}
+                      className="text-[#000112] text-xs font-[700] opacity-60"
+                    >
+                      {tasks.title}
+                    </span>
+                  </li>
+                );
               })}
             </ul>
           </div>
