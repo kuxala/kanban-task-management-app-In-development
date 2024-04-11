@@ -38,19 +38,32 @@ body{
 }
 :root {
   --background-color: #F4F7FD;
+  --sidebar: #fff;
   --text-color: #000000;
   --link-color: #0000ee;
   --border-color: #cccccc;
+  --mainSection: #fff;
+  
+  
 }
 
 /* Dark mode styles */
 .dark-mode {
   --background-color: #20212C;
+  --sidebar: #2B2C37 !important;
   --text-color: #ffffff;
   --link-color: #5599ff;
   --border-color: #444444;
+  --mainSection: #2B2C37 !important;
+  
 }
-
+.sidebar, .header{
+  background-color: var(--sidebar) !important;
+}
+.section__div{
+  background-color: var(--mainSection) !important  ;
+  color: var(--text-color) !important;
+}
 body {
   background-color: var(--background-color);
   color: var(--text-color);

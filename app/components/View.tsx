@@ -48,7 +48,6 @@ export default function View() {
             </h3>
             <ul>
               {clicked?.subtasks?.map((tasks: any, index: any) => {
-                console.log(tasks);
                 return (
                   <li
                     className="flex gap-2 items-center bg-[#F4F7FD] mt-2 p-2 rounded"

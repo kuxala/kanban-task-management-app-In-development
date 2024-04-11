@@ -5,7 +5,8 @@ import { DndContext } from "@dnd-kit/core";
 import { useState } from "react";
 
 export default function Column({ taskname }: any) {
-  const { data, view, setView, columns, clicked, setClicked }: any = useStore();
+  const { data, view, setView, columns, clicked, setClicked, darkmode }: any =
+    useStore();
   const params = useParams<any>();
   // console.log("Params: ", params.main);
 
@@ -36,7 +37,10 @@ export default function Column({ taskname }: any) {
                         }}
                       >
                         <div className="flex flex-col ">
-                          <p className="text-black font-bold text-base pb-1 hover:text-[#635fc7]">
+                          <p
+                            className="text-black font-bold text-base pb-1 hover:text-[#635fc7]"
+                            style={{ color: darkmode ? "#fff" : "black" }}
+                          >
                             {task.title}
                           </p>
                           <p className="text-gray-600 font-bold text-xs ">

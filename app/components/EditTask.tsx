@@ -1,6 +1,28 @@
+import { useEffect } from "react";
 import Overlay from "../pages/Overlay";
 import "../styles/AddNew.css";
+import useStore from "../useStore";
 export default function EditTask({ editTask, setEditTask }: any) {
+  const { clicked, setClicked }: any = useStore();
+
+  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const titleValue = e.target.value;
+    setClicked((prevState: any) => ({
+      ...prevState,
+      title: titleValue,
+    }));
+  };
+
+  // const handleDescriptionChange = (
+  //   e: React.ChangeEvent<HTMLTextAreaElement>
+  // ) => {
+  //   const descriptionValue = e.target.value;
+  //   setClicked((prevState: any) => ({
+  //     ...prevState,
+  //     description: descriptionValue,
+  //   }));
+  // };
+
   return (
     <>
       <Overlay isOpen={editTask} onClose={() => setEditTask(false)} />
@@ -13,10 +35,10 @@ export default function EditTask({ editTask, setEditTask }: any) {
           <div>
             <h3 className="text-gray-500 font-semibold pb-2 ">Title</h3>
             <input
-              placeholder="e.g. Take coffee break"
               className="p-2 text-[14px] w-full border border-gray-300 rounded-md  bg-white"
               type="text"
-              // {...register("title")}
+              value={clicked.title}
+              onChange={handleTitleChange}
             />
           </div>
           <div>
@@ -25,25 +47,13 @@ export default function EditTask({ editTask, setEditTask }: any) {
             </h3>
             <textarea
               className="addnew__description text-[14px] p-2 resize-y border border-gray-300 rounded-md w-full min-h-[150px]"
-              placeholder="e.g. It’s always good to take a break. This 15 minute break will  recharge the batteries a little."
               // {...register("description")}
+              value={clicked.description}
             ></textarea>
           </div>
           <div>
             <h3 className="text-gray-500 font-semibold pt-4 pb-2">SubTasks</h3>
-            {/* {subtasks.map((subtask: any, index: number) => (
-              <div key={index} className="flex items-center gap-2">
-                <input
-                  className="p-2 mt-1 mb-1 text-[14px] w-full border border-gray-300 rounded-md  bg-white "
-                  placeholder="e.g. Make coffee"
-                  {...register(`subtasks[${index}]`)}
-                />
-                <img
-                  src="/assets/icon-cross.svg"
-                  onClick={() => handleDeleteSubtask(index)}
-                />
-              </div>
-            ))} */}
+            {clicked.description}
             <button
               // onClick={handleAddSubtask}
               className="w-full h-10 mt-3 mb-5 rounded-full bg-opacity-10 bg-purple-400 text-purple-600 text-center text-sm font-semibold leading-5"
@@ -59,6 +69,17 @@ export default function EditTask({ editTask, setEditTask }: any) {
               <option value="2">Done</option>
             </select>
           </div>
+          <button
+            type="submit"
+            className=" h-[40px] w-full rounded-[40px] mt-6 bg-indigo-600 text-white text-center font-bold text-base leading-6"
+            onClick={() => {
+              // setAddNewBoard(false);
+              // dataPush();
+              setEditTask();
+            }}
+          >
+            Save Changes
+          </button>
         </div>
       </div>
     </>

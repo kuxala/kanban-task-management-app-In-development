@@ -8,7 +8,7 @@ import { useParams } from "next/navigation";
 import EditBoard from "../components/EditBoard";
 
 export default function Header() {
-  const { addNew, setAddNew, menu, setMenu }: any = useStore();
+  const { addNew, setAddNew, menu, setMenu, darkmode }: any = useStore();
   const params = useParams<{ tag: string; item: string; main: string }>();
 
   const [dots, setDots] = useState(false);
@@ -17,18 +17,30 @@ export default function Header() {
     <>
       <header className="header">
         <div className="header__container">
-          <img
-            src="/assets/logo-dark.svg"
-            alt="Logo"
-            className="header__logo__desktop"
-          />
+          {darkmode ? (
+            <img
+              src="/assets/logo-light.svg"
+              alt="Logo"
+              className="header__logo__desktop"
+            />
+          ) : (
+            <img
+              src="/assets/logo-dark.svg"
+              alt="Logo"
+              className="header__logo__desktop"
+            />
+          )}
+
           <img
             src="/assets/logo-mobile.svg"
             alt="Logo"
             className="header__logo__mobile"
           />
           <div className="header__title">
-            <h1 className="text-[#000112] font-[700] text-[22px]">
+            <h1
+              className="text-[#000112] font-[700] text-[22px]"
+              style={{ color: darkmode ? "#fff" : "black" }}
+            >
               {params.main}
             </h1>
           </div>

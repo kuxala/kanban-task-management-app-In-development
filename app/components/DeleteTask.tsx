@@ -1,6 +1,9 @@
 import Overlay from "../pages/Overlay";
+import useStore from "../useStore";
 
 export default function DeleteTask({ deleteTask, setDeleteTask }: any) {
+  const { clicked, setClicked }: any = useStore();
+
   return (
     <>
       <Overlay isOpen={deleteTask} onClose={() => setDeleteTask(false)} />
@@ -14,7 +17,10 @@ export default function DeleteTask({ deleteTask, setDeleteTask }: any) {
         </p>
 
         <div className="flex flex-col gap-4 pt-6 md:flex-row">
-          <button className="w-full h-10 rounded-[20px] bg-red-500  text-white text-center font-bold text-base leading-6">
+          <button
+            className="w-full h-10 rounded-[20px] bg-red-500  text-white text-center font-bold text-base leading-6"
+            onClick={() => setClicked("")}
+          >
             Delete
           </button>
           <button

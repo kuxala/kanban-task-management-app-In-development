@@ -7,13 +7,14 @@ export default function Darkmode() {
   const { darkmode, setDarkmode }: any = useStore();
 
   useEffect(() => {
-    // Apply the class to the body element
     document.body.classList.toggle("dark-mode", darkmode);
-  }, [darkmode]); // Re-apply when darkmode changes
-
+  }, [darkmode]);
   return (
     <>
-      <div className="sidebar__darkmode  h-12 flex gap-3 items-center justify-center bg-purple-300 bg-opacity-10   ">
+      <div
+        className="sidebar__darkmode  h-12 flex gap-3 items-center justify-center bg-purple-300 bg-opacity-10 "
+        style={{ backgroundColor: darkmode ? "#20212c" : "#F4F7FD" }}
+      >
         <img src="/assets/icon-light-theme.svg" />
         <div>
           <Switch

@@ -111,6 +111,7 @@
     
     .section__text{
         color: var(--Medium-Grey, #828FA3);
+        
         text-align: center;
         font-feature-settings: 'clig' off, 'liga' off;
         font-size: 18px;
