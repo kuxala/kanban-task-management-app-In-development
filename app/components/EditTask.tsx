@@ -4,6 +4,7 @@ import "../styles/AddNew.css";
 import useStore from "../useStore";
 export default function EditTask({ editTask, setEditTask }: any) {
   const { clicked, setClicked }: any = useStore();
+  console.log(clicked);
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const titleValue = e.target.value;
@@ -13,15 +14,15 @@ export default function EditTask({ editTask, setEditTask }: any) {
     }));
   };
 
-  // const handleDescriptionChange = (
-  //   e: React.ChangeEvent<HTMLTextAreaElement>
-  // ) => {
-  //   const descriptionValue = e.target.value;
-  //   setClicked((prevState: any) => ({
-  //     ...prevState,
-  //     description: descriptionValue,
-  //   }));
-  // };
+  const handleDescriptionChange = (
+    e: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    const descriptionValue = e.target.value;
+    setClicked((prevState: any) => ({
+      ...prevState,
+      description: descriptionValue,
+    }));
+  };
 
   return (
     <>
@@ -49,6 +50,7 @@ export default function EditTask({ editTask, setEditTask }: any) {
               className="addnew__description text-[14px] p-2 resize-y border border-gray-300 rounded-md w-full min-h-[150px]"
               // {...register("description")}
               value={clicked.description}
+              onChange={handleDescriptionChange}
             ></textarea>
           </div>
           <div>

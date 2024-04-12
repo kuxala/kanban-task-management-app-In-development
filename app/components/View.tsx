@@ -11,7 +11,8 @@ import ViewDots from "./ViewDots";
 import DeleteTask from "./DeleteTask";
 
 export default function View() {
-  const { data, setData, view, setView, clicked, setClicked }: any = useStore();
+  const { data, setData, view, setView, clicked, setClicked, darkmode }: any =
+    useStore();
   const params = useParams<{ tag: string; item: string; main: string }>();
   const [dots, setDots] = useState(false);
 
@@ -26,7 +27,10 @@ export default function View() {
   return (
     <>
       <Overlay isOpen={view} onClose={() => setView(false)} />
-      <div className="fixed top-0 md:top-[20%] md:left-1/2 md:-translate-x-1/2 rounded-[8px] left-0 right-0 bg-white m-6 p-6 z-50 md:w-[500px]">
+      <div
+        className="fixed top-0 md:top-[20%] md:left-1/2 md:-translate-x-1/2 rounded-[8px] left-0 right-0 bg-white m-6 p-6 z-50 md:w-[500px]"
+        style={{ backgroundColor: darkmode ? "#2B2C37" : "#fff" }}
+      >
         <div>
           <div className="flex justify-between items-center gap-4 pb-4">
             <h1 className=" text-black-900 font-bold text-lg font-feature-settings">
@@ -51,6 +55,9 @@ export default function View() {
                 return (
                   <li
                     className="flex gap-2 items-center bg-[#F4F7FD] mt-2 p-2 rounded"
+                    style={{
+                      backgroundColor: darkmode ? "#20212C" : "",
+                    }}
                     key={index}
                   >
                     <input
@@ -70,6 +77,7 @@ export default function View() {
                         textDecoration: tasks.isCompleted
                           ? "line-through"
                           : "none",
+                        color: darkmode ? "#fff" : "red",
                       }}
                       className="text-[#000112] text-xs font-[700] opacity-60"
                     >
@@ -85,12 +93,36 @@ export default function View() {
               Current Status
             </h3>
             <select
-              className="w-full h-12 border border-gray-300 rounded-md p-2 bg-white"
+              className="w-full h-12 border border-gray-300 rounded-md p-2 bg-transparent"
               value={clicked.status}
             >
-              <option value="Todo">Todo</option>
-              <option value="Doing">Doing</option>
-              <option value="Done">Done</option>
+              <option
+                value="Todo"
+                style={{
+                  color: darkmode ? "#fff" : "black",
+                  backgroundColor: darkmode ? "#20212C" : "#fff",
+                }}
+              >
+                Todo
+              </option>
+              <option
+                value="Doing"
+                style={{
+                  color: darkmode ? "#fff" : "black",
+                  backgroundColor: darkmode ? "#20212C" : "#fff",
+                }}
+              >
+                Doing
+              </option>
+              <option
+                value="Done"
+                style={{
+                  color: darkmode ? "#fff" : "black",
+                  backgroundColor: darkmode ? "#20212C" : "#fff",
+                }}
+              >
+                Done
+              </option>
             </select>
           </div>
         </div>
