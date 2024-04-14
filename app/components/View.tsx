@@ -24,6 +24,15 @@ export default function View() {
       setData({ ...data, clicked: { ...clicked, subtasks: updatedSubtasks } }); // Example update
     };
 
+  const handleStatusChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const newStatus = event.target.value;
+    // Update clicked status
+    setClicked((prevClicked: any) => ({
+      ...prevClicked,
+      status: newStatus,
+    }));
+  };
+
   return (
     <>
       <Overlay isOpen={view} onClose={() => setView(false)} />
@@ -77,7 +86,7 @@ export default function View() {
                         textDecoration: tasks.isCompleted
                           ? "line-through"
                           : "none",
-                        color: darkmode ? "#fff" : "red",
+                        color: darkmode ? "#fff" : "",
                       }}
                       className="text-[#000112] text-xs font-[700] opacity-60"
                     >
@@ -95,6 +104,7 @@ export default function View() {
             <select
               className="w-full h-12 border border-gray-300 rounded-md p-2 bg-transparent"
               value={clicked.status}
+              onChange={handleStatusChange}
             >
               <option
                 value="Todo"
