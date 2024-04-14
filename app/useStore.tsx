@@ -45,8 +45,6 @@ const useStore = create((set) => ({
   addNewTask: "",
   setAddNewTask: (newValue: any) => set({ addNewTask: newValue }),
 
-  // columns: [{ name: "Todo" }, { name: "Doing" }, { name: "Done" }],
-
   columns: jsonData.boards.map((column) => column.columns),
   setColumns: (newColumns: any) => set({ columns: newColumns }),
 

@@ -16,7 +16,7 @@ export default function Column({ taskname }: any) {
   // console.log("filterBoard: ", filteredBoard);
   return (
     <>
-      <div className="">
+      <div className="min-w-56">
         <h3 className="ml-4 mt-4 text-gray-500 font-sans font-semibold text-xs normal-case tracking-wider">
           {taskname}
         </h3>

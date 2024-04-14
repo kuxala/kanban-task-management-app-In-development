@@ -7,7 +7,7 @@ export default function NewColumn() {
   return (
     <>
       <div
-        className="w-[280px] flex justify-center items-center rounded-md bg-[#ecf2fb] min-h-[90h] mt-12 mb-4"
+        className="w-[280px] h-screen flex justify-center items-center rounded-md bg-[#ecf2fb] min-h-[90h] m-12 mt-6"
         style={{ backgroundColor: darkmode ? "#22232e" : "#ebf1fb" }}
       >
         <a

@@ -4,43 +4,44 @@ import useStore from "../useStore";
 import Overlay from "../pages/Overlay";
 
 export default function AddBoard() {
-  const {
-    data,
-    setData,
-    columns,
-    setColumns,
-    addNewBoard,
-    setAddNewBoard,
-    addNewBoardName,
-    setAddNewBoardName,
-  }: any = useStore();
+  const { data, setData, addNewBoard, setAddNewBoard }: any = useStore();
+
+  const [newBoardName, setNewBoardName] = useState("");
+  const [columnNames, setColumnNames] = useState<string[]>([""]);
+  const [newColumnName, setNewColumnName] = useState("");
 
   const handleAddColumn = () => {
-    const newColumn = {
-      id: columns.length + 1,
-      value: "",
+    setColumnNames([...columnNames, ""]);
+  };
+
+  const handleRemoveColumn = (indexToRemove: number) => {
+    setColumnNames(columnNames.filter((_, index) => index !== indexToRemove));
+  };
+
+  const handleInputChange = (e: any) => {
+    setNewBoardName(e.target.value);
+  };
+
+  const handleColumnInputChange = (e: any, index: number) => {
+    const updatedColumnNames = [...columnNames];
+    updatedColumnNames[index] = e.target.value;
+    setColumnNames(updatedColumnNames);
+  };
+
+  const handleSaveChanges = () => {
+    // Save changes to data state
+    const newBoard = {
+      name: newBoardName,
+      columns: columnNames.map((columnName) => ({
+        name: columnName,
+        tasks: [],
+      })),
     };
-    setColumns([...columns, newColumn]);
-  };
-
-  const handleInputChange = (id: number, value: string) => {
-    const updatedColumns = columns.map((column: any) =>
-      column.id === id ? { ...column, value: value } : column
-    );
-    setColumns(updatedColumns);
-  };
-
-  const handleDeleteColumn = (id: number) => {
-    const updatedColumns = columns.filter((column: any) => column.id !== id);
-    setColumns(updatedColumns);
-  };
-
-  const handleAddBoard = (e: any) => {
-    setAddNewBoardName(e.target.value);
-  };
-
-  const dataPush = () => {
-    data.boards.push({ name: addNewBoardName, columns: columns });
+    setData({
+      ...data,
+      boards: [...data.boards, newBoard],
+    });
+    setAddNewBoard(false);
   };
 
   return (
@@ -57,25 +58,28 @@ export default function AddBoard() {
               placeholder="e.g Web Design"
               className="p-2 text-[14px] w-full border border-gray-300 rounded-md  bg-white"
               type="text"
-              onChange={handleAddBoard}
+              value={newBoardName}
+              onChange={handleInputChange}
             />
           </div>
 
           <div>
             <h3 className="text-gray-500 font-semibold pt-4 pb-2">Columns</h3>
-            {columns.map((column: any) => (
-              <div key={column.id} className="flex items-center gap-2">
+            {columnNames.map((columnName, index) => (
+              <div className="flex items-center gap-2" key={index}>
                 <input
                   className="p-2 mt-2- mb-2 text-[14px] w-full border border-gray-300 rounded-md  bg-white"
                   placeholder="TODO"
-                  value={column.value}
-                  onChange={(e) => handleInputChange(column.id, e.target.value)}
+                  value={columnName}
+                  onChange={(e) => handleColumnInputChange(e, index)}
                   required
                 />
-                <img
-                  src="/assets/icon-cross.svg"
-                  onClick={() => handleDeleteColumn(column.id)}
-                />
+                <button
+                  onClick={() => handleRemoveColumn(index)}
+                  className="text-red-500"
+                >
+                  <img src="/assets/icon-cross.svg" alt="Delete Column" />
+                </button>
               </div>
             ))}
             <button
@@ -88,11 +92,8 @@ export default function AddBoard() {
 
           <button
             type="submit"
-            className=" h-[40px] w-full rounded-[40px] mt-6 bg-indigo-600 text-white text-center font-bold text-base leading-6"
-            onClick={() => {
-              setAddNewBoard(false);
-              dataPush();
-            }}
+            className="h-[40px] w-full rounded-[40px] mt-6 bg-indigo-600 text-white text-center font-bold text-base leading-6"
+            onClick={handleSaveChanges}
           >
             Save Changes
           </button>
