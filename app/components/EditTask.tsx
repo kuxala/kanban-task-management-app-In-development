@@ -20,6 +20,7 @@ export default function EditTask({ editTask, setEditTask }: any) {
             if (task.title === clicked.title) {
               task.title = title;
               task.description = description;
+              task.status = status;
             }
           });
         });
