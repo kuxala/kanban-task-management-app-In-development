@@ -79,7 +79,6 @@ export default function AddNew() {
     setNewTaskStatus("Todo");
     setAddNew(false);
   };
-  console.log(newTaskStatus);
   // console.log(data);
   return (
     <>

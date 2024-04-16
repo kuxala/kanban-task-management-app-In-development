@@ -23,6 +23,7 @@ export default function Sidebar() {
     setData,
     addNewBoard,
     setAddNewBoard,
+    boards,
   }: any = useStore();
 
   useEffect(() => {
@@ -38,7 +39,7 @@ export default function Sidebar() {
         <div className="sidebar__texts ">
           <p className="sidebar__header">All Boards ({data.boards.length})</p>
           <div className="flex flex-col gap-1">
-            {data?.boards?.map((item: any) => (
+            {boards?.map((item: any) => (
               <div key={item.id} className="flex">
                 <Link
                   style={active === item.name ? bgColor : {}}

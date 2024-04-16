@@ -2,58 +2,44 @@ import { useState } from "react";
 import Overlay from "../pages/Overlay";
 import "../styles/AddNew.css";
 import useStore from "../useStore";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 
 export default function EditBoard({ editBoard, setEditBoard }: any) {
-  const {
-    columns,
-    setColumns,
-    data,
-    setData,
-    editBoardName,
-    setEditBoardName,
-    clicked,
-  }: any = useStore();
+  const { boards, setBoards, clicked, columns }: any = useStore();
   const params = useParams<any>();
 
-  const editBoardFunction = () => {
-    const boardIndex = data.boards.findIndex(
-      (board: any) => board.name.replace(" ", "-") === params.main
-    );
+  const [newBoardName, setNewBoardName] = useState(params.main);
+  const [columnNames, setColumnNames] = useState<string[]>([]);
+  const router = useRouter();
 
-    if (boardIndex !== -1) {
-      const newName = editBoardName.trim();
-      if (newName) {
-        const updatedBoards = [...data.boards];
-        updatedBoards[boardIndex] = {
-          ...updatedBoards[boardIndex],
-          name: newName,
+  const handleAddNewColumn = () => {
+    setColumnNames([...columnNames, ""]);
+  };
+
+  const handleColumnNameChange = (index: number, columnName: string) => {
+    const updatedColumnNames = [...columnNames];
+    updatedColumnNames[index] = columnName;
+    setColumnNames(updatedColumnNames);
+  };
+
+  const handleSaveChanges = () => {
+    const updatedBoards = boards.map((board: any) => {
+      if (board.name.replace(" ", "-") === params.main) {
+        return {
+          ...board,
+          name: newBoardName,
+          // columns: columns,
         };
-        setData({ boards: updatedBoards });
-      } else {
-        console.error("New name is empty.");
       }
-    } else {
-      console.error("Board not found:", params.main);
-    }
+      return board;
+    });
+    setBoards(updatedBoards);
     setEditBoard(false);
+
+    router.push(`${newBoardName.replace(" ", "-")}`);
   };
 
-  const handleAddColumn = () => {
-    const newColumn = {
-      id: columns.length + 1,
-      value: "", // Set initial value as empty string or any default value you want
-    };
-    setColumns([...columns, newColumn]);
-  };
-
-  const handleInputChange = (id: number, value: string) => {
-    const updatedColumns = columns.map((column: any) =>
-      column.id === id ? { ...column, value: value } : column
-    );
-    setColumns(updatedColumns);
-  };
-  console.log("edit board: ", editBoardName);
+  console.log(boards);
   return (
     <>
       <Overlay isOpen={editBoard} onClose={() => setEditBoard(false)} />
@@ -68,8 +54,8 @@ export default function EditBoard({ editBoard, setEditBoard }: any) {
               placeholder={params.main}
               className="p-2 text-[14px] w-full border border-gray-300 rounded-md  bg-white"
               type="text"
-              value={editBoardName}
-              onChange={(e) => setEditBoardName(e.target.value)}
+              value={newBoardName}
+              onChange={(e) => setNewBoardName(e.target.value)}
             />
           </div>
         </div>
@@ -77,28 +63,25 @@ export default function EditBoard({ editBoard, setEditBoard }: any) {
           <h3 className="text-gray-500 font-semibold pt-4 pb-2">
             Board Columns
           </h3>
-          {columns.map((column: any) => (
+
+          {columnNames.map((columnName, index) => (
             <input
-              key={column.id}
-              className="p-2 mt-2- mb-2 text-[14px] w-full border border-gray-300 rounded-md  bg-white"
-              placeholder="TODO"
-              value={column.value}
-              onChange={(e) => handleInputChange(column.id, e.target.value)}
+              key={index}
+              value={columnName}
+              onChange={(e) => handleColumnNameChange(index, e.target.value)}
+              className="p-2 mt-2 mb-2 text-[14px] w-full border border-gray-300 rounded-md bg-white"
               required
             />
           ))}
           <button
-            onClick={handleAddColumn}
+            onClick={handleAddNewColumn}
             className="w-full h-10 mt-3 mb-5 rounded-full bg-opacity-10 bg-purple-400 text-purple-600 text-center text-sm font-semibold leading-5"
           >
             Add New Column
           </button>
         </div>
         <button
-          onClick={() => {
-            setEditBoard(false);
-            editBoardFunction();
-          }}
+          onClick={handleSaveChanges}
           className="h-[40px] w-full rounded-[40px] mt-6 bg-indigo-600 text-white text-center font-bold text-base leading-6"
         >
           Save Changes

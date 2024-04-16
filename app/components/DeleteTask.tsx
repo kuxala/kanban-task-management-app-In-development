@@ -3,7 +3,7 @@ import Overlay from "../pages/Overlay";
 import useStore from "../useStore";
 
 export default function DeleteTask({ deleteTask, setDeleteTask }: any) {
-  const { clicked, setClicked, boards, setView, setboards }: any = useStore();
+  const { clicked, setClicked, boards, setView, setBoards }: any = useStore();
   const params = useParams();
 
   const checkForMatch = () => {
@@ -19,7 +19,7 @@ export default function DeleteTask({ deleteTask, setDeleteTask }: any) {
       }
     });
 
-    setboards(updatedBoards); // Update the boards state with the modified data
+    setBoards(updatedBoards); // Update the boards state with the modified data
     setDeleteTask(false); // Close the delete task modal
     setView(false);
   };

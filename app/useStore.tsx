@@ -9,7 +9,7 @@ const useStore = create((set) => ({
   setClicked: (newValue: any) => set({ clicked: newValue }),
 
   boards: jsonData.boards,
-  setboards: (newValue: any) => set({ boards: newValue }),
+  setBoards: (newValue: any) => set({ boards: newValue }),
 
   newTaskTitle: "",
   setNewTaskTitle: (newValue: any) => set({ newTaskTitle: newValue }),

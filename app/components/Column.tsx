@@ -9,7 +9,7 @@ export default function Column({ taskname }: any) {
     useStore();
   const params = useParams<any>();
   // console.log("Params: ", params.main);
-
+  // console.log("TaskName: ", taskname);
   const filteredBoard = data.boards.find((board: any) => {
     return board?.name?.replace(" ", "-") === params.main;
   });

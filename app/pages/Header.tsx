@@ -8,8 +8,19 @@ import { useParams } from "next/navigation";
 import EditBoard from "../components/EditBoard";
 
 export default function Header() {
-  const { addNew, setAddNew, menu, setMenu, darkmode }: any = useStore();
-  const params = useParams<{ tag: string; item: string; main: string }>();
+  const { addNew, setAddNew, menu, setMenu, darkmode, boards }: any =
+    useStore();
+  const params = useParams();
+
+  const editedBoardName = () => {
+    let editedName = "";
+    boards.forEach((board: any) => {
+      if (board?.name?.replace(" ", "-") === params.main) {
+        editedName = board.name;
+      }
+    });
+    return editedName;
+  };
 
   const [dots, setDots] = useState(false);
 
@@ -41,7 +52,7 @@ export default function Header() {
               className="text-[#000112] font-[700] text-[22px]"
               style={{ color: darkmode ? "#fff" : "black" }}
             >
-              {params.main}
+              {editedBoardName()}
             </h1>
           </div>
           <img
