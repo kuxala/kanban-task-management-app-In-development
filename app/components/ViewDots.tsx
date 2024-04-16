@@ -4,7 +4,7 @@ import DeleteTask from "./DeleteTask";
 import EditBoard from "./EditBoard";
 import DeleteBoard from "./DeleteBoard";
 
-export default function ViewDots({ name, board, edit }: any) {
+export default function ViewDots() {
   const [editTask, setEditTask] = useState(false);
   const [deleteTask, setDeleteTask] = useState(false);
 

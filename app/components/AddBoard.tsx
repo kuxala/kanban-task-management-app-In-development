@@ -8,7 +8,6 @@ export default function AddBoard() {
 
   const [newBoardName, setNewBoardName] = useState("");
   const [columnNames, setColumnNames] = useState<string[]>([""]);
-  const [newColumnName, setNewColumnName] = useState("");
 
   const handleAddColumn = () => {
     setColumnNames([...columnNames, ""]);
@@ -18,18 +17,20 @@ export default function AddBoard() {
     setColumnNames(columnNames.filter((_, index) => index !== indexToRemove));
   };
 
-  const handleInputChange = (e: any) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewBoardName(e.target.value);
   };
 
-  const handleColumnInputChange = (e: any, index: number) => {
+  const handleColumnInputChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    index: number
+  ) => {
     const updatedColumnNames = [...columnNames];
     updatedColumnNames[index] = e.target.value;
     setColumnNames(updatedColumnNames);
   };
 
   const handleSaveChanges = () => {
-    // Save changes to data state
     const newBoard = {
       name: newBoardName,
       columns: columnNames.map((columnName) => ({

@@ -12,6 +12,7 @@ export default function EditBoard({ editBoard, setEditBoard }: any) {
     setData,
     editBoardName,
     setEditBoardName,
+    clicked,
   }: any = useStore();
   const params = useParams<any>();
 
