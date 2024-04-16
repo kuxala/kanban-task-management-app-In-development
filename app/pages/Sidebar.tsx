@@ -27,7 +27,7 @@ export default function Sidebar() {
   }: any = useStore();
 
   useEffect(() => {
-    if (data?.boards?.length > 0) {
+    if (boards?.length > 0) {
       setActive(data.boards[0].name);
     }
   }, []);

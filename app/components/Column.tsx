@@ -1,27 +1,18 @@
 import { useParams } from "next/navigation";
 import useStore from "../useStore";
 import View from "./View";
-import { DndContext } from "@dnd-kit/core";
-import { useState } from "react";
+import React from "react";
 
 export default function Column({ taskname }: any) {
-  const {
-    data,
-    view,
-    setView,
-    columns,
-    clicked,
-    setClicked,
-    darkmode,
-    boards,
-  }: any = useStore();
+  const { view, setView, setClicked, darkmode, boards }: any = useStore();
   const params = useParams<any>();
   // console.log("Params: ", params.main);
   // console.log("TaskName: ", taskname);
   const filteredBoard = boards.find((board: any) => {
     return board?.name?.replace(" ", "-") == params.main;
   });
-  console.log("filterBoard: ", filteredBoard);
+  // console.log("filterBoard: ", filteredBoard);
+
   return (
     <>
       <div className="min-w-56">
@@ -29,42 +20,41 @@ export default function Column({ taskname }: any) {
           {taskname}
         </h3>
 
-        {
-          <div>
-            {filteredBoard?.columns?.map((column: any) => (
-              <div key={column.name}>
-                {column?.tasks?.map((task: any) => {
-                  if (task.status === taskname) {
-                    return (
-                      <div
-                        key={task.title}
-                        className="section__div"
-                        onClick={() => {
-                          setView(true);
-                          setClicked(task);
-                        }}
-                      >
-                        <div className="flex flex-col ">
-                          <p
-                            className="text-black font-bold text-base pb-1 hover:text-[#635fc7]"
-                            style={{ color: darkmode ? "#fff" : "" }}
-                          >
-                            {task.title}
-                          </p>
-                          <p className="text-gray-600 font-bold text-xs ">
-                            Subtasks
-                          </p>
-                        </div>
+        <div>
+          {filteredBoard?.columns?.map((column: any) => (
+            <div key={column.name}>
+              {column?.tasks?.map((task: any) => {
+                console.log(task.status);
+                if (task.status === taskname) {
+                  return (
+                    <div
+                      key={task.title}
+                      className="section__div"
+                      onClick={() => {
+                        setView(true);
+                        setClicked(task);
+                      }}
+                    >
+                      <div className="flex flex-col ">
+                        <p
+                          className="text-black font-bold text-base pb-1 hover:text-[#635fc7]"
+                          style={{ color: darkmode ? "#fff" : "" }}
+                        >
+                          {task.title}
+                        </p>
+                        <p className="text-gray-600 font-bold text-xs ">
+                          Subtasks
+                        </p>
                       </div>
-                    );
-                  } else {
-                    return null;
-                  }
-                })}
-              </div>
-            ))}
-          </div>
-        }
+                    </div>
+                  );
+                } else {
+                  return null;
+                }
+              })}
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );
