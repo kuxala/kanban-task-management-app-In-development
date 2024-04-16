@@ -5,15 +5,23 @@ import { DndContext } from "@dnd-kit/core";
 import { useState } from "react";
 
 export default function Column({ taskname }: any) {
-  const { data, view, setView, columns, clicked, setClicked, darkmode }: any =
-    useStore();
+  const {
+    data,
+    view,
+    setView,
+    columns,
+    clicked,
+    setClicked,
+    darkmode,
+    boards,
+  }: any = useStore();
   const params = useParams<any>();
   // console.log("Params: ", params.main);
   // console.log("TaskName: ", taskname);
-  const filteredBoard = data.boards.find((board: any) => {
-    return board?.name?.replace(" ", "-") === params.main;
+  const filteredBoard = boards.find((board: any) => {
+    return board?.name?.replace(" ", "-") == params.main;
   });
-  // console.log("filterBoard: ", filteredBoard);
+  console.log("filterBoard: ", filteredBoard);
   return (
     <>
       <div className="min-w-56">
@@ -21,9 +29,9 @@ export default function Column({ taskname }: any) {
           {taskname}
         </h3>
 
-        {filteredBoard && (
-          <div key={filteredBoard.name}>
-            {filteredBoard.columns.map((column: any) => (
+        {
+          <div>
+            {filteredBoard?.columns?.map((column: any) => (
               <div key={column.name}>
                 {column?.tasks?.map((task: any) => {
                   if (task.status === taskname) {
@@ -56,7 +64,7 @@ export default function Column({ taskname }: any) {
               </div>
             ))}
           </div>
-        )}
+        }
       </div>
     </>
   );
