@@ -4,7 +4,8 @@ import useStore from "../useStore";
 import Overlay from "../pages/Overlay";
 
 export default function AddBoard() {
-  const { data, setData, addNewBoard, setAddNewBoard }: any = useStore();
+  const { boards, setBoards, addNewBoard, setAddNewBoard, data }: any =
+    useStore();
 
   const [newBoardName, setNewBoardName] = useState("");
   const [columnNames, setColumnNames] = useState<string[]>([""]);
@@ -38,13 +39,9 @@ export default function AddBoard() {
         tasks: [],
       })),
     };
-    setData({
-      ...data,
-      boards: [...data.boards, newBoard],
-    });
+    setBoards([...boards, newBoard]); // Adding the new board to the existing array of boards
     setAddNewBoard(false);
   };
-
   return (
     <>
       <Overlay isOpen={addNewBoard} onClose={() => setAddNewBoard(false)} />

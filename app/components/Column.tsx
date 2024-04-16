@@ -24,7 +24,6 @@ export default function Column({ taskname }: any) {
           {filteredBoard?.columns?.map((column: any) => (
             <div key={column.name}>
               {column?.tasks?.map((task: any) => {
-                console.log(task.status);
                 if (task.status === taskname) {
                   return (
                     <div

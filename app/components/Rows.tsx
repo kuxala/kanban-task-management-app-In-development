@@ -4,16 +4,15 @@ import NewColumn from "./NewColumn";
 import { useParams } from "next/navigation";
 
 export default function Rows() {
-  const { boards, columns }: any = useStore();
+  const { boards, columns, data }: any = useStore();
   const params = useParams();
-
+  console.log(data);
   return (
     <>
       <div className="flex">
         {boards.map((board: any) => {
           if (board.name.replace(" ", "-") === params.main) {
-            // console.log(board.columns);
-            return columns[0].map((column: any, columnIndex: number) => {
+            return board.columns.map((column: any, columnIndex: number) => {
               // console.log(column);
               return (
                 <div key={columnIndex}>

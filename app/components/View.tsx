@@ -11,10 +11,19 @@ import ViewDots from "./ViewDots";
 import DeleteTask from "./DeleteTask";
 
 export default function View() {
-  const { data, setData, view, setView, clicked, setClicked, darkmode }: any =
-    useStore();
+  const {
+    data,
+    setData,
+    view,
+    setView,
+    clicked,
+    setClicked,
+    darkmode,
+    boards,
+  }: any = useStore();
   const params = useParams<{ tag: string; item: string; main: string }>();
   const [dots, setDots] = useState(false);
+  const [status, setStatus] = useState<any>(clicked.status); // You should also initialize status state
 
   const handleChange =
     (taskIndex: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,15 +32,19 @@ export default function View() {
 
       setData({ ...data, clicked: { ...clicked, subtasks: updatedSubtasks } }); // Example update
     };
-
-  const handleStatusChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const newStatus = event.target.value;
-    // Update clicked status
-    setClicked((prevClicked: any) => ({
-      ...prevClicked,
-      status: newStatus,
-    }));
-  };
+  // const checkForMatch = () => {
+  //   boards.forEach((board: any) => {
+  //     if (board.name.replace(" ", "-") === params.main) {
+  //       board.columns.forEach((column: any) => {
+  //         column.tasks.forEach((task: any) => {
+  //           if (task.title === clicked.title) {
+  //             return (task.status = status);
+  //           }
+  //         });
+  //       });
+  //     }
+  //   });
+  // };
 
   return (
     <>
@@ -97,14 +110,17 @@ export default function View() {
               })}
             </ul>
           </div>
-          <div>
+          {/* <div>
             <h3 className="pt-6 pb-2 text-gray-500 font-bold text-xs leading-normal">
               Current Status
             </h3>
             <select
               className="w-full h-12 border border-gray-300 rounded-md p-2 bg-transparent"
-              value={clicked.status}
-              onChange={handleStatusChange}
+              value={status}
+              onChange={(e) => {
+                setStatus(e.target.value);
+                checkForMatch();
+              }}
             >
               <option
                 value="Todo"
@@ -134,7 +150,7 @@ export default function View() {
                 Done
               </option>
             </select>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
