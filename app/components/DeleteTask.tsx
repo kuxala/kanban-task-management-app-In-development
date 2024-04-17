@@ -3,7 +3,8 @@ import Overlay from "../pages/Overlay";
 import useStore from "../useStore";
 
 export default function DeleteTask({ deleteTask, setDeleteTask }: any) {
-  const { clicked, setClicked, boards, setView, setBoards }: any = useStore();
+  const { clicked, setClicked, boards, setView, setBoards, darkmode }: any =
+    useStore();
   const params = useParams();
 
   const checkForMatch = () => {
@@ -26,11 +27,17 @@ export default function DeleteTask({ deleteTask, setDeleteTask }: any) {
   return (
     <>
       <Overlay isOpen={deleteTask} onClose={() => setDeleteTask(false)} />
-      <div className="fixed md:w-[500px] md:top-[30%] md:left-1/2 md:-translate-x-1/2 top-20 left-0 bg-white  flex flex-col ml-8 mr-8 p-6 z-50 rounded-[8px] ">
+      <div
+        style={{ backgroundColor: darkmode ? "#2B2C37" : "" }}
+        className="fixed md:w-[500px] md:top-[30%] md:left-1/2 md:-translate-x-1/2 top-20 left-0 bg-white  flex flex-col ml-8 mr-8 p-6 z-50 rounded-[8px] "
+      >
         <h1 className="pb-6 text-red-500 font-bold text-xl font-feature-settings">
           Delete Task?
         </h1>
-        <p className="text-gray-500 font-medium text-base leading-6 font-feature-settings">
+        <p
+          style={{ color: darkmode ? "#828FA3" : "" }}
+          className="text-gray-500 font-medium text-base leading-6 font-feature-settings"
+        >
           Are you sure you want to delete the board? This action will remove all
           columns and tasks and cannot be reversed.
         </p>

@@ -5,7 +5,7 @@ import useStore from "../useStore";
 import { useParams, useRouter } from "next/navigation";
 
 export default function EditBoard({ editBoard, setEditBoard }: any) {
-  const { boards, setBoards, columns, setColumns }: any = useStore();
+  const { boards, setBoards, columns, setColumns, darkmode }: any = useStore();
   const params = useParams<any>();
   const [boardName, setBoardName] = useState<any>(params.main);
   const [boardColumns, setBoardColumns] = useState(columns[0]);
@@ -40,23 +40,37 @@ export default function EditBoard({ editBoard, setEditBoard }: any) {
   return (
     <>
       <Overlay isOpen={editBoard} onClose={() => setEditBoard(false)} />
-      <div className="addnew__container absolute bg-white p-6 rounded-md ">
-        <h1 className="text-black font-sans font-semibold text-lg pb-6">
+      <div
+        className="addnew__container absolute bg-white p-6 rounded-md "
+        style={{ backgroundColor: darkmode ? "#2B2C37" : "" }}
+      >
+        <h1
+          className="text-black font-sans font-semibold text-lg pb-6"
+          style={{ color: darkmode ? "#fff" : "" }}
+        >
           Edit Board
         </h1>
         <div>
           <div>
-            <h3 className="text-gray-500 font-semibold pb-2 ">Board Name</h3>
+            <h3
+              className="text-gray-500 font-semibold pb-2 "
+              style={{ color: darkmode ? "#fff" : "" }}
+            >
+              Board Name
+            </h3>
             <input
               value={boardName}
-              className="p-2 text-[14px] w-full border border-gray-300 rounded-md  bg-white"
+              className="p-2 text-[14px] w-full border border-gray-300 rounded-md  bg-transparent"
               type="text"
               onChange={(e) => setBoardName(e.target.value)}
             />
           </div>
         </div>
         <div>
-          <h3 className="text-gray-500 font-semibold pt-4 pb-2">
+          <h3
+            className="text-gray-500 font-semibold pt-4 pb-2"
+            style={{ color: darkmode ? "#fff" : "" }}
+          >
             Board Columns
           </h3>
           {boardColumns.map((column: any, index: number) => (
@@ -64,14 +78,14 @@ export default function EditBoard({ editBoard, setEditBoard }: any) {
               key={index}
               value={column.name}
               onChange={(e) => handleColumnChange(index, e.target.value)}
-              className="p-2 mt-2 mb-2 text-[14px] w-full border border-gray-300 rounded-md bg-white"
+              className="p-2 mt-2 mb-2 text-[14px] w-full border border-gray-300 rounded-md bg-transparent"
             />
           ))}
           {/* Input field for adding a new column */}
           <input
             value={newColumnName}
             onChange={(e) => setNewColumnName(e.target.value)}
-            className="p-2 mt-2 mb-2 text-[14px] w-full border border-gray-300 rounded-md bg-white"
+            className="p-2 mt-2 mb-2 text-[14px] w-full border border-gray-300 rounded-md bg-transparent"
             placeholder="New Column Name"
           />
           {/* Button to add a new column */}

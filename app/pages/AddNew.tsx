@@ -22,6 +22,7 @@ export default function AddNew() {
     newSubtasks,
     setNewSubtasks,
     setNewSubtaskTitle,
+    darkmode,
   }: any = useStore();
   const params = useParams();
   // console.log(params.main);
@@ -84,39 +85,58 @@ export default function AddNew() {
     <>
       <Overlay isOpen={addNew} onClose={() => setAddNew(false)} />
       {addNew && (
-        <div className="addnew__container absolute bg-white p-6 rounded-md ">
-          <h1 className="text-black font-sans font-semibold text-lg pb-6">
+        <div
+          className="addnew__container absolute bg-white p-6 rounded-md "
+          style={{
+            backgroundColor: darkmode ? "#2B2C37" : "#fff",
+          }}
+        >
+          <h1
+            className="text-black font-sans font-semibold text-lg pb-6"
+            style={{ color: darkmode ? "#fff" : "" }}
+          >
             Add New Task
           </h1>
           <div>
             <div>
-              <h3 className="text-gray-500 font-semibold pb-2 ">Title</h3>
+              <h3
+                className="text-gray-500 font-semibold pb-2 "
+                style={{ color: darkmode ? "#fff" : "" }}
+              >
+                Title
+              </h3>
               <input
                 placeholder="e.g. Take coffee break"
-                className="p-2 text-[14px] w-full border border-gray-300 rounded-md  bg-white"
+                className="p-2 text-[14px] w-full border border-gray-300 rounded-md  bg-transparent"
                 value={newTaskTitle}
                 onChange={(e) => setNewTaskTitle(e.target.value)}
               />
             </div>
             <div>
-              <h3 className="text-gray-500 font-semibold pb-2 pt-4">
+              <h3
+                className="text-gray-500 font-semibold pb-2 pt-4"
+                style={{ color: darkmode ? "#fff" : "" }}
+              >
                 Description
               </h3>
               <textarea
-                className="addnew__description text-[14px] p-2 resize-y border border-gray-300 rounded-md w-full min-h-[150px]"
+                className="addnew__description text-[14px] p-2 resize-y border border-gray-300 rounded-md w-full min-h-[150px] bg-transparent"
                 placeholder="e.g. It’s always good to take a break. This 15 minute break will  recharge the batteries a little."
                 value={newTaskDescription}
                 onChange={(e) => setNewTaskDescription(e.target.value)}
               ></textarea>
             </div>
             <div>
-              <h3 className="text-gray-500 font-semibold pt-4 pb-2">
+              <h3
+                className="text-gray-500 font-semibold pt-4 pb-2"
+                style={{ color: darkmode ? "#fff" : "" }}
+              >
                 SubTasks
               </h3>
               {newSubtasks.map((subtask: any, index: number) => (
                 <div key={index} className="flex items-center gap-2">
                   <input
-                    className="p-2 mt-1 mb-1 text-[14px] w-full border border-gray-300 rounded-md bg-white"
+                    className="p-2 mt-1 mb-1 text-[14px] w-full border border-gray-300 rounded-md bg-transparent"
                     value={subtask.title}
                     readOnly
                   />
@@ -133,7 +153,7 @@ export default function AddNew() {
               ))}
               <input
                 placeholder="Add a subtask"
-                className="p-2 w-full border border-gray-300 rounded-md bg-white"
+                className="p-2 w-full border border-gray-300 rounded-md bg-transparent"
                 value={newSubtaskTitle}
                 onChange={(e) => setNewSubtaskTitle(e.target.value)}
               />
@@ -146,14 +166,40 @@ export default function AddNew() {
               </button>
             </div>
             <div>
-              <h3 className="text-gray-500 font-semibold pb-2 ">Status</h3>
+              <h3
+                className="text-gray-500 font-semibold pb-2 "
+                style={{ color: darkmode ? "#fff" : "" }}
+              >
+                Status
+              </h3>
               <select
-                className="w-full h-12 border border-gray-300 rounded-md p-2 bg-white"
+                className="w-full h-12 border border-gray-300 rounded-md p-2 bg-transparent"
                 onChange={(e) => setNewTaskStatus(e.target.value)}
               >
-                <option value="Todo">Todo</option>
-                <option value="Doing">Doing</option>
-                <option value="Done">Done</option>
+                <option
+                  value="Todo"
+                  style={{
+                    backgroundColor: darkmode ? "#2B2C37" : "",
+                  }}
+                >
+                  Todo
+                </option>
+                <option
+                  value="Doing"
+                  style={{
+                    backgroundColor: darkmode ? "#2B2C37" : "",
+                  }}
+                >
+                  Doing
+                </option>
+                <option
+                  value="Done"
+                  style={{
+                    backgroundColor: darkmode ? "#2B2C37" : "",
+                  }}
+                >
+                  Done
+                </option>
               </select>
             </div>
             <button

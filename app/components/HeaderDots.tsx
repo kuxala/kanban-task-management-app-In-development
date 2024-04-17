@@ -6,15 +6,20 @@ import DeleteBoard from "./DeleteBoard";
 import useStore from "../useStore";
 import { set } from "react-hook-form";
 
-export default function BoardDots({ name, board, edit }: any) {
+export default function BoardDots() {
+  const { darkmode }: any = useStore();
   const [editBoard, setEditBoard] = useState(false);
   const [deleteBoard, setDeleteBoard] = useState(false);
 
   return (
     <>
-      <div className="absolute top-20 right-5 p-4 bg-white w-48 h-24 flex flex-col rounded-lg ">
+      <div
+        className="absolute top-20 right-5 p-4 bg-white w-48 h-24 flex flex-col rounded-lg "
+        style={{ backgroundColor: darkmode ? "#2B2C37" : "" }}
+      >
         <p
           className="pb-2 text-gray-600 font-medium text-base leading-6 cursor-pointer"
+          style={{ color: darkmode ? "#fff" : "" }}
           onClick={() => {
             setEditBoard(!editBoard);
           }}

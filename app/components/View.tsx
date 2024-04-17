@@ -38,7 +38,6 @@ export default function View() {
         board.columns.forEach((column: any) => {
           column.tasks.forEach((task: any) => {
             if (task.title === clicked.title) {
-              console.log((task.status = status));
               return (task.status = status);
             }
           });
