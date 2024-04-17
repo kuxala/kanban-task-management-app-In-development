@@ -4,7 +4,8 @@ import View from "./View";
 import React from "react";
 
 export default function Column({ taskname }: any) {
-  const { view, setView, setClicked, darkmode, boards }: any = useStore();
+  const { view, setView, setClicked, darkmode, boards, columns }: any =
+    useStore();
   const params = useParams<any>();
   // console.log("Params: ", params.main);
   // console.log("TaskName: ", taskname);
@@ -42,7 +43,7 @@ export default function Column({ taskname }: any) {
                           {task.title}
                         </p>
                         <p className="text-gray-600 font-bold text-xs ">
-                          Subtasks
+                          {task.subtasks.length} Subtasks
                         </p>
                       </div>
                     </div>

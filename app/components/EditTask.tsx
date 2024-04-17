@@ -46,7 +46,10 @@ export default function EditTask({ editTask, setEditTask }: any) {
         className="addnew__container absolute bg-white p-6 rounded-md"
         style={{ backgroundColor: darkmode ? "#2B2C37" : "" }}
       >
-        <h1 className="text-black font-sans font-semibold text-lg pb-6">
+        <h1
+          className="text-black font-sans font-semibold text-lg pb-6"
+          style={{ color: darkmode ? "#fff" : "" }}
+        >
           Edit Task
         </h1>
         <div>
