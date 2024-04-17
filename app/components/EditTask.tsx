@@ -10,7 +10,7 @@ export default function EditTask({ editTask, setEditTask }: any) {
   const params = useParams();
   const [title, setTitle] = useState<any>(clicked.title);
   const [description, setDescription] = useState<any>(clicked.description);
-  const [status, setStatus] = useState<any>(clicked.status); // You should also initialize status state
+  const [status, setStatus] = useState<any>(clicked.status);
 
   const checkForMatch = () => {
     boards.forEach((board: any) => {

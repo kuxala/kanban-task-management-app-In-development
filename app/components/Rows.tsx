@@ -6,7 +6,7 @@ import { useParams } from "next/navigation";
 export default function Rows() {
   const { boards, columns, data }: any = useStore();
   const params = useParams();
-  console.log(data);
+  // console.log(data);
   return (
     <>
       <div className="flex">

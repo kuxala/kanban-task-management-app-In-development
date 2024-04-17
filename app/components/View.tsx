@@ -23,7 +23,7 @@ export default function View() {
   }: any = useStore();
   const params = useParams<{ tag: string; item: string; main: string }>();
   const [dots, setDots] = useState(false);
-  const [status, setStatus] = useState<any>(clicked.status); // You should also initialize status state
+  const [status, setStatus] = useState<any>(clicked.status);
 
   const handleChange =
     (taskIndex: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,20 +32,21 @@ export default function View() {
 
       setData({ ...data, clicked: { ...clicked, subtasks: updatedSubtasks } }); // Example update
     };
-  // const checkForMatch = () => {
-  //   boards.forEach((board: any) => {
-  //     if (board.name.replace(" ", "-") === params.main) {
-  //       board.columns.forEach((column: any) => {
-  //         column.tasks.forEach((task: any) => {
-  //           if (task.title === clicked.title) {
-  //             return (task.status = status);
-  //           }
-  //         });
-  //       });
-  //     }
-  //   });
-  // };
-
+  const checkForMatch = () => {
+    boards.forEach((board: any) => {
+      if (board.name.replace(" ", "-") === params.main) {
+        board.columns.forEach((column: any) => {
+          column.tasks.forEach((task: any) => {
+            if (task.title === clicked.title) {
+              console.log((task.status = status));
+              return (task.status = status);
+            }
+          });
+        });
+      }
+    });
+  };
+  checkForMatch();
   return (
     <>
       <Overlay isOpen={view} onClose={() => setView(false)} />
@@ -110,7 +111,7 @@ export default function View() {
               })}
             </ul>
           </div>
-          {/* <div>
+          <div>
             <h3 className="pt-6 pb-2 text-gray-500 font-bold text-xs leading-normal">
               Current Status
             </h3>
@@ -119,7 +120,7 @@ export default function View() {
               value={status}
               onChange={(e) => {
                 setStatus(e.target.value);
-                checkForMatch();
+                // checkForMatch();
               }}
             >
               <option
@@ -150,7 +151,7 @@ export default function View() {
                 Done
               </option>
             </select>
-          </div> */}
+          </div>
         </div>
       </div>
     </>
