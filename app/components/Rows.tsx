@@ -6,12 +6,13 @@ import { useParams } from "next/navigation";
 export default function Rows() {
   const { boards, columns, data }: any = useStore();
   const params = useParams();
-  // console.log(data);
+  console.log("Data.boards: ", data.boards);
+  console.log("boards", boards);
   return (
     <>
       <div className="flex">
         {boards.map((board: any) => {
-          if (board.name.replace(" ", "-") === params.main) {
+          if (board?.name?.replace(" ", "-") === params.main) {
             return board.columns.map((column: any, columnIndex: number) => {
               // console.log(column);
               return (
