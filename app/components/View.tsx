@@ -122,33 +122,25 @@ export default function View() {
               }}
               onClick={checkForMatch}
             >
-              <option
-                value="Todo"
-                style={{
-                  color: darkmode ? "#fff" : "black",
-                  backgroundColor: darkmode ? "#20212C" : "#fff",
-                }}
-              >
-                Todo
-              </option>
-              <option
-                value="Doing"
-                style={{
-                  color: darkmode ? "#fff" : "black",
-                  backgroundColor: darkmode ? "#20212C" : "#fff",
-                }}
-              >
-                Doing
-              </option>
-              <option
-                value="Done"
-                style={{
-                  color: darkmode ? "#fff" : "black",
-                  backgroundColor: darkmode ? "#20212C" : "#fff",
-                }}
-              >
-                Done
-              </option>
+              {boards.map((board: any, boardIndex: number) => {
+                if (board.name.replace(" ", "-") === params.main) {
+                  return board.columns.map(
+                    (column: any, columnIndex: number) => (
+                      <option
+                        key={`board-${boardIndex}-column-${columnIndex}`}
+                        value={column.name}
+                        style={{
+                          color: darkmode ? "#fff" : "black",
+                          backgroundColor: darkmode ? "#20212C" : "#fff",
+                        }}
+                      >
+                        {column.name}
+                      </option>
+                    )
+                  );
+                }
+                return null;
+              })}
             </select>
           </div>
         </div>

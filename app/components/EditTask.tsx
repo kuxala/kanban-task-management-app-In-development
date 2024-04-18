@@ -94,24 +94,25 @@ export default function EditTask({ editTask, setEditTask }: any) {
               value={status}
               onChange={(e) => setStatus(e.target.value)}
             >
-              <option
-                value="Todo"
-                style={{ backgroundColor: darkmode ? "#2B2C37" : "" }}
-              >
-                Todo
-              </option>
-              <option
-                value="Doing"
-                style={{ backgroundColor: darkmode ? "#2B2C37" : "" }}
-              >
-                Doing
-              </option>
-              <option
-                value="Done"
-                style={{ backgroundColor: darkmode ? "#2B2C37" : "" }}
-              >
-                Done
-              </option>
+              {boards.map((board: any, boardIndex: number) => {
+                if (board.name.replace(" ", "-") === params.main) {
+                  return board.columns.map(
+                    (column: any, columnIndex: number) => (
+                      <option
+                        key={`board-${boardIndex}-column-${columnIndex}`}
+                        value={column.name}
+                        style={{
+                          color: darkmode ? "#fff" : "black",
+                          backgroundColor: darkmode ? "#20212C" : "#fff",
+                        }}
+                      >
+                        {column.name}
+                      </option>
+                    )
+                  );
+                }
+                return null;
+              })}
             </select>
           </div>
           <button
