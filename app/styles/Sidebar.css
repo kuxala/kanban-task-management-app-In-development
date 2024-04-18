@@ -69,7 +69,10 @@
         font-weight: 700;
         line-height: normal;
         padding-left: 32px;
-        padding-top: 29px;        
+        padding-top: 29px;       
+        &:hover{
+            color: #7570f3;
+        } 
     }
 
     .sidebar__darkmode{

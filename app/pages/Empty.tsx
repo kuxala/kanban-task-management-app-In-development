@@ -21,7 +21,6 @@ export default function MainSection() {
           </button>
         </div>
       </CenterDiv>
-      {/* <Page /> */}
     </>
   );
 }
