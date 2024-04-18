@@ -45,7 +45,7 @@ export default function View() {
       }
     });
   };
-  checkForMatch();
+
   return (
     <>
       <Overlay isOpen={view} onClose={() => setView(false)} />
@@ -119,8 +119,8 @@ export default function View() {
               value={status}
               onChange={(e) => {
                 setStatus(e.target.value);
-                // checkForMatch();
               }}
+              onClick={checkForMatch}
             >
               <option
                 value="Todo"
