@@ -2,7 +2,6 @@
 import { useContext, useState } from "react";
 import "../styles/MainSection.css";
 import useStore from "../useStore";
-import Page from "../components/drag-drop/page";
 import styled from "styled-components";
 
 export default function MainSection() {
