@@ -1,6 +1,10 @@
 .sidebar {
     visibility: hidden;
     display: none;
+    margin-top: 50px;
+    position: fixed;
+    z-index: 0;
+    height: 95%;
 }
 @media only screen and (min-width: 768px){
     .sidebar__hidden{

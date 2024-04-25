@@ -6,7 +6,7 @@ import { useParams } from "next/navigation";
 export default function Rows() {
   const { boards, columns, data }: any = useStore();
   const params = useParams();
-  console.log("Data.boards: ", data.boards);
+  // console.log("Data.boards: ", data.boards);
   console.log("boards", boards);
   return (
     <>

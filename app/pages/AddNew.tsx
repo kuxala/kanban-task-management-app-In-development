@@ -23,10 +23,12 @@ export default function AddNew() {
     setNewSubtasks,
     setNewSubtaskTitle,
     darkmode,
+    clicked,
+    boards,
   }: any = useStore();
   const params = useParams();
   // console.log(params.main);
-
+  const [status, setStatus] = useState<any>(clicked.status);
   // console.log(data.boards);
 
   const handleAddNewSubtask = () => {
@@ -73,11 +75,10 @@ export default function AddNew() {
       console.error("Board not found:", params.main);
     }
 
-    // Reset input values and close the form as before
     setNewTaskTitle("");
     setNewTaskDescription("");
     setNewTaskSubtasks([]);
-    setNewTaskStatus("Todo");
+    // setNewTaskStatus("Todo");
     setAddNew(false);
   };
   // console.log(data);
@@ -172,7 +173,8 @@ export default function AddNew() {
               >
                 Status
               </h3>
-              <select
+              {
+                /* <select
                 className="w-full h-12 border border-gray-300 rounded-md p-2 bg-transparent"
                 onChange={(e) => setNewTaskStatus(e.target.value)}
               >
@@ -200,7 +202,33 @@ export default function AddNew() {
                 >
                   Done
                 </option>
-              </select>
+              </select> */
+                <select
+                  className="w-full h-12 border border-gray-300 rounded-md p-2 bg-transparent text-[14px]"
+                  value={status}
+                  onChange={(e) => setStatus(e.target.value)}
+                >
+                  {boards.map((board: any, boardIndex: number) => {
+                    if (board.name.replace(" ", "-") === params.main) {
+                      return board.columns.map(
+                        (column: any, columnIndex: number) => (
+                          <option
+                            key={`board-${boardIndex}-column-${columnIndex}`}
+                            value={column.name}
+                            style={{
+                              color: darkmode ? "#fff" : "black",
+                              backgroundColor: darkmode ? "#20212C" : "#fff",
+                            }}
+                          >
+                            {column.name}
+                          </option>
+                        )
+                      );
+                    }
+                    return null;
+                  })}
+                </select>
+              }
             </div>
             <button
               className=" h-[40px] w-full rounded-[40px] mt-6 bg-indigo-600 text-white text-center font-bold text-base leading-6"
