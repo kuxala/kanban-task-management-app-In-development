@@ -7,10 +7,12 @@ import MobileSidebar from "./MobileSidebar";
 import AddBoard from "../components/AddBoard";
 import { Switch } from "@mui/material";
 import Darkmode from "../components/Darkmode";
+import Home from "../page";
 
 const bgColor = {
   backgroundColor: "#635FC7",
   color: "#fff",
+  transition: "all 0.3s ease-in-out",
 };
 
 export default function Sidebar() {

@@ -1,8 +1,7 @@
 "use client";
-import React, { useState } from "react";
-import EmptyPage from "./pages/Empty";
-import Rows from "./components/Rows";
+import React from "react";
 import styled from "styled-components";
+
 export default function Home() {
   return <Center>Choose Platform</Center>;
 }
