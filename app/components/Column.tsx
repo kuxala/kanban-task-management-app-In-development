@@ -37,7 +37,7 @@ export default function Column({ taskname }: any) {
                     >
                       <div className="flex flex-col ">
                         <p
-                          className="text-black font-bold text-base pb-1 hover:text-[#635fc7]"
+                          className="text-black font-bold text-base pb-1 hover:text-[#635fc7] transition-all duration-200 ease-in-out"
                           style={{ color: darkmode ? "#fff" : "" }}
                         >
                           {task.title}

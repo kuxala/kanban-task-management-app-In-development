@@ -66,7 +66,7 @@ export default function Header() {
         </div>
         <div className="header__actions">
           <button
-            className="header__button__desktop"
+            className="header__button__desktop transition-all duration-300 ease-in-out"
             onClick={() => {
               setAddNew(!addNew);
             }}
