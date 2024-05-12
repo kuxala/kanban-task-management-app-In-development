@@ -37,7 +37,7 @@ export default function Sidebar() {
       <MobileSidebar />
       <div className={sidebar ? "sidebar" : "sidebar__hidden"}>
         <div className="sidebar__texts ">
-          <p className="sidebar__header">All Boards ({data.boards.length})</p>
+          <p className="sidebar__header">All Boards ({data.boards?.length})</p>
           <div className="flex flex-col gap-1">
             {boards?.map((item: any) => (
               <div key={item.id} className="flex">

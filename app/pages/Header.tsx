@@ -14,7 +14,7 @@ export default function Header() {
 
   const editedBoardName = () => {
     let editedName = "";
-    boards.forEach((board: any) => {
+    boards?.forEach((board: any) => {
       if (board?.name?.replace(" ", "-") === params.main) {
         editedName = board.name;
       }

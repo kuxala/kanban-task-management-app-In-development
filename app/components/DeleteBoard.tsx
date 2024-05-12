@@ -5,7 +5,7 @@ import useStore from "../useStore";
 import { useParams } from "next/navigation";
 
 const DeleteBoard = ({ deleteBoard, setDeleteBoard }: any) => {
-  const { data, setData, darkmode }: any = useStore();
+  const { data, setData, darkmode, boards }: any = useStore();
 
   const params = useParams<{ tag: string; item: string; main: string }>(); // Get the params
 
@@ -13,9 +13,7 @@ const DeleteBoard = ({ deleteBoard, setDeleteBoard }: any) => {
   const boardName = params.main.replaceAll("-", " ");
   // console.log(boardName);
   const handleDeleteBoard = () => {
-    const updatedBoards = data.boards.filter(
-      (item: any) => item.name !== boardName
-    );
+    const updatedBoards = boards.filter((item: any) => item.name !== boardName);
     setData({ boards: updatedBoards });
     setDeleteBoard(false);
   };

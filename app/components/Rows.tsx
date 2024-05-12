@@ -2,12 +2,14 @@ import Column from "./Column";
 import useStore from "../useStore";
 import NewColumn from "./NewColumn";
 import { useParams } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Rows() {
-  const { boards, columns, data, sidebar }: any = useStore();
+  const { boards, setBoards, columns, data, setData, sidebar }: any =
+    useStore();
   const params = useParams();
   // console.log("Data.boards: ", data.boards);
-  console.log("boards", boards);
+  // console.log("boards: ", boards);
   return (
     <>
       <div className="flex " style={{ marginLeft: sidebar ? "300px" : "0px" }}>

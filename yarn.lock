@@ -1878,7 +1878,12 @@ yaml@^2.3.4:
   resolved "https://registry.npmjs.org/yaml/-/yaml-2.4.1.tgz"
   integrity sha512-pIXzoImaqmfOrL7teGUBt/T7ZDnyeGBWyXQBvOVhLkWLN37GXv8NMLK406UY6dS51JfcQHsmcW5cJ441bHg6Lg==
 
-zustand@^4.5.2:
+zustand-persist@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.npmjs.org/zustand-persist/-/zustand-persist-0.4.0.tgz"
+  integrity sha512-u6bBIc4yZRpSKBKuTNhoqvoIb09gGHk2NkiPg4K7MPIWTYZg70PlpBn48QEDnKZwfNurnf58TaW5BuMGIMf5hw==
+
+zustand@^4.5.2, zustand@>=3.6.3:
   version "4.5.2"
   resolved "https://registry.npmjs.org/zustand/-/zustand-4.5.2.tgz"
   integrity sha512-2cN1tPkDVkwCy5ickKrI7vijSjPksFRfqS6237NzT0vqSsztTNnQdHw9mmN7uBdk3gceVXU0a+21jFzFzAc9+g==
